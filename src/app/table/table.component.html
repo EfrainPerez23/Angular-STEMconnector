@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <input type="text" value="" placeholder="Input" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dropdown">
+                <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+                            Regular
+                            <b class="caret"></b>
+                        </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#paper">Action</a></li>
+                    <li><a href="#paper">Another action</a></li>
+                    <li><a href="#paper">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#paper">Separated link</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#paper">One more separated link</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+<br><br>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Striped Table</h4>
+                    <p class="category">Here is a subtitle for this table</p>
+                </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th *ngFor="let cell of getHeaderRow()">{{ cell }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of getRows()">
+                                <td>{{row.getName()}}</td>
+                                <td style="text-align: justify;">{{row.getDescription()}}</td>
+                                <td>{{row.getStartDate() | dateFormat }}</td>
+                                <td>{{row.getEndDate() | dateFormat }}</td>
+                                <td>{{row.getLocation()}}</td>
+                                <td>{{row.getEmail()}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
