@@ -22,6 +22,8 @@ import { RequestService } from 'app/shared/service/request.service';
 import { HttpModule } from '@angular/http';
 import { DateFormatPipe } from './table/pipe/date-format.pipe';
 import { FilterPipe } from './shared/pipe/filter.pipe';
+import { NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
 
 @NgModule({
   declarations: [
@@ -44,12 +46,13 @@ import { FilterPipe } from './shared/pipe/filter.pipe';
     NavbarModule,
     FooterModule,
     HttpModule,
+    NgbModule.forRoot(),
     FormsModule,
     FixedPluginModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'})
 
   ],
-  providers: [RequestService],
+  providers: [RequestService, NgbModal, NgbModalStack],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

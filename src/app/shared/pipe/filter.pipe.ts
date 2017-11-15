@@ -8,29 +8,6 @@ import { EventModel } from 'app/table/model/event.model';
 export class FilterPipe implements PipeTransform {
 
   transform(value: EventModel[], filterString: string, filterPreference: number): any {
-    // FILTER BY ALL THE STATUS
-    // if (value.length === 0 || filterString === '') {
-    //   return value;
-    // }
-    // const resultArray = [];
-    // for (const item of value) {
-    //   if (item[propName] === filterString) {
-    //       resultArray.push(item);
-    //   }
-    // }
-    // return resultArray;
-
-    // FILTER BY STATUS BUT LIKE
-    // if (value.length === 0 || filterString === '') {
-    //   return value;
-    // }
-    // const resultArray = [];
-    // for (const item of value) {
-    //   if (item.toLowerCase().includes(filterString.toLowerCase())) {
-    //       resultArray.push(item);
-    //   }
-    // }
-    // return resultArray;
     if (value.length === 0 || filterString === '') {
       return value;
     }
@@ -53,7 +30,7 @@ export class FilterPipe implements PipeTransform {
         break;
       case 2:
         for (const event of value) {
-          const stringDate = this.dateFormat(event.getEndDate().toString());
+          const stringDate = this.dateFormat(event.getStartDate().toString());
           if (stringDate.toLowerCase().includes(filterString.toLowerCase())) {
             resultArray.push(event);
           }

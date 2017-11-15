@@ -3,7 +3,11 @@ import { RequestService } from 'app/shared/service/request.service';
 import { EventModel } from 'app/table/model/event.model';
 import { element } from 'protractor';
 import { InitiativeModel } from '../shared/model/initiative.model';
-
+import {
+  NgbModal,
+  ModalDismissReasons,
+  NgbModalRef
+} from '@ng-bootstrap/ng-bootstrap';
 @Component({
     selector: 'table-cmp',
     moduleId: module.id,
@@ -17,8 +21,10 @@ export class TableComponent implements OnInit {
     public filter = 'Filter by';
     public filterInitiative = 'Initiatives';
     private initiatives: InitiativeModel[] = [];
+    closeResult: string;
+    modal: NgbModalRef;
 
-    constructor(private requestService: RequestService) {}
+    constructor(private requestService: RequestService, private modalService: NgbModal) {}
     ngOnInit() {
         this.headerRow =  ['Name',  'Description', 'Start Date', 'End Date', 'Location', 'Active' ];
         this.requestService.getEvents().subscribe((events: any) => {
@@ -36,9 +42,43 @@ export class TableComponent implements OnInit {
             });
         })
     }
+    open(content) {
+        this.modalService.open(content).result.then((result) => {
+          this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+      }
+      private getDismissReason(reason: any): string {
+        if (reason === ModalDismissReasons.ESC) {
+          return 'by pressing ESC';
+        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+          return 'by clicking on a backdrop';
+        } else {
+          return  `with: ${reason}`;
+        }
+      }
 
-    public setInitiative(n: number) {
-        console.log(n);
+    public setInitiativeForEvents(id: number, name: string) {
+        if (id === 0) {
+            this.rows = [];
+            this.requestService.getEvents().subscribe((events: any) => {
+                events.data.forEach(element => {
+                    // tslint:disable-next-line:max-line-length
+                    // tslint:disable-next-line:max-line-length
+                    this.rows.push(new EventModel(element.status, element.name, element.description, element.startDate, element.endDate, element.location, element.email));
+                });
+            });
+        }else {
+            this.rows = [];
+            this.requestService.getEventsFromInitiative(id).subscribe((events: any) => {
+                events.data.forEach(element => {
+                    // tslint:disable-next-line:max-line-length
+                    this.rows.push(new EventModel(element.status, element.name, element.description, element.startDate, element.endDate, element.location, element.email));
+                });
+            });
+        }
+        this.filterInitiative = name;
     }
 
     public getHeaderRow(): string[] {
