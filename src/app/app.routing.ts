@@ -24,7 +24,7 @@ export const AppRoutes: Routes = [
         component: UserComponent
     },
     {
-        path: 'table',
+        path: 'events',
         component: TableComponent
     },
     {

@@ -1,0 +1,47 @@
+.testimonial-group.row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.testimonial-group>.row>.col-xs-4 {
+    display: inline-block;
+    float: none;
+}
+
+.fix {
+    position: fixed;
+    background-color: black;
+    color: white;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.rel {
+    position: relative;
+    width: 2000px;
+}
+
+
+/* Decorations */
+
+.col-xs-4 {
+    color: #fff;
+    font-size: 48px;
+    padding-bottom: 20px;
+    padding-top: 18px;
+}
+
+.col-xs-4:nth-child(3n+1) {
+    background: #c69;
+}
+
+.col-xs-4:nth-child(3n+2) {
+    background: #9c6;
+}
+
+.col-xs-4:nth-child(3n+3) {
+    background: #69c;
+}

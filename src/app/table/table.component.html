@@ -12,12 +12,7 @@
                 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a style="cursor: pointer;" (click)="setFilteredPreference(0)">Name</a></li>
-                    <li><a style="cursor: pointer;" (click)="setFilteredPreference(1)">Description</a></li>
-                    <li><a style="cursor: pointer;" (click)="setFilteredPreference(2)">Start Date</a></li>
-                    <li><a style="cursor: pointer;" (click)="setFilteredPreference(3)">End Date</a></li>
-                    <li><a style="cursor: pointer;" (click)="setFilteredPreference(4)">Location</a></li>
-                    <li><a style="cursor: pointer;" (click)="setFilteredPreference(5)">Status</a></li>
+                    <li><a style="cursor: pointer;" *ngFor="let colum of getHeaderRow(); let i = index" (click)="setFilteredPreference(i)">{{colum}}</a></li>
                 </ul>
             </div>
         </div>
@@ -43,24 +38,6 @@
 
     </div>
 </div>
-<hr>
-<!-- Large modal -->
-<ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-    </div>
-    <div class="modal-body">
-        <p>One fine body&hellip;</p>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-    </div>
-</ng-template>
-
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
 
 <hr>
 <br>

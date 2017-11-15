@@ -111,7 +111,7 @@ export class TableComponent implements OnInit {
                 this.filter = 'Location';
                 break;
             default:
-                this.filter = 'Status';
+                this.filter = 'Active';
                 break;
         }
 
