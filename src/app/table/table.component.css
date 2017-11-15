@@ -1,3 +1,26 @@
 tr.border_bottom td {
     border-bottom: 1pt solid black;
 }
+
+a.btn:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+a.btn {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+}
+
+.navbar-brand.b {
+    float: left;
+    height: 50px;
+    padding: 15px 1px;
+    font-size: 18px;
+    line-height: 20px;
+}

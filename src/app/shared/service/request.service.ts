@@ -15,7 +15,16 @@ export class RequestService {
         }).catch( (error: Response) => {
           return Observable.throw('Something went wrong!');
         });
-  }
+    }
+
+    public getInitiatives() {
+      return this.http.get('http://165.227.179.52:3000/initiatives')
+      .map( (response: Response) => {
+          return response.json();
+      }).catch( (error: Response) => {
+        return Observable.throw('Something went wrong!');
+      });
+    }
     
 
 }
