@@ -50,3 +50,8 @@ a.btn {
 .fade {
     opacity: 1;
 }
+
+.modal-dialog.element.style {
+    top: 300px;
+    left: 150px;
+}

@@ -10,7 +10,7 @@ import {
   NgbModalRef
 } from '@ng-bootstrap/ng-bootstrap';
 
-declare var $:any;
+declare var $: any;
 
 @Component({
     selector: 'dashboard-cmp',
@@ -19,7 +19,6 @@ declare var $:any;
 })
 
 export class DashboardComponent implements OnInit {
-  data = ['Capacity', 'Capacity', 'Capacity', 'Capacity', 'Capacity', 'Capacity', 'Capacity', 'Capacity', 'Capacity', 'Capacity'];
   private headerRow: string[];
   public filteredStatus = '';
   public filterPreference = 0;
@@ -37,57 +36,45 @@ export class DashboardComponent implements OnInit {
                 });
             });
         }
-        open(content) {
-            this.modalService.open(content).result.then((result) => {
+
+         open(content, id: number, index: number) {
+            this.modalService.open(content).result.then((result: boolean) => {
+                console.log(content, 'id :' + id, index);
+                if (result === true) {
+                    console.log('entro!');
+                    this.requestService.deleteInitiative(id).subscribe( (initiativeDeleted: any) => {
+                        console.log(initiativeDeleted);
+                    });
+                    this.rows.splice(index, 1);
+                }
+            //     console.log(index);
               this.closeResult = `Closed with: ${result}`;
+              console.log('cerro!', this.closeResult);
             }, (reason) => {
+                console.log('cerro2!');
               this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
             });
-          }
-          private getDismissReason(reason: any): string {
+        }
+
+        private getDismissReason(reason: any): string {
             if (reason === ModalDismissReasons.ESC) {
+                console.log('esc!');
               return 'by pressing ESC';
             } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+                console.log('nose');
               return 'by clicking on a backdrop';
             } else {
               return  `with: ${reason}`;
             }
-          }
-    
-        public setInitiativeForEvents(id: number, name: string) {
-            // if (id === 0) {
-            //     this.rows = [];
-            //     this.requestService.getEvents().subscribe((events: any) => {
-            //         events.data.forEach(element => {
-            //             // tslint:disable-next-line:max-line-length
-            //             // tslint:disable-next-line:max-line-length
-            //             this.rows.push(new EventModel(element.status, element.name, element.description, element.startDate, element.endDate, element.location, element.email));
-            //         });
-            //     });
-            // }else {
-            //     this.rows = [];
-            //     this.requestService.getEventsFromInitiative(id).subscribe((events: any) => {
-            //         events.data.forEach(element => {
-            //             // tslint:disable-next-line:max-line-length
-            //             this.rows.push(new EventModel(element.status, element.name, element.description, element.startDate, element.endDate, element.location, element.email));
-            //         });
-            //     });
-            // }
-            // this.filterInitiative = name;
         }
-    
+
         public getHeaderRow(): string[] {
             return this.headerRow;
         }
-    
+
         public getRows(): InitiativeModel[] {
             return this.rows;
         }
-    
-        // public getInitiatives(): InitiativeModel[] {
-        //     // return this.initiatives;
-        // }
-    
         public setFilteredPreference(filterPreference: number) {
             switch (filterPreference) {
                 case 0:
@@ -96,17 +83,7 @@ export class DashboardComponent implements OnInit {
                 case 1:
                     this.filter = 'Description';
                     break;
-                case 2:
-                    this.filter = 'Start Date';
-                    break;
-                case 3:
-                    this.filter = 'End Date';
-                    break;
-                case 4:
-                    this.filter = 'Location';
-                    break;
                 default:
-                    this.filter = 'Active';
                     break;
             }
             this.filterPreference = filterPreference;

@@ -6070,7 +6070,7 @@ button.close {
 
 .modal-backdrop.fade {
     filter: alpha(opacity=0);
-    opacity: 0
+    opacity: 0.5;
 }
 
 .modal-backdrop.in {
@@ -6132,7 +6132,8 @@ button.close {
     }
     .modal-content {
         -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, .5)
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+        top: 100px;
     }
     .modal-sm {
         width: 300px
@@ -6748,7 +6749,7 @@ button.close {
 }
 
 .show {
-    display: block!important
+    display: block!important;
 }
 
 .invisible {

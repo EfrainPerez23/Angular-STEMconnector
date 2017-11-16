@@ -1,3 +1,27 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header" style="top: 200px;">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title">Delete Event Name</h4>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to delete?&hellip;</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="c(true)">Accept</button>
+        <button type="button" class="btn btn-primary" (click)="c(false)">Close</button>
+    </div>
+</ng-template>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
@@ -18,7 +42,7 @@
         </div>
     </div>
 </div>
-
+<a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-plus"></span> Add</a>
 <hr>
 <br>
 <div class="container-fluid">
@@ -38,7 +62,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let row of getRows() | filter:filteredStatus:filterPreference">
+                            <tr *ngFor="let row of (getRows()| filter:filteredStatus:filterPreference);let i=index">
                                 <div *ngIf="!row; else emptyEvents">
                                 </div>
                                 <ng-template #emptyEvents>
@@ -52,7 +76,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text" (click)="open(content, row.getIdInitiative(), i)">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-trash-o" aria-hidden="true"></i></strong></span>
                                         </a>
