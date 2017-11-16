@@ -44,24 +44,17 @@ export class TableComponent implements OnInit {
             this.modalService.open(content).result.then((result: boolean) => {
                 if (result === true) {
                     this.requestService.deleteEvent(id).subscribe( (eventDelete: any) => {
-                        console.log(eventDelete);
                     });
                     this.rows.splice(index, 1);
                 }
-                console.log(index);
-              this.closeResult = `Closed with: ${result}`;
-              console.log('cerro!', this.closeResult);
             }, (reason) => {
-                console.log('cerro2!');
               this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
             });
         }
       private getDismissReason(reason: any): string {
             if (reason === ModalDismissReasons.ESC) {
-                console.log('esc!');
               return 'by pressing ESC';
             } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-                console.log('nose');
               return 'by clicking on a backdrop';
             } else {
               return  `with: ${reason}`;

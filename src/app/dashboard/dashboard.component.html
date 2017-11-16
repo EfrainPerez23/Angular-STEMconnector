@@ -2,7 +2,7 @@
     <div class="modal-header" style="top: 200px;">
         <div class="row">
             <div class="col-md-6">
-                <h4 class="modal-title">Delete Event Name</h4>
+                <h4 class="modal-title">Delete</h4>
             </div>
             <div class="col-md-6">
                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -14,7 +14,73 @@
 
     </div>
     <div class="modal-body">
-        <p>Are you sure you want to delete?&hellip;</p>
+        <p>Are you sure you want to delete it?&hellip;</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="c(true)">Accept</button>
+        <button type="button" class="btn btn-primary" (click)="c(false)">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #updateProfile let-c="close" let-d="dismiss">
+    <div class="modal-header" style="top: 200px;">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title">Editing</h4>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-body">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Edit Initiative</h4>
+            </div>
+            <div class="content">
+                <form (ngSubmit)="onSubmit()" #f="ngForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Name of Initiative</label>
+                                <input type="text" class="form-control border-input" placeholder="Insert Name..." value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Image URL</label>
+                                <input type="text" class="form-control border-input" placeholder="Image URL..." value="">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>About Me</label>
+                                <textarea rows="4" class="form-control border-input" placeholder="Description..." value="Mike">
+
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-fill btn-wd">Update Profile</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-danger" (click)="c(true)">Accept</button>
@@ -70,7 +136,7 @@
                                     <td style="text-align: justify;">{{row.getDescription()}}</td>
                                     <td><img [src]="row.getImageUrl()" alt="Mountain View" width="300" height="200"></td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="openUpdateProfile(updateProfile, row.getIdInitiative(), i )">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-pencil-square-o" aria-hidden="true"></i></strong></span>
                                         </a>

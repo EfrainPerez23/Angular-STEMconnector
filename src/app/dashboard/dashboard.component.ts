@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import * as Chartist from 'chartist';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RequestService } from 'app/shared/service/request.service';
 import { EventModel } from 'app/table/model/event.model';
 import { element } from 'protractor';
@@ -9,8 +8,7 @@ import {
   ModalDismissReasons,
   NgbModalRef
 } from '@ng-bootstrap/ng-bootstrap';
-
-declare var $: any;
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'dashboard-cmp',
@@ -25,8 +23,9 @@ export class DashboardComponent implements OnInit {
   public filter = 'Filter by';
   public filterInitiative = 'Initiatives';
   private rows: InitiativeModel[] = [];
-  closeResult: string;
-  modal: NgbModalRef;
+  private closeResult: string;
+  private signUpForm: NgForm;
+
         constructor(private requestService: RequestService, private modalService: NgbModal) {}
         ngOnInit() {
             this.headerRow =  ['Name',  'Description'];
@@ -37,21 +36,19 @@ export class DashboardComponent implements OnInit {
             });
         }
 
-         open(content, id: number, index: number) {
+        @ViewChild('f')
+        public set setSignUpForm(signUpForm: NgForm) {
+          this.signUpForm = signUpForm;
+        }
+
+         public open(content, id: number, index: number) {
             this.modalService.open(content).result.then((result: boolean) => {
-                console.log(content, 'id :' + id, index);
                 if (result === true) {
-                    console.log('entro!');
                     this.requestService.deleteInitiative(id).subscribe( (initiativeDeleted: any) => {
-                        console.log(initiativeDeleted);
                     });
                     this.rows.splice(index, 1);
                 }
-            //     console.log(index);
-              this.closeResult = `Closed with: ${result}`;
-              console.log('cerro!', this.closeResult);
             }, (reason) => {
-                console.log('cerro2!');
               this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
             });
         }
@@ -66,6 +63,14 @@ export class DashboardComponent implements OnInit {
             } else {
               return  `with: ${reason}`;
             }
+        }
+
+        public openUpdateProfile(content, id: number, index: number) {
+            this.modalService.open(content).result.then((result: boolean) => {
+                console.log('entro al update profile: ', result, 'id: ' + id, 'index: ' + index, this.rows[index].getName());
+            }, (reason) => {
+              this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+            });
         }
 
         public getHeaderRow(): string[] {
