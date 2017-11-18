@@ -27,7 +27,7 @@
                 <h4 class="modal-title">Editing</h4>
             </div>
             <div class="col-md-6">
-                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <button type="button" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
@@ -39,7 +39,7 @@
                 <h4 class="title">Edit Initiative</h4>
             </div>
             <div class="content">
-                <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <form (ngSubmit)="onSubmit(f, d(false))" #f="ngForm">
                     <div id="initiativeData" ngModelGroup="initiativeData" #initiativeData="ngModelGroup">
                         <div class="row">
                             <div class="col-md-12">

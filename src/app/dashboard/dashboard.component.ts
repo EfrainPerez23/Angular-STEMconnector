@@ -43,7 +43,8 @@ export class DashboardComponent implements OnInit {
             });
         }
 
-        public onSubmit(f: NgForm) {
+        public onSubmit(f: NgForm, updateProfile) {
+            console.log(updateProfile);
             this.signUpForm = f;
             this.requestService.updateInitiative(this.idForm, {
                 name: this.signUpForm.value.initiativeData.initiativeName,
@@ -57,7 +58,6 @@ export class DashboardComponent implements OnInit {
                 });
             });
             });
-            
         }
 
          public open(content, id: number, index: number) {
