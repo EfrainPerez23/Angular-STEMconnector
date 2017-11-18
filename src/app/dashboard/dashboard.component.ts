@@ -10,11 +10,16 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 
+
 @Component({
     selector: 'dashboard-cmp',
     moduleId: module.id,
     templateUrl: 'dashboard.component.html'
 })
+
+// Efrain Perez
+// efrain.abperez23@gmail.com
+// LinkedIn: https://www.linkedin.com/in/efra%C3%ADn-p%C3%A9rez-824bbb148/
 
 export class DashboardComponent implements OnInit {
   private headerRow: string[];
@@ -25,6 +30,8 @@ export class DashboardComponent implements OnInit {
   private rows: InitiativeModel[] = [];
   private closeResult: string;
   private signUpForm: NgForm;
+  private idForm: number;
+  private indexForm: number;
 
         constructor(private requestService: RequestService, private modalService: NgbModal) {}
         ngOnInit() {
@@ -36,9 +43,21 @@ export class DashboardComponent implements OnInit {
             });
         }
 
-        @ViewChild('f')
-        public set setSignUpForm(signUpForm: NgForm) {
-          this.signUpForm = signUpForm;
+        public onSubmit(f: NgForm) {
+            this.signUpForm = f;
+            this.requestService.updateInitiative(this.idForm, {
+                name: this.signUpForm.value.initiativeData.initiativeName,
+                description: this.signUpForm.value.initiativeData.description,
+                imageUrl: this.signUpForm.value.initiativeData.url
+            }).subscribe((initiativeUpdated: any) => {
+                this.rows = [];
+                this.requestService.getInitiatives().subscribe((initiatives: any) => {
+              initiatives.data.forEach(element => {
+                    this.rows.push(new InitiativeModel(element.idInitiative, element.name, element.description, element.imageUrl));
+                });
+            });
+            });
+            
         }
 
          public open(content, id: number, index: number) {
@@ -55,10 +74,8 @@ export class DashboardComponent implements OnInit {
 
         private getDismissReason(reason: any): string {
             if (reason === ModalDismissReasons.ESC) {
-                console.log('esc!');
               return 'by pressing ESC';
             } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-                console.log('nose');
               return 'by clicking on a backdrop';
             } else {
               return  `with: ${reason}`;
@@ -66,8 +83,9 @@ export class DashboardComponent implements OnInit {
         }
 
         public openUpdateProfile(content, id: number, index: number) {
+            this.idForm = id;
+            this.indexForm = index;
             this.modalService.open(content).result.then((result: boolean) => {
-                console.log('entro al update profile: ', result, 'id: ' + id, 'index: ' + index, this.rows[index].getName());
             }, (reason) => {
               this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
             });

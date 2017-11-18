@@ -22,7 +22,7 @@ import { RequestService } from 'app/shared/service/request.service';
 import { HttpModule } from '@angular/http';
 import { DateFormatPipe } from './table/pipe/date-format.pipe';
 import { FilterPipe } from './shared/pipe/filter.pipe';
-import { NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModule, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
 
 @NgModule({

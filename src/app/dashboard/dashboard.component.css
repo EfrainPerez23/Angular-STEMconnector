@@ -55,3 +55,17 @@ a.btn {
     top: 220px;
     left: 150px;
 }
+
+.crossSearch {
+    width: 480px;
+    height: 49px;
+    border: 3px solid black;
+    padding-left: 48px;
+    padding-top: 1px;
+    font-size: 22px;
+    color: blue;
+    background-image: url('https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/navigate_cross.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: 0;
+}
