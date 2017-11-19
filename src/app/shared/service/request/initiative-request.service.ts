@@ -30,7 +30,7 @@ export class InitiativeRequestService {
         .map( (response: Response) => {
             return response.json();
         }).catch( (error: Response) => {
-          return Observable.throw('Something went wrong!');
+          return Observable.throw(JSON.parse(error['_body']));
         });
   }
 

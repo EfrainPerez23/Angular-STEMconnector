@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
   private idForm: number;
 
         constructor(private requestService: InitiativeRequestService, private modalService: NgbModal) {}
+
         ngOnInit() {
             this.headerRow =  ['Name',  'Description'];
             this.reloadInitiative();
@@ -47,14 +48,16 @@ export class DashboardComponent implements OnInit {
                 imageUrl: this.signUpForm.value.initiativeData.url
             }).subscribe((initiativeUpdated: any) => {
                 this.reloadInitiative();
+                this.showNotification('success', 'You update an Initiative!', 'Success', 'ti-pencil-alt');
             });
         }
 
-         public open(content, id: number, index: number) {
+         public openDeleteInitiative(content, id: number, index: number) {
             this.modalService.open(content).result.then((result: boolean) => {
-                if (result === true) {
+                if (result) {
                     this.requestService.deleteInitiative(id).subscribe( (initiativeDeleted: any) => {
                         this.rows.splice(index, 1);
+                        this.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
                     });
                 }
             }, (reason) => {
@@ -67,9 +70,9 @@ export class DashboardComponent implements OnInit {
               return 'by pressing ESC';
             } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
               return 'by clicking on a backdrop';
-            } else {
-              return  `with: ${reason}`;
             }
+            return  `with: ${reason}`;
+
         }
 
         public openUpdateProfile(content, id: number, index: number) {
@@ -132,7 +135,8 @@ export class DashboardComponent implements OnInit {
             this.requestService.getInitiatives().subscribe((initiatives: any) => {
               initiatives.data.forEach(element => {
                 this.rows.push(new InitiativeModel(element.idInitiative, element.name, element.description, element.imageUrl));
-            });
+              }, (error) => {
+              });
         });
         }
 
