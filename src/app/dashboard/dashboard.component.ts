@@ -94,10 +94,14 @@ export class DashboardComponent implements OnInit {
                 description: this.signUpForm.value.newInitiative.desc,
                 imageUrl: this.signUpForm.value.newInitiative.newUrl
             }).subscribe((initiativeCreated: any) => {
-                this.showNotification('success', 'You Created a new Initiative!', 'Success!');
-                this.reloadInitiative();
+                console.log(initiativeCreated);
+                if (initiativeCreated.success) {
+                    this.showNotification('success', 'You Created a new Initiative!', 'Success!', 'ti-face-smile');
+                    this.reloadInitiative();
+                }else {
+                    this.showNotification('danger', initiativeCreated.message, 'Error!', 'ti-face-sad');
+                }
             }, (error) => {
-                console.log('error en el server');
             });
 
         }
@@ -132,10 +136,9 @@ export class DashboardComponent implements OnInit {
         });
         }
 
-        private showNotification(type: string, message: string, title: string) {
-            const color = Math.floor((Math.random() * 4) + 1);
+        private showNotification(type: string, message: string, title: string, icon: string) {
             $.notify({
-                icon: "ti-face-smile",
+                icon: icon,
                 message: `<b>${title}</b> <br> ${message}.`
             }, {
                 type: type,
