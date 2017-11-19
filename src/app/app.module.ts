@@ -24,6 +24,7 @@ import { DateFormatPipe } from './table/pipe/date-format.pipe';
 import { FilterPipe } from './shared/pipe/filter.pipe';
 import { NgbModal, NgbModule, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
+import { InitiativeRequestService } from './shared/service/request/initiative-request.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'})
 
   ],
-  providers: [RequestService, NgbModal, NgbModalStack],
+  providers: [RequestService, NgbModal, NgbModalStack, InitiativeRequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

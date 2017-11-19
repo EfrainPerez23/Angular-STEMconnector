@@ -19,7 +19,7 @@ export class NotificationsComponent{
         	message: "Welcome to <b>Paper Dashboard</b> - a beautiful freebie for every web developer."
         },{
             type: type[color],
-            timer: 4000,
+            timer: 2500,
             placement: {
                 from: from,
                 align: align

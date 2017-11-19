@@ -9,8 +9,9 @@ import {
   NgbModalRef
 } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
+import { InitiativeRequestService } from '../shared/service/request/initiative-request.service';
 
-
+declare var $: any;
 @Component({
     selector: 'dashboard-cmp',
     moduleId: module.id,
@@ -27,36 +28,25 @@ export class DashboardComponent implements OnInit {
   public filterPreference = 0;
   public filter = 'Filter by';
   public filterInitiative = 'Initiatives';
-  private rows: InitiativeModel[] = [];
+  private rows: InitiativeModel[];
   private closeResult: string;
   private signUpForm: NgForm;
   private idForm: number;
-  private indexForm: number;
 
-        constructor(private requestService: RequestService, private modalService: NgbModal) {}
+        constructor(private requestService: InitiativeRequestService, private modalService: NgbModal) {}
         ngOnInit() {
             this.headerRow =  ['Name',  'Description'];
-            this.requestService.getInitiatives().subscribe((initiatives: any) => {
-              initiatives.data.forEach(element => {
-                    this.rows.push(new InitiativeModel(element.idInitiative, element.name, element.description, element.imageUrl));
-                });
-            });
+            this.reloadInitiative();
         }
 
         public onSubmit(f: NgForm, updateProfile) {
-            console.log(updateProfile);
             this.signUpForm = f;
             this.requestService.updateInitiative(this.idForm, {
                 name: this.signUpForm.value.initiativeData.initiativeName,
                 description: this.signUpForm.value.initiativeData.description,
                 imageUrl: this.signUpForm.value.initiativeData.url
             }).subscribe((initiativeUpdated: any) => {
-                this.rows = [];
-                this.requestService.getInitiatives().subscribe((initiatives: any) => {
-              initiatives.data.forEach(element => {
-                    this.rows.push(new InitiativeModel(element.idInitiative, element.name, element.description, element.imageUrl));
-                });
-            });
+                this.reloadInitiative();
             });
         }
 
@@ -64,8 +54,8 @@ export class DashboardComponent implements OnInit {
             this.modalService.open(content).result.then((result: boolean) => {
                 if (result === true) {
                     this.requestService.deleteInitiative(id).subscribe( (initiativeDeleted: any) => {
+                        this.rows.splice(index, 1);
                     });
-                    this.rows.splice(index, 1);
                 }
             }, (reason) => {
               this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -84,11 +74,32 @@ export class DashboardComponent implements OnInit {
 
         public openUpdateProfile(content, id: number, index: number) {
             this.idForm = id;
-            this.indexForm = index;
             this.modalService.open(content).result.then((result: boolean) => {
             }, (reason) => {
               this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
             });
+        }
+
+        public openCreateInitiative(addInitiative) {
+            this.modalService.open(addInitiative).result.then((result: boolean) => {
+            }, (reason) => {
+              this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+            });
+        }
+
+        public onAddSubmit(addInitiative: NgForm, createProfile) {
+            this.signUpForm = addInitiative;
+            this.requestService.createInitiative({
+                name: this.signUpForm.value.newInitiative.name,
+                description: this.signUpForm.value.newInitiative.desc,
+                imageUrl: this.signUpForm.value.newInitiative.newUrl
+            }).subscribe((initiativeCreated: any) => {
+                this.showNotification('success', 'You Created a new Initiative!', 'Success!');
+                this.reloadInitiative();
+            }, (error) => {
+                console.log('error en el server');
+            });
+
         }
 
         public getHeaderRow(): string[] {
@@ -110,6 +121,30 @@ export class DashboardComponent implements OnInit {
                     break;
             }
             this.filterPreference = filterPreference;
+        }
+
+        private reloadInitiative() {
+            this.rows = [];
+            this.requestService.getInitiatives().subscribe((initiatives: any) => {
+              initiatives.data.forEach(element => {
+                this.rows.push(new InitiativeModel(element.idInitiative, element.name, element.description, element.imageUrl));
+            });
+        });
+        }
+
+        private showNotification(type: string, message: string, title: string) {
+            const color = Math.floor((Math.random() * 4) + 1);
+            $.notify({
+                icon: "ti-face-smile",
+                message: `<b>${title}</b> <br> ${message}.`
+            }, {
+                type: type,
+                timer: 1000,
+                placement: {
+                    from: 'top',
+                    align: 'right'
+                }
+            });
         }
     }
 
