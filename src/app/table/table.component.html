@@ -105,6 +105,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -149,27 +150,105 @@
             </div>
             <div class="content">
                 <form (ngSubmit)="onSubmit(f, d(false))" #f="ngForm">
-                    <div id="initiativeData" ngModelGroup="initiativeData" #initiativeData="ngModelGroup">
+                    <div id="eventData" ngModelGroup="eventData" #eventData="ngModelGroup">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !initiativeName.valid && initiativeName.touched}">
                                     <label>Name</label>
                                     <input type="text" id="initiativeName" class="crossSearch form-control border-input" ngModel name="initiativeName" placeholder="Name..." required #initiativeName="ngModel">
                                     <span class="help-block" *ngIf="!initiativeName.valid && initiativeName.touched">Insert Name</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !location.valid && location.touched}">
                                     <label>Location</label>
                                     <input value="hola" type="text" id="location" class="form-control border-input" ngModel name="location" required #location="ngModel" placeholder="Location...">
-                                    <span class="help-block" *ngIf="!location.valid && location.touched">Insert url</span>
+                                    <span class="help-block" *ngIf="!location.valid && location.touched">Insert Location</span>
                                 </div>
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="header">
+                                <h4 class="title">Start Date</h4>
+                            </div>
+                        </div>
+                        <div id="startDate" ngModelGroup="startDate" #startDate="ngModelGroup">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" [ngClass]="{'has-error': !date.valid && date.touched}">
+                                        <label>Date</label>
+                                        <input value="" type="text" maxlength="10" id="date" class="form-control border-input" ngModel name="date" required #date="ngModel" placeholder="MM/DD/YYYY">
+                                        <span class="help-block" *ngIf="!date.valid && date.touched">Insert Start Date</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group" [ngClass]="{'has-error': !hour.valid && hour.touched}">
+                                        <label>Hour</label>
+                                        <input type="number" class="form-control border-input" [min]="0" [max]="23" ngModel placeholder="hh" name="hour" required #hour="ngModel">
+                                        <span class="help-block" *ngIf="!hour.valid && hour.touched">Insert Hour</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group" [ngClass]="{'has-error': !mins.valid && mins.touched}">
+                                        <label>Minutes</label>
+                                        <input type="number" class="form-control border-input" [min]="0" [max]="59" ngModel placeholder="mm" name="mins" required #mins="ngModel">
+                                        <span class="help-block" *ngIf="!mins.valid && mins.touched">Insert Mins</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="header">
+                                <h4 class="title">End Date</h4>
+                            </div>
+                        </div>
+                        <div id="startDate" ngModelGroup="endDate" #startDate="ngModelGroup">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" [ngClass]="{'has-error': !date.valid && date.touched}">
+                                        <label>Date</label>
+                                        <input value="" type="text" maxlength="10" id="date" class="form-control border-input" ngModel name="date" required #date="ngModel" placeholder="MM/DD/YYYY">
+                                        <span class="help-block" *ngIf="!date.valid && date.touched">Insert Start Date</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group" [ngClass]="{'has-error': !hour.valid && hour.touched}">
+                                        <label>Hour</label>
+                                        <input type="number" class="form-control border-input" [min]="0" [max]="23" ngModel placeholder="hh" name="hour" required #hour="ngModel">
+                                        <span class="help-block" *ngIf="!hour.valid && hour.touched">Insert Hour</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group" [ngClass]="{'has-error': !mins.valid && mins.touched}">
+                                        <label>Minutes</label>
+                                        <input type="number" class="form-control border-input" [min]="0" [max]="59" ngModel placeholder="mm" name="mins" required #mins="ngModel">
+                                        <span class="help-block" *ngIf="!mins.valid && mins.touched">Insert Mins</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !email.valid && email.touched}">
+                                    <label>Email</label>
+                                    <input type="text" id="email" class="crossSearch form-control border-input" ngModel name="email" placeholder="Email..." required #email="ngModel">
+                                    <span class="help-block" *ngIf="!email.valid && email.touched">Insert Email</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !status.valid && status.touched}">
+                                    <label>Active</label>
+                                    <select class="form-control" ngModel name="status" #status="ngModel" placeholder="Active..." required>
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                    <span class="help-block" *ngIf="!status.valid && status.touched">Insert Active...</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
+                                <div class="form-group" [ngClass]="{'has-error': !description.valid && description.touched}">
                                     <label>Description</label>
                                     <textarea rows="4" id="description" class="form-control border-input" ngModel name="description" required #description="ngModel" placeholder="Description...">
                                 </textarea>
@@ -247,3 +326,11 @@
                 </div>
             </div>
         </div>
+        <!-- Button to trigger modal -->
+        <script>
+            $(function() {
+                $('#datetimepicker1').datetimepicker({
+                    language: 'pt-BR'
+                });
+            });
+        </script>

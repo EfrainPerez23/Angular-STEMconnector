@@ -11,6 +11,7 @@ import {
   ModalDismissReasons,
   NgbModalRef
 } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'table-cmp',
@@ -27,6 +28,7 @@ export class TableComponent implements OnInit {
     private initiatives: InitiativeModel[];
     private signUpForm: NgForm;
     closeResult: string;
+    public model;
 
     constructor(private eventRequestService: EventRequestService, private modalService: NgbModal,
                 private initiativeRequestService: InitiativeRequestService) {}
@@ -65,6 +67,7 @@ export class TableComponent implements OnInit {
         //     this.reloadInitiative();
         //     this.showNotification('success', 'You update an Initiative!', 'Success', 'ti-pencil-alt');
         // });
+        console.log(this.signUpForm.value);
     }
    public openOnDeleteEvent(content, id: number, index: number) {
             this.modalService.open(content).result.then((result: boolean) => {
