@@ -87,7 +87,7 @@
     <div class="modal-body">
         <div class="card">
             <div class="header">
-                <h4 class="title">Edit Initiative</h4>
+                <h4 class="title">Add Event</h4>
             </div>
             <div class="content">
                 <form (ngSubmit)="onAddSubmit(f, d(false))" #f="ngForm">
@@ -148,7 +148,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group" [ngClass]="{'has-error': !date.valid && date.touched}">
                                         <label>Date</label>
-                                        <input value="" type="text" maxlength="10" id="date" class="form-control border-input" ngModel name="date" required #date="ngModel" placeholder="MM/DD/YYYY">
+                                        <input value="" type="text" maxlength="10" id="date" class="form-control border-input" ngModel name="date" required #date="ngModel" placeholder="MM-DD-YYYY">
                                         <span class="help-block" *ngIf="!date.valid && date.touched">Insert Start Date</span>
                                     </div>
                                 </div>
@@ -238,7 +238,7 @@
     <div class="modal-body">
         <div class="card">
             <div class="header">
-                <h4 class="title">Edit Initiative</h4>
+                <h4 class="title">Edit Event</h4>
             </div>
             <div class="content">
                 <form (ngSubmit)="onUpdateSubmit(f, d(false))" #f="ngForm">
@@ -264,12 +264,12 @@
                                 <h4 class="title">Start Date</h4>
                             </div>
                         </div>
-                        <div id="startDate" ngModelGroup="startDate" #startDate="ngModelGroup">
+                        <div id="startDate2" ngModelGroup="startDate2" #startDate2="ngModelGroup">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group" [ngClass]="{'has-error': !date.valid && date.touched}">
                                         <label>Date</label>
-                                        <input value="" type="text" maxlength="10" id="date" class="form-control border-input" ngModel name="date" required #date="ngModel" placeholder="MM/DD/YYYY">
+                                        <input value="" type="text" maxlength="10" id="date" class="form-control border-input" ngModel name="date" required #date="ngModel" placeholder="MM-DD-YYYY">
                                         <span class="help-block" *ngIf="!date.valid && date.touched">Insert Start Date</span>
                                     </div>
                                 </div>
@@ -294,7 +294,7 @@
                                 <h4 class="title">End Date</h4>
                             </div>
                         </div>
-                        <div id="startDate" ngModelGroup="endDate" #startDate="ngModelGroup">
+                        <div id="endDate" ngModelGroup="endDate" #startDate="ngModelGroup">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group" [ngClass]="{'has-error': !date.valid && date.touched}">

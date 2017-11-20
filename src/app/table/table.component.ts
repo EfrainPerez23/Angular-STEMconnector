@@ -40,20 +40,34 @@ export class TableComponent implements OnInit {
 
     public onAddSubmit(addInitiative: NgForm, createProfile) {
         this.signUpForm = addInitiative;
-        console.log(this.signUpForm.value);
+        // const newEvent = {
+        //     name: this.signUpForm.value.name,
+        //     description: this.signUpForm.value.description,
+        //     startDate: this.signUpForm.value.startDate.date + ' '
+        //                 + this.signUpForm.value.startDate.hour + ':' + this.signUpForm.value.startDate.mins,
+        //     endDate: this.signUpForm.value.endDate.date + ' '
+        //                 + this.signUpForm.value.endDate.hour + ':' + this.signUpForm.value.endDate.mins,
+        //     Initiative_idInitiative: this.signUpForm.value.Initiative_idInitiative,
+        //     location: this.signUpForm.value.location,
+        //     imageUrl: ''
+        // };
+        console.log(this.signUpForm);
     }
 
     public onUpdateSubmit(f: NgForm, updateProfile) {
         this.signUpForm = f;
-        // this.requestService.updateInitiative(this.idForm, {
-        //     name: this.signUpForm.value.initiativeData.initiativeName,
-        //     description: this.signUpForm.value.initiativeData.description,
-        //     imageUrl: this.signUpForm.value.initiativeData.url
-        // }).subscribe((initiativeUpdated: any) => {
-        //     this.reloadInitiative();
-        //     this.showNotification('success', 'You update an Initiative!', 'Success', 'ti-pencil-alt');
-        // });
-        console.log(this.signUpForm.value);
+        // const newEvent = {
+        //     name: this.signUpForm.value.name,
+        //     description: this.signUpForm.value.description,
+        //     startDate: this.signUpForm.value.startDate.date + ' '
+        //                 + this.signUpForm.value.startDate.hour + ':' + this.signUpForm.value.startDate.mins,
+        //     endDate: this.signUpForm.value.endDate.date + ' '
+        //                 + this.signUpForm.value.endDate.hour + ':' + this.signUpForm.value.endDate.mins,
+        //     Initiative_idInitiative: this.signUpForm.value.Initiative_idInitiative,
+        //     location: this.signUpForm.value.location,
+        //     imageUrl: ''
+        // };
+        console.log(this.signUpForm.value.startDate2);
     }
    public openOnDeleteEvent(content, id: number, index: number) {
             this.modalService.open(content).result.then((result: boolean) => {
