@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="col-md-5">
-            <a style="cursor: pointer;" class="btn btn-primary btn-success" (click)="openCreateInitiative(addInitiative)">
+            <a style="cursor: pointer;" class="btn btn-primary btn-success" (click)="openAddEvent(addEvent)">
                 <span class="glyphicon glyphicon-plus"></span> Add Event
             </a>
         </div>
@@ -90,7 +90,7 @@
                 <h4 class="title">Edit Initiative</h4>
             </div>
             <div class="content">
-                <form (ngSubmit)="onSubmit(f, d(false))" #f="ngForm">
+                <form (ngSubmit)="onAddSubmit(f, d(false))" #f="ngForm">
                     <div id="eventData" ngModelGroup="eventData" #eventData="ngModelGroup">
                         <div class="row">
                             <div class="col-md-6">
@@ -180,10 +180,21 @@
                                 <div class="form-group" class="form-group" [ngClass]="{'has-error': !status.valid && status.touched}">
                                     <label>Active</label>
                                     <select class="form-control" ngModel name="status" #status="ngModel" placeholder="Active..." required>
-                                            <option value="true">Yes</option>
-                                            <option value="false">No</option>
-                                        </select>
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
                                     <span class="help-block" *ngIf="!status.valid && status.touched">Insert Active...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" [ngClass]="{'has-error': !description.valid && description.touched}">
+                                    <label>Initiative</label>
+                                    <select class="form-control" ngModel name="idInitative" #idInitative="ngModel" placeholder="Initiative..." required>
+                                                <option value="{{initativeEl.getIdInitiative()}}" *ngFor="let initativeEl of getInitiatives()" >{{initativeEl.getName()}}</option>
+                                    </select>
+                                    <span class="help-block" *ngIf="!description.valid && description.touched">Insert Description</span>
                                 </div>
                             </div>
                         </div>
@@ -192,14 +203,14 @@
                                 <div class="form-group" [ngClass]="{'has-error': !description.valid && description.touched}">
                                     <label>Description</label>
                                     <textarea rows="4" id="description" class="form-control border-input" ngModel name="description" required #description="ngModel" placeholder="Description...">
-                                    </textarea>
+                                </textarea>
                                     <span class="help-block" *ngIf="!description.valid && description.touched">Insert Description</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!f.valid">Update Profile</button>
+                        <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!f.valid">Add Event</button>
                     </div>
                     <div class="clearfix"></div>
                 </form>
@@ -230,7 +241,7 @@
                 <h4 class="title">Edit Initiative</h4>
             </div>
             <div class="content">
-                <form (ngSubmit)="onSubmit(f, d(false))" #f="ngForm">
+                <form (ngSubmit)="onUpdateSubmit(f, d(false))" #f="ngForm">
                     <div id="eventData" ngModelGroup="eventData" #eventData="ngModelGroup">
                         <div class="row">
                             <div class="col-md-6">

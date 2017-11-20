@@ -39,25 +39,11 @@ export class TableComponent implements OnInit {
     }
 
     public onAddSubmit(addInitiative: NgForm, createProfile) {
-        // this.signUpForm = addInitiative;
-        // this.requestService.createInitiative({
-        //     name: this.signUpForm.value.newInitiative.name,
-        //     description: this.signUpForm.value.newInitiative.desc,
-        //     imageUrl: this.signUpForm.value.newInitiative.newUrl
-        // }).subscribe((initiativeCreated: any) => {
-        //     console.log(initiativeCreated);
-        //     if (initiativeCreated.success) {
-        //         this.showNotification('success', 'You Created a new Initiative!', 'Success!', 'ti-face-smile');
-        //         this.reloadInitiative();
-        //     }else {
-        //         this.showNotification('danger', initiativeCreated.message, 'Error!', 'ti-face-sad');
-        //     }
-        // }, (error) => {
-        // });
-
+        this.signUpForm = addInitiative;
+        console.log(this.signUpForm.value);
     }
 
-    public onSubmit(f: NgForm, updateProfile) {
+    public onUpdateSubmit(f: NgForm, updateProfile) {
         this.signUpForm = f;
         // this.requestService.updateInitiative(this.idForm, {
         //     name: this.signUpForm.value.initiativeData.initiativeName,
@@ -71,7 +57,7 @@ export class TableComponent implements OnInit {
     }
    public openOnDeleteEvent(content, id: number, index: number) {
             this.modalService.open(content).result.then((result: boolean) => {
-                if (result === true) {
+                if (result) {
                     this.eventRequestService.deleteEvent(id).subscribe( (eventDelete: any) => {
                         this.rows.splice(index, 1);
                     });
@@ -82,6 +68,13 @@ export class TableComponent implements OnInit {
     }
 
     public openUpdateProfile(content, id: number, index: number) {
+        this.modalService.open(content).result.then((result: boolean) => {
+        }, (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+    }
+
+    public openAddEvent(content, id: number, index: number) {
         this.modalService.open(content).result.then((result: boolean) => {
         }, (reason) => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
