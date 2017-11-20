@@ -55,11 +55,13 @@ export class DashboardComponent implements OnInit {
             this.modalService.open(content).result.then((result: boolean) => {
                 console.log(id);
                 if (result) {
-                    console.log(id, index);
                     this.requestService.deleteInitiative(id).subscribe( (initiativeDeleted: any) => {
-                        console.log(initiativeDeleted);
-                        this.rows.splice(index, 1);
-                        this.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
+                        if (initiativeDeleted.success) {
+                            this.rows.splice(index, 1);
+                            this.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
+                        }else {
+                            this.showNotification('danger', initiativeDeleted.message, 'Error!', 'ti-face-sad');
+                        }
                     });
                 }
             }, (reason) => {
@@ -98,7 +100,6 @@ export class DashboardComponent implements OnInit {
                 description: this.signUpForm.value.newInitiative.desc,
                 imageUrl: this.signUpForm.value.newInitiative.newUrl
             }).subscribe((initiativeCreated: any) => {
-                console.log(initiativeCreated);
                 if (initiativeCreated.success) {
                     this.showNotification('success', 'You Created a new Initiative!', 'Success!', 'ti-face-smile');
                     this.reloadInitiative();
@@ -136,7 +137,6 @@ export class DashboardComponent implements OnInit {
             this.requestService.getInitiatives().subscribe((initiatives: any) => {
               initiatives.data.forEach(element => {
                 this.rows.push(new InitiativeModel(element.idInitiative, element.name, element.description, element.imageUrl));
-                console.log(this.rows);
               }, (error) => {
               });
         });
