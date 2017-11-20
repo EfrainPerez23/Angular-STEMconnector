@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { RequestService } from 'app/shared/service/request.service';
 import { EventModel } from 'app/table/model/event.model';
 import { element } from 'protractor';
 import { InitiativeModel } from '../shared/model/initiative.model';
@@ -54,8 +53,11 @@ export class DashboardComponent implements OnInit {
 
          public openDeleteInitiative(content, id: number, index: number) {
             this.modalService.open(content).result.then((result: boolean) => {
+                console.log(id);
                 if (result) {
+                    console.log(id, index);
                     this.requestService.deleteInitiative(id).subscribe( (initiativeDeleted: any) => {
+                        console.log(initiativeDeleted);
                         this.rows.splice(index, 1);
                         this.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
                     });
@@ -72,7 +74,6 @@ export class DashboardComponent implements OnInit {
               return 'by clicking on a backdrop';
             }
             return  `with: ${reason}`;
-
         }
 
         public openUpdateProfile(content, id: number, index: number) {
@@ -135,6 +136,7 @@ export class DashboardComponent implements OnInit {
             this.requestService.getInitiatives().subscribe((initiatives: any) => {
               initiatives.data.forEach(element => {
                 this.rows.push(new InitiativeModel(element.idInitiative, element.name, element.description, element.imageUrl));
+                console.log(this.rows);
               }, (error) => {
               });
         });

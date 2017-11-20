@@ -18,13 +18,13 @@ import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
-import { RequestService } from 'app/shared/service/request.service';
 import { HttpModule } from '@angular/http';
 import { DateFormatPipe } from './table/pipe/date-format.pipe';
 import { FilterPipe } from './shared/pipe/filter.pipe';
 import { NgbModal, NgbModule, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
 import { InitiativeRequestService } from './shared/service/request/initiative-request.service';
+import { EventRequestService } from './shared/service/request/event-request.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import { InitiativeRequestService } from './shared/service/request/initiative-re
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'})
 
   ],
-  providers: [RequestService, NgbModal, NgbModalStack, InitiativeRequestService],
+  providers: [EventRequestService, NgbModal, NgbModalStack, InitiativeRequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

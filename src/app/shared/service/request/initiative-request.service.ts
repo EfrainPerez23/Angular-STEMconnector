@@ -15,7 +15,7 @@ export class InitiativeRequestService {
         .map((response: Response) => {
           return response.json();
         });
-  }
+    }
   public deleteInitiative(id: number) {
         return this.http.delete(`http://165.227.179.52:3000/initiatives/${id.toString()}`).map((response: Response) => {
           return response.json();

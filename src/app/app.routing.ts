@@ -12,11 +12,11 @@ import { UpgradeComponent }   from './upgrade/upgrade.component';
 export const AppRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'initiatives',
         pathMatch: 'full',
     },
     {
-        path: 'dashboard',
+        path: 'initiatives',
         component: DashboardComponent
     },
     {

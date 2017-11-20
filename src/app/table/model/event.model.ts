@@ -7,11 +7,12 @@ export class EventModel {
     private location: string;
     private email: string;
     private idEvent: number;
+    private Initiative_idInitiative: number;
 
 
 	// tslint:disable-next-line:indent
     constructor(idEvent: number, status: boolean, name: string, description: string,
-         startDate: Date, endDate: Date, location: string, email: string) {
+         startDate: Date, endDate: Date, location: string, email: string, Initiative_idInitiative: number ) {
             this.idEvent = idEvent;
     		// tslint:disable-next-line:indent
     		this.status = status;
@@ -24,7 +25,8 @@ export class EventModel {
     		this.endDate = endDate;
     		this.location = location;
     		// tslint:disable-next-line:indent
-    		this.email = email;
+            this.email = email;
+            this.Initiative_idInitiative = Initiative_idInitiative;
     }
 
     public getIdEvent(): number {

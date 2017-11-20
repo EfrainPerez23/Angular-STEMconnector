@@ -65,6 +65,132 @@
     </div>
 </ng-template>
 
+<ng-template #addEvent let-c="close" let-d="dismiss">
+    <div class="modal-header" style="top: 200px;">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title">Adding</h4>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Add Initiative</h4>
+            </div>
+            <div class="content">
+                <form (ngSubmit)="onAddSubmit(fa, d(false))" #fa="ngForm">
+                    <div id="eventData" ngModelGroup="newEvent" #newEvent="ngModelGroup">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Name of Initiative</label>
+                                    <input type="text" id="name" class="crossSearch form-control border-input" ngModel name="name" placeholder="Name..." required #name="ngModel">
+                                    <span class="help-block" *ngIf="!name.valid && name.touched">Insert Name</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Image URL</label>
+                                    <input value="hola" type="text" id="newUrl" class="form-control border-input" ngModel name="newUrl" required #newUrl="ngModel" placeholder="Image URL...">
+                                    <span class="help-block" *ngIf="!newUrl.valid && newUrl.touched">Insert url</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea rows="4" id="desc" class="form-control border-input" ngModel name="desc" required #desc="ngModel" placeholder="Description...">
+                                    </textarea>
+                                    <span class="help-block" *ngIf="!desc.valid && !desc.touched">Insert Description</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!fa.valid">Create</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="c(false)">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #updateEvent let-c="close" let-d="dismiss">
+    <div class="modal-header" style="top: 200px;">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title">Editing</h4>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Edit Initiative</h4>
+            </div>
+            <div class="content">
+                <form (ngSubmit)="onSubmit(f, d(false))" #f="ngForm">
+                    <div id="initiativeData" ngModelGroup="initiativeData" #initiativeData="ngModelGroup">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" id="initiativeName" class="crossSearch form-control border-input" ngModel name="initiativeName" placeholder="Name..." required #initiativeName="ngModel">
+                                    <span class="help-block" *ngIf="!initiativeName.valid && initiativeName.touched">Insert Name</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <input value="hola" type="text" id="location" class="form-control border-input" ngModel name="location" required #location="ngModel" placeholder="Location...">
+                                    <span class="help-block" *ngIf="!location.valid && location.touched">Insert url</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea rows="4" id="description" class="form-control border-input" ngModel name="description" required #description="ngModel" placeholder="Description...">
+                                </textarea>
+                                    <span class="help-block" *ngIf="!description.valid && description.touched">Insert Description</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!f.valid">Update Profile</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="c(false)">Close</button>
+    </div>
+</ng-template>
+
 <br>
 <div class="container-fluid">
     <div class="row">
@@ -101,13 +227,13 @@
                                         </td>
                                     </ng-template>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="openUpdateProfile(updateEvent, row.getIdEvent(), i )">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-pencil-square-o" aria-hidden="true"></i></strong></span>
                                         </a>
                                     </td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text" (click)="open(content, row.getIdEvent(), i)">
+                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text" (click)="openOnDeleteEvent(content, row.getIdEvent(), i)">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-trash-o" aria-hidden="true"></i></strong></span>
                                         </a>
