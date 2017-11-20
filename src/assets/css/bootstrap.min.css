@@ -6133,7 +6133,7 @@ button.close {
     .modal-content {
         -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
         box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-        top: 200px;
+        top: 230px;
     }
     .modal-sm {
         width: 300px
@@ -6148,7 +6148,7 @@ button.close {
     .modal-content {
         -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
         box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-        top: 200px;
+        top: 250px;
     }
     .modal-sm {
         width: 300px
