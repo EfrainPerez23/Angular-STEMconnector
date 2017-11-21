@@ -29,6 +29,9 @@ export class TableComponent implements OnInit {
     private signUpForm: NgForm;
     closeResult: string;
     public model;
+    public titleModal;
+    public messageModal;
+    private id: number;
 
     constructor(private eventRequestService: EventRequestService, private modalService: NgbModal,
                 private initiativeRequestService: InitiativeRequestService) {}
@@ -38,8 +41,8 @@ export class TableComponent implements OnInit {
             this.reloadInitiative();
     }
 
-    public onAddSubmit(addInitiative: NgForm, createProfile) {
-        this.signUpForm = addInitiative;
+    public onSubmit(eventForm: NgForm, createProfile) {
+        this.signUpForm = eventForm;
         // const newEvent = {
         //     name: this.signUpForm.value.name,
         //     description: this.signUpForm.value.description,
@@ -51,24 +54,16 @@ export class TableComponent implements OnInit {
         //     location: this.signUpForm.value.location,
         //     imageUrl: ''
         // };
-        console.log(this.signUpForm);
+        if (this.titleModal === 'Adding') {
+            console.log('Creando');
+        }else {
+            console.log(this.id);
+            console.log('Actualizando');
+        }
+
+        console.log(this.signUpForm.value.eventData);
     }
 
-    public onUpdateSubmit(f: NgForm, updateProfile) {
-        this.signUpForm = f;
-        // const newEvent = {
-        //     name: this.signUpForm.value.name,
-        //     description: this.signUpForm.value.description,
-        //     startDate: this.signUpForm.value.startDate.date + ' '
-        //                 + this.signUpForm.value.startDate.hour + ':' + this.signUpForm.value.startDate.mins,
-        //     endDate: this.signUpForm.value.endDate.date + ' '
-        //                 + this.signUpForm.value.endDate.hour + ':' + this.signUpForm.value.endDate.mins,
-        //     Initiative_idInitiative: this.signUpForm.value.Initiative_idInitiative,
-        //     location: this.signUpForm.value.location,
-        //     imageUrl: ''
-        // };
-        console.log(this.signUpForm.value.startDate2);
-    }
    public openOnDeleteEvent(content, id: number, index: number) {
             this.modalService.open(content).result.then((result: boolean) => {
                 if (result) {
@@ -81,7 +76,15 @@ export class TableComponent implements OnInit {
             });
     }
 
-    public openUpdateProfile(content, id: number, index: number) {
+    public openAddOrUpdateEvent(content, id: number) {
+        if (id === -1) {
+            this.titleModal = 'Adding';
+            this.messageModal = 'Add Event';
+        }else {
+            this.id = id;
+            this.titleModal = 'Updating';
+            this.messageModal = 'Update Event'
+        }
         this.modalService.open(content).result.then((result: boolean) => {
         }, (reason) => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
