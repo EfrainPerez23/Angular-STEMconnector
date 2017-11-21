@@ -17,8 +17,8 @@ export class EventRequestService {
         });
     }
 
-    public createEvent (newEvent: {name: string, description: string, status: boolean, startDate: string,
-             endDate: string, Initiative_idInitiative: number, location: string, email: string, imageUrl: string}) {
+    public createEvent (newEvent: {name: any, description: any, status: any, startDate: any,
+             endDate: any, Initiative_idInitiative: any, location: any, email: any, imageUrl: any}) {
       const headers = new Headers({'Content-Type': 'application/json'});
       return this.http.post(`http://165.227.179.52:3000/events/`, newEvent, {headers: headers})
       .map((response: Response) => {

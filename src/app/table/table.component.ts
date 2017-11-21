@@ -41,27 +41,45 @@ export class TableComponent implements OnInit {
             this.reloadInitiative();
     }
 
+    // (this.signUpForm.value.eventData.startDate.sDate + ' '
+    // + this.signUpForm.value.eventData.startDate.sHour + ':'
+    // + this.signUpForm.value.eventData.startDate.sMins).toString(),
+
     public onSubmit(eventForm: NgForm, createProfile) {
         this.signUpForm = eventForm;
-        // const newEvent = {
-        //     name: this.signUpForm.value.name,
-        //     description: this.signUpForm.value.description,
-        //     startDate: this.signUpForm.value.startDate.date + ' '
-        //                 + this.signUpForm.value.startDate.hour + ':' + this.signUpForm.value.startDate.mins,
-        //     endDate: this.signUpForm.value.endDate.date + ' '
-        //                 + this.signUpForm.value.endDate.hour + ':' + this.signUpForm.value.endDate.mins,
-        //     Initiative_idInitiative: this.signUpForm.value.Initiative_idInitiative,
-        //     location: this.signUpForm.value.location,
-        //     imageUrl: ''
-        // };
+        const sDate = this.signUpForm.value.eventData.startDate.sDate.toString().split('-');
+        const eDate = this.signUpForm.value.eventData.endDate.eDate.toString().split('-');
+        const date1 = new Date(Number(sDate[2]), Number(sDate[1]), Number(sDate[0]),
+                        Number(this.signUpForm.value.eventData.startDate.sHour),
+                        Number(this.signUpForm.value.eventData.startDate.sMins));
+        const date2 = new Date(Number(eDate[2]), Number(eDate[1]), Number(eDate[0]),
+                        Number(this.signUpForm.value.eventData.endDate.eHour),
+                        Number(this.signUpForm.value.eventData.endDate.eMins));
+
+        const finalStartDate = sDate[2] + '-' + sDate[0] + '-' + sDate[1] + ' ' + date1.toTimeString().split(' ')[0];
+        const finalEndDate = eDate[2] + '-' + eDate[0] + '-' + eDate[1] + ' ' + date2.toTimeString().split(' ')[0];
+        console.log(finalStartDate, finalEndDate);
+
+        const event = {
+            'name': this.signUpForm.value.eventData.name.toString(),
+            'description': this.signUpForm.value.eventData.description.toString(),
+            'status': this.signUpForm.value.eventData.status.toString(),
+            'startDate': finalStartDate,
+            'endDate': finalEndDate,
+            'Initiative_idInitiative': this.signUpForm.value.eventData.idInitiative.toString(),
+            'location': this.signUpForm.value.eventData.location.toString(),
+            'email': this.signUpForm.value.eventData.email.toString(),
+            'imageUrl': this.getInitiativeImage(this.signUpForm.value.eventData.idInitiative).toString()
+        };
         if (this.titleModal === 'Adding') {
-            console.log('Creando');
+            this.eventRequestService.createEvent(event).subscribe((response: any) => {
+                this.reloadEvents();
+            });
         }else {
-            console.log(this.id);
-            console.log('Actualizando');
         }
 
-        console.log(this.signUpForm.value.eventData);
+        // console.log(this.signUpForm.value);
+        // console.log(event);
     }
 
    public openOnDeleteEvent(content, id: number, index: number) {
@@ -178,5 +196,14 @@ export class TableComponent implements OnInit {
                      element.startDate, element.endDate, element.location, element.email, element.Initiative_idInitiative));
             });
         });
+    }
+
+    private getInitiativeImage(id: number): string {
+        for (let i = 0; i < this.initiatives.length; i++) {
+            if (this.initiatives[i].getIdInitiative().toString() === id.toString()) {
+                return this.initiatives[i].getImageUrl();
+            }
+        }
+        return '';
     }
 }

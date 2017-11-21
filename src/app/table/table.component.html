@@ -94,10 +94,10 @@
                     <div id="eventData" ngModelGroup="eventData" #eventData="ngModelGroup">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !initiativeName.valid && initiativeName.touched}">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !name.valid && name.touched}">
                                     <label>Name</label>
-                                    <input type="text" id="initiativeName" class="crossSearch form-control border-input" ngModel name="initiativeName" placeholder="Name..." required #initiativeName="ngModel">
-                                    <span class="help-block" *ngIf="!initiativeName.valid && initiativeName.touched">Insert Name</span>
+                                    <input type="text" id="initiativeName" class="crossSearch form-control border-input" ngModel name="name" placeholder="Name..." required #name="ngModel">
+                                    <span class="help-block" *ngIf="!name.valid && name.touched">Insert Name</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -189,12 +189,12 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group" [ngClass]="{'has-error': !description.valid && description.touched}">
+                                <div class="form-group" [ngClass]="{'has-error': !idInitiative.valid && idInitiative.touched}">
                                     <label>Initiative</label>
-                                    <select class="form-control" ngModel name="idInitative" #idInitative="ngModel" placeholder="Initiative..." required>
+                                    <select class="form-control" ngModel name="idInitiative" #idInitiative="ngModel" placeholder="Initiative..." required>
                                                 <option value="{{initativeEl.getIdInitiative()}}" *ngFor="let initativeEl of getInitiatives()" >{{initativeEl.getName()}}</option>
                                     </select>
-                                    <span class="help-block" *ngIf="!description.valid && description.touched">Insert Description</span>
+                                    <span class="help-block" *ngIf="!description.valid && description.touched">Insert Initiative</span>
                                 </div>
                             </div>
                         </div>
@@ -210,7 +210,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!f.valid">Add Event</button>
+                        <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!f.valid">Done!</button>
                     </div>
                     <div class="clearfix"></div>
                 </form>
