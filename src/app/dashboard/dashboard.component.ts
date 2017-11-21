@@ -9,8 +9,9 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { InitiativeRequestService } from '../shared/service/request/initiative-request.service';
+import { UtilService } from '../shared/service/util.service';
 
-declare var $: any;
+
 @Component({
     selector: 'dashboard-cmp',
     moduleId: module.id,
@@ -32,7 +33,8 @@ export class DashboardComponent implements OnInit {
   private signUpForm: NgForm;
   private idForm: number;
 
-        constructor(private requestService: InitiativeRequestService, private modalService: NgbModal) {}
+        constructor(private requestService: InitiativeRequestService, private modalService: NgbModal,
+                    private notifications: UtilService) {}
 
         ngOnInit() {
             this.headerRow =  ['Name',  'Description'];
@@ -47,20 +49,19 @@ export class DashboardComponent implements OnInit {
                 imageUrl: this.signUpForm.value.initiativeData.url
             }).subscribe((initiativeUpdated: any) => {
                 this.reloadInitiative();
-                this.showNotification('success', 'You update an Initiative!', 'Success', 'ti-pencil-alt');
+                this.notifications.showNotification('success', 'You update an Initiative!', 'Success', 'ti-pencil-alt');
             });
         }
 
          public openDeleteInitiative(content, id: number, index: number) {
             this.modalService.open(content).result.then((result: boolean) => {
-                console.log(id);
                 if (result) {
                     this.requestService.deleteInitiative(id).subscribe( (initiativeDeleted: any) => {
                         if (initiativeDeleted.success) {
                             this.rows.splice(index, 1);
-                            this.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
+                            this.notifications.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
                         }else {
-                            this.showNotification('danger', initiativeDeleted.message, 'Error!', 'ti-face-sad');
+                            this.notifications.showNotification('danger', initiativeDeleted.message, 'Error!', 'ti-face-sad');
                         }
                     });
                 }
@@ -101,10 +102,10 @@ export class DashboardComponent implements OnInit {
                 imageUrl: this.signUpForm.value.newInitiative.newUrl
             }).subscribe((initiativeCreated: any) => {
                 if (initiativeCreated.success) {
-                    this.showNotification('success', 'You Created a new Initiative!', 'Success!', 'ti-face-smile');
+                    this.notifications.showNotification('success', 'You Created a new Initiative!', 'Success!', 'ti-face-smile');
                     this.reloadInitiative();
                 }else {
-                    this.showNotification('danger', initiativeCreated.message, 'Error!', 'ti-face-sad');
+                    this.notifications.showNotification('danger', initiativeCreated.message, 'Error!', 'ti-face-sad');
                 }
             }, (error) => {
             });
@@ -142,18 +143,5 @@ export class DashboardComponent implements OnInit {
         });
         }
 
-        private showNotification(type: string, message: string, title: string, icon: string) {
-            $.notify({
-                icon: icon,
-                message: `<b>${title}</b> <br> ${message}.`
-            }, {
-                type: type,
-                timer: 1000,
-                placement: {
-                    from: 'top',
-                    align: 'right'
-                }
-            });
-        }
     }
 

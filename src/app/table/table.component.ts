@@ -41,12 +41,23 @@ export class TableComponent implements OnInit {
             this.reloadInitiative();
     }
 
-    // (this.signUpForm.value.eventData.startDate.sDate + ' '
-    // + this.signUpForm.value.eventData.startDate.sHour + ':'
-    // + this.signUpForm.value.eventData.startDate.sMins).toString(),
 
     public onSubmit(eventForm: NgForm, createProfile) {
         this.signUpForm = eventForm;
+        const event = this.setEventJSON();
+
+        if (this.titleModal === 'Adding') {
+            this.eventRequestService.createEvent(event).subscribe((response: any) => {
+                this.reloadEvents();
+            });
+        }else {
+            this.eventRequestService.updateEvent(this.id, event).subscribe((response: any) => {
+                this.reloadEvents();
+            });
+        }
+    }
+
+    private setEventJSON() {
         const sDate = this.signUpForm.value.eventData.startDate.sDate.toString().split('-');
         const eDate = this.signUpForm.value.eventData.endDate.eDate.toString().split('-');
         const date1 = new Date(Number(sDate[2]), Number(sDate[1]), Number(sDate[0]),
@@ -71,13 +82,7 @@ export class TableComponent implements OnInit {
             'imageUrl': this.getInitiativeImage(this.signUpForm.value.eventData.idInitiative).toString()
         };
 
-        if (this.titleModal === 'Adding') {
-            this.eventRequestService.createEvent(event).subscribe((response: any) => {
-                this.reloadEvents();
-            });
-        }else {
-        }
-        
+        return event;
     }
 
    public openOnDeleteEvent(content, id: number, index: number) {
@@ -98,16 +103,10 @@ export class TableComponent implements OnInit {
             this.messageModal = 'Add Event';
         }else {
             this.id = id;
+            console.log(this.id);
             this.titleModal = 'Updating';
             this.messageModal = 'Update Event'
         }
-        this.modalService.open(content).result.then((result: boolean) => {
-        }, (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        });
-    }
-
-    public openAddEvent(content, id: number, index: number) {
         this.modalService.open(content).result.then((result: boolean) => {
         }, (reason) => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

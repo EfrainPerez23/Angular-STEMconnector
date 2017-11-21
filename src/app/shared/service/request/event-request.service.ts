@@ -34,6 +34,16 @@ export class EventRequestService {
       });
     }
 
+    public updateEvent(id: number, eventToUpdate) {
+      if (id >= 0 ) {
+          const headers = new Headers({'Content-Type': 'application/json'});
+          return this.http.put(`http://165.227.179.52:3000/events/${id.toString()}`, eventToUpdate, {headers: headers})
+          .map((response: Response) => {
+            return response.json();
+          });
+        }
+  }
+
     public getEventsFromInitiative(id: number) {
       return this.http.get(`http://165.227.179.52:3000/initiatives/${id.toString()}/events`)
       .map( (response: Response) => {

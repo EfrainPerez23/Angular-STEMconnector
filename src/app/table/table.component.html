@@ -192,7 +192,7 @@
                                 <div class="form-group" [ngClass]="{'has-error': !idInitiative.valid && idInitiative.touched}">
                                     <label>Initiative</label>
                                     <select class="form-control" ngModel name="idInitiative" #idInitiative="ngModel" placeholder="Initiative..." required>
-                                                <option value="{{initativeEl.getIdInitiative()}}" *ngFor="let initativeEl of getInitiatives()" >{{initativeEl.getName()}}</option>
+                                                <option [value]="initativeEl.getIdInitiative()" *ngFor="let initativeEl of getInitiatives()" >{{initativeEl.getName()}}</option>
                                     </select>
                                     <span class="help-block" *ngIf="!description.valid && description.touched">Insert Initiative</span>
                                 </div>

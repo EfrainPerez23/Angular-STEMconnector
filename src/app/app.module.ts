@@ -25,6 +25,7 @@ import { NgbModal, NgbModule, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
 import { InitiativeRequestService } from './shared/service/request/initiative-request.service';
 import { EventRequestService } from './shared/service/request/event-request.service';
+import { UtilService } from './shared/service/util.service';
 
 
 
@@ -55,7 +56,7 @@ import { EventRequestService } from './shared/service/request/event-request.serv
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'})
 
   ],
-  providers: [EventRequestService, NgbModal, NgbModalStack, InitiativeRequestService],
+  providers: [UtilService,EventRequestService, NgbModal, NgbModalStack, InitiativeRequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
