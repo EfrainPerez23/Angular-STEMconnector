@@ -58,12 +58,11 @@ export class TableComponent implements OnInit {
 
         const finalStartDate = sDate[2] + '-' + sDate[0] + '-' + sDate[1] + ' ' + date1.toTimeString().split(' ')[0];
         const finalEndDate = eDate[2] + '-' + eDate[0] + '-' + eDate[1] + ' ' + date2.toTimeString().split(' ')[0];
-        console.log(finalStartDate, finalEndDate);
 
         const event = {
             'name': this.signUpForm.value.eventData.name.toString(),
             'description': this.signUpForm.value.eventData.description.toString(),
-            'status': this.signUpForm.value.eventData.status.toString(),
+            'status': this.signUpForm.value.eventData.status.toString() === 'true' ? 1 : 0,
             'startDate': finalStartDate,
             'endDate': finalEndDate,
             'Initiative_idInitiative': this.signUpForm.value.eventData.idInitiative.toString(),
@@ -71,15 +70,14 @@ export class TableComponent implements OnInit {
             'email': this.signUpForm.value.eventData.email.toString(),
             'imageUrl': this.getInitiativeImage(this.signUpForm.value.eventData.idInitiative).toString()
         };
+
         if (this.titleModal === 'Adding') {
             this.eventRequestService.createEvent(event).subscribe((response: any) => {
                 this.reloadEvents();
             });
         }else {
         }
-
-        // console.log(this.signUpForm.value);
-        // console.log(event);
+        
     }
 
    public openOnDeleteEvent(content, id: number, index: number) {
