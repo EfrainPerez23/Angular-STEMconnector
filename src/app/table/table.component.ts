@@ -6,6 +6,7 @@ import { InitiativeModel } from '../shared/model/initiative.model';
 import { EventRequestService } from '../shared/service/request/event-request.service';
 import { InitiativeRequestService } from '../shared/service/request/initiative-request.service';
 import { NgForm } from '@angular/forms';
+import { UtilService } from '../shared/service/util.service';
 import {
   NgbModal,
   ModalDismissReasons,
@@ -34,7 +35,7 @@ export class TableComponent implements OnInit {
     private id: number;
 
     constructor(private eventRequestService: EventRequestService, private modalService: NgbModal,
-                private initiativeRequestService: InitiativeRequestService) {}
+                private initiativeRequestService: InitiativeRequestService, private notification: UtilService) {}
     ngOnInit() {
             this.headerRow =  ['Name',  'Description', 'Start Date', 'End Date', 'Location', 'Active' ];
             this.reloadEvents();
@@ -47,12 +48,22 @@ export class TableComponent implements OnInit {
         const event = this.setEventJSON();
 
         if (this.titleModal === 'Adding') {
-            this.eventRequestService.createEvent(event).subscribe((response: any) => {
-                this.reloadEvents();
+            this.eventRequestService.createEvent(event).subscribe((eventCreatedResponse: any) => {
+                if (eventCreatedResponse.success) {
+                    this.notification.showNotification('success', 'You Created a new Event!', 'Success!', 'ti-face-smile');
+                    this.reloadEvents();
+                }else {
+                    this.notification.showNotification('danger', eventCreatedResponse.message, 'Error!', 'ti-face-sad');
+                }
             });
         }else {
-            this.eventRequestService.updateEvent(this.id, event).subscribe((response: any) => {
-                this.reloadEvents();
+            this.eventRequestService.updateEvent(this.id, event).subscribe((eventUpdatedResponse: any) => {
+                if (eventUpdatedResponse.success) {
+                    this.notification.showNotification('success', 'You updated a new Event!', 'Success!', 'ti-pencil-alt');
+                    this.reloadEvents();
+                }else {
+                    this.notification.showNotification('danger', eventUpdatedResponse.message, 'Error!', 'ti-face-sad');
+                }
             });
         }
     }
@@ -88,8 +99,14 @@ export class TableComponent implements OnInit {
    public openOnDeleteEvent(content, id: number, index: number) {
             this.modalService.open(content).result.then((result: boolean) => {
                 if (result) {
-                    this.eventRequestService.deleteEvent(id).subscribe( (eventDelete: any) => {
-                        this.rows.splice(index, 1);
+                    this.eventRequestService.deleteEvent(id).subscribe( (eventDeleteResponse: any) => {
+                        console.log(eventDeleteResponse);
+                        if (eventDeleteResponse.success) {
+                            this.rows.splice(index, 1);
+                            this.notification.showNotification('warning', 'You just deleted an Event', 'Success!', 'ti-eraser');
+                        }else {
+                            this.notification.showNotification('danger', eventDeleteResponse.message, 'Error!', 'ti-face-sad');
+                        }
                     });
                 }
             }, (reason) => {
