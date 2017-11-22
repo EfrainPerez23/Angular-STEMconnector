@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-9">
             <div class="form-group">
-                <input type="text" value="" placeholder="Search" class="form-control" [(ngModel)]="setSearchSpeaker" />
+                <input type="text" value="" placeholder="Search" class="form-control" [(ngModel)]="setSearchSpeaker" (input)="valueChange()" />
             </div>
         </div>
         <div class="col-md-3">

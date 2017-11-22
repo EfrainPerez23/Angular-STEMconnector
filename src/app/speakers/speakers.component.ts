@@ -11,6 +11,7 @@ import { SpeakerRequestService } from '../shared/service/request/speaker-request
 
 export class SpeakersComponent implements OnInit {
     private speakers: Speaker[];
+    private filterSpeaker = '';
 
     constructor(private requestService: SpeakerRequestService) {}
     ngOnInit() {
@@ -30,5 +31,13 @@ export class SpeakersComponent implements OnInit {
 
     public getSpeakers(): Speaker[] {
         return this.speakers;
+    }
+
+    public setFilterSpeaker(filterSpeaker: string) {
+        this.filterSpeaker = filterSpeaker;
+    }
+
+    public getFilterSpeaker(): string {
+        return this.filterSpeaker;
     }
 }
