@@ -26,6 +26,7 @@ import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
 import { InitiativeRequestService } from './shared/service/request/initiative-request.service';
 import { EventRequestService } from './shared/service/request/event-request.service';
 import { UtilService } from './shared/service/util.service';
+import { SpeakerComponent } from './speakers/speaker/speaker.component';
 
 
 
@@ -41,7 +42,8 @@ import { UtilService } from './shared/service/util.service';
     NotificationsComponent,
     UpgradeComponent,
     DateFormatPipe,
-    FilterPipe
+    FilterPipe,
+    SpeakerComponent
   ],
   imports: [
     BrowserModule,
