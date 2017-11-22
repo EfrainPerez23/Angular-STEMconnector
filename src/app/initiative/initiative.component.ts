@@ -15,14 +15,14 @@ import { UtilService } from '../shared/service/util.service';
 @Component({
     selector: 'dashboard-cmp',
     moduleId: module.id,
-    templateUrl: 'dashboard.component.html'
+    templateUrl: 'initiative.component.html'
 })
 
 // Efrain Perez
 // efrain.abperez23@gmail.com
 // LinkedIn: https://www.linkedin.com/in/efra%C3%ADn-p%C3%A9rez-824bbb148/
 
-export class DashboardComponent implements OnInit {
+export class InitiativeComponent implements OnInit {
   private headerRow: string[];
   public filteredStatus = '';
   public filterPreference = 0;

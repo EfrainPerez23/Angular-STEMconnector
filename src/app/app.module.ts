@@ -10,8 +10,8 @@ import { NavbarModule} from './shared/navbar/navbar.module';
 import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import { NguiMapModule} from '@ngui/map';
 import { FormsModule } from '@angular/forms';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserComponent } from './user/user.component';
+import { InitiativeComponent } from './initiative/initiative.component';
+import { SpeakersComponent } from './speakers/speakers.component';
 import { EventComponent } from './event/event.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
@@ -32,8 +32,8 @@ import { UtilService } from './shared/service/util.service';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    UserComponent,
+    InitiativeComponent,
+    SpeakersComponent,
     EventComponent,
     TypographyComponent,
     IconsComponent,
@@ -56,7 +56,7 @@ import { UtilService } from './shared/service/util.service';
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'})
 
   ],
-  providers: [UtilService,EventRequestService, NgbModal, NgbModalStack, InitiativeRequestService],
+  providers: [UtilService, EventRequestService, NgbModal, NgbModalStack, InitiativeRequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserComponent } from './user/user.component';
+import { InitiativeComponent } from './initiative/initiative.component';
+import { SpeakersComponent } from './speakers/speakers.component';
 import { EventComponent } from './event/event.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
@@ -17,11 +17,11 @@ export const AppRoutes: Routes = [
     },
     {
         path: 'initiatives',
-        component: DashboardComponent
+        component: InitiativeComponent
     },
     {
-        path: 'user',
-        component: UserComponent
+        path: 'speakers',
+        component: SpeakersComponent
     },
     {
         path: 'events',
