@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { EventModel } from 'app/table/model/event.model';
+import { EventModel } from 'app/event/model/event.model';
 import { element } from 'protractor';
 import { InitiativeModel } from '../shared/model/initiative.model';
 import {

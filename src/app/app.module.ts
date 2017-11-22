@@ -12,14 +12,14 @@ import { NguiMapModule} from '@ngui/map';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserComponent } from './user/user.component';
-import { TableComponent } from './table/table.component';
+import { EventComponent } from './event/event.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { HttpModule } from '@angular/http';
-import { DateFormatPipe } from './table/pipe/date-format.pipe';
+import { DateFormatPipe } from './event/pipe/date-format.pipe';
 import { FilterPipe } from './shared/pipe/filter.pipe';
 import { NgbModal, NgbModule, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
@@ -34,7 +34,7 @@ import { UtilService } from './shared/service/util.service';
     AppComponent,
     DashboardComponent,
     UserComponent,
-    TableComponent,
+    EventComponent,
     TypographyComponent,
     IconsComponent,
     MapsComponent,

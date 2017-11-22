@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EventModel } from 'app/table/model/event.model';
+import { EventModel } from 'app/event/model/event.model';
 import { element } from 'protractor';
 import { InitiativeModel } from '../shared/model/initiative.model';
 import { EventRequestService } from '../shared/service/request/event-request.service';
@@ -17,9 +17,9 @@ import {
     // tslint:disable-next-line:component-selector
     selector: 'table-cmp',
     moduleId: module.id,
-    templateUrl: 'table.component.html'
+    templateUrl: './event.component.html'
 })
-export class TableComponent implements OnInit {
+export class EventComponent implements OnInit {
     private headerRow: string[];
     private rows: EventModel[];
     public filteredStatus = '';
@@ -40,6 +40,7 @@ export class TableComponent implements OnInit {
             this.headerRow =  ['Name',  'Description', 'Start Date', 'End Date', 'Location', 'Active' ];
             this.reloadEvents();
             this.reloadInitiative();
+            console.log(this.rows);
     }
 
 
@@ -92,7 +93,7 @@ export class TableComponent implements OnInit {
             'email': this.signUpForm.value.eventData.email.toString(),
             'imageUrl': this.getInitiativeImage(this.signUpForm.value.eventData.idInitiative).toString()
         };
-
+        console.log(event);
         return event;
     }
 
@@ -100,7 +101,6 @@ export class TableComponent implements OnInit {
             this.modalService.open(content).result.then((result: boolean) => {
                 if (result) {
                     this.eventRequestService.deleteEvent(id).subscribe( (eventDeleteResponse: any) => {
-                        console.log(eventDeleteResponse);
                         if (eventDeleteResponse.success) {
                             this.rows.splice(index, 1);
                             this.notification.showNotification('warning', 'You just deleted an Event', 'Success!', 'ti-eraser');
@@ -120,7 +120,6 @@ export class TableComponent implements OnInit {
             this.messageModal = 'Add Event';
         }else {
             this.id = id;
-            console.log(this.id);
             this.titleModal = 'Updating';
             this.messageModal = 'Update Event'
         }
