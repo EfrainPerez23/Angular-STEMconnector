@@ -1,5 +1,5 @@
 <div class="container-fluid">
     <div class="row">
-        <app-speaker></app-speaker>
+        <app-speaker *ngFor="let speakerElement of getSpeakers()" [speakerInput]="speakerElement"></app-speaker>
     </div>
 </div>

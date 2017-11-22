@@ -5,6 +5,15 @@ export class Speaker {
     private bio: string;
     private imageUrl: string;
 
+
+    constructor(idSpeaker: number, name: string, title: string, bio: string, imageUrl: string) {
+        this.idSpeaker = idSpeaker;
+        this.name = name;
+        this.title = title;
+        this.bio = bio;
+        this.imageUrl = imageUrl;
+    }
+
     public setIdSpeaker(idSpeaker: number) {
         this.idSpeaker = idSpeaker;
     }

@@ -27,6 +27,7 @@ import { InitiativeRequestService } from './shared/service/request/initiative-re
 import { EventRequestService } from './shared/service/request/event-request.service';
 import { UtilService } from './shared/service/util.service';
 import { SpeakerComponent } from './speakers/speaker/speaker.component';
+import { SpeakerRequestService } from './shared/service/request/speaker-request.service';
 
 
 
@@ -58,7 +59,13 @@ import { SpeakerComponent } from './speakers/speaker/speaker.component';
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'})
 
   ],
-  providers: [UtilService, EventRequestService, NgbModal, NgbModalStack, InitiativeRequestService],
+  providers: [
+    UtilService,
+    EventRequestService,
+    NgbModal, NgbModalStack,
+    InitiativeRequestService,
+    SpeakerRequestService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
