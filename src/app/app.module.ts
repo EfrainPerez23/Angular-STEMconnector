@@ -29,6 +29,7 @@ import { UtilService } from './shared/service/util.service';
 import { SpeakerComponent } from './speakers/speaker/speaker.component';
 import { SpeakerRequestService } from './shared/service/request/speaker-request.service';
 import { SearchSpeakerComponent } from './speakers/search-speaker/search-speaker.component';
+import { FilterSpeakerPipe } from './speakers/pipe/filter-speaker.pipe';
 
 
 
@@ -46,7 +47,8 @@ import { SearchSpeakerComponent } from './speakers/search-speaker/search-speaker
     DateFormatPipe,
     FilterPipe,
     SpeakerComponent,
-    SearchSpeakerComponent
+    SearchSpeakerComponent,
+    FilterSpeakerPipe
   ],
   imports: [
     BrowserModule,
