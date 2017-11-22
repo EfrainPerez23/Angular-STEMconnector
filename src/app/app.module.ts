@@ -28,6 +28,7 @@ import { EventRequestService } from './shared/service/request/event-request.serv
 import { UtilService } from './shared/service/util.service';
 import { SpeakerComponent } from './speakers/speaker/speaker.component';
 import { SpeakerRequestService } from './shared/service/request/speaker-request.service';
+import { SearchSpeakerComponent } from './speakers/search-speaker/search-speaker.component';
 
 
 
@@ -44,7 +45,8 @@ import { SpeakerRequestService } from './shared/service/request/speaker-request.
     UpgradeComponent,
     DateFormatPipe,
     FilterPipe,
-    SpeakerComponent
+    SpeakerComponent,
+    SearchSpeakerComponent
   ],
   imports: [
     BrowserModule,

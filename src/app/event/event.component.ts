@@ -40,7 +40,6 @@ export class EventComponent implements OnInit {
             this.headerRow =  ['Name',  'Description', 'Start Date', 'End Date', 'Location', 'Active' ];
             this.reloadEvents();
             this.reloadInitiative();
-            console.log(this.rows);
     }
 
 
