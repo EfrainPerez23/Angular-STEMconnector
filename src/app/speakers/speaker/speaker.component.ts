@@ -8,7 +8,7 @@ import { Speaker } from '../model/speaker.model';
 })
 export class SpeakerComponent implements OnInit {
   private speaker: Speaker;
-
+  private index: number;
   constructor() { }
 
   ngOnInit() {
@@ -19,8 +19,17 @@ export class SpeakerComponent implements OnInit {
     this.speaker = speaker;
   }
 
+  @Input('speakerIndex')
+  public set setIndex(index: number) {
+    this.index = index;
+  }
+
   public getSpeaker(): Speaker {
     return this.speaker;
+  }
+
+  public getIndex(): number {
+    return this.index;
   }
 
 }

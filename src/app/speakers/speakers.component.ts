@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Speaker } from './model/speaker.model';
 import { SpeakerRequestService } from '../shared/service/request/speaker-request.service';
+import { SpeakerService } from './service/speaker.service';
 
 @Component({
     selector: 'user-cmp',
     moduleId: module.id,
     templateUrl: 'speakers.component.html',
-    styleUrls: []
+    styleUrls: [],
+    providers: [SpeakerService]
 })
 
 export class SpeakersComponent implements OnInit {
@@ -14,7 +16,15 @@ export class SpeakersComponent implements OnInit {
     private filterSpeaker = '';
     private filterPreference: number;
 
-    constructor(private requestService: SpeakerRequestService) {}
+    constructor(private requestService: SpeakerRequestService, private statusSpeaker: SpeakerService) {
+        this.statusSpeaker.getStatusDeleted().subscribe((speakerSlice: {id: number, status: boolean} ) => {
+            console.log(4);
+            if (speakerSlice.status) {
+                console.log(5);
+                this.speakers.splice(speakerSlice.id, 1)
+            }
+        });
+    }
     ngOnInit() {
         this.reloadSpeakers();
     }
