@@ -1,5 +1,4 @@
 <app-search-speaker (searchElement)="setFilterSpeaker($event)" (preferenceElement)="setFilterPreference($event)"></app-search-speaker>
-{{getFilterSpeaker()}} {{getFilterPreference()}}
 <div class="container-fluid">
     <div class="row">
         <app-speaker *ngFor="let speakerElement of getSpeakers() | filterSpeaker:getFilterSpeaker():getFilterPreference() " [speakerInput]="speakerElement"></app-speaker>
