@@ -15,7 +15,6 @@
                     <li *ngFor="let preference of getPreference(); let i = index">
                         <a style="cursor: pointer;" (click)="setFilterPreference(i)">{{preference}}</a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -26,6 +25,22 @@
             <a style="cursor: pointer;" class="btn btn-primary btn-success" (click)="addModal.updateModalSpeaker()">
                 <span class="glyphicon glyphicon-plus"></span> Add Speaker
             </a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="dropdown">
+                <a style="cursor: pointer;" class="btn dropdown-toggle" data-toggle="dropdown">
+                {{getShowNameEvent()}}
+                <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let event of getEvents(); let i = index">
+                        <a style="cursor: pointer;" (click)="chooseEvent(event)">{{event.getName()}}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

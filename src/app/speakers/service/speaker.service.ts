@@ -3,6 +3,7 @@ import { EventEmitter } from '@angular/core';
 export class SpeakerService {
   private statusDeleted = new EventEmitter<{id: number, status: boolean}>();
   private statusCreatedOrUpdated = new EventEmitter<boolean>();
+  private speakersEvent = new EventEmitter<number>();
 
   constructor() {}
 
@@ -12,5 +13,9 @@ export class SpeakerService {
 
   public getStatusCreatedOrUpdated(): EventEmitter<boolean> {
     return this.statusCreatedOrUpdated;
+  }
+
+  public getSpeakersEvent(): EventEmitter<number> {
+    return this.speakersEvent;
   }
 }

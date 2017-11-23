@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Speaker } from './model/speaker.model';
 import { SpeakerRequestService } from '../shared/service/request/speaker-request.service';
 import { SpeakerService } from './service/speaker.service';
+import { EventRequestService } from '../shared/service/request/event-request.service';
 
 @Component({
     selector: 'user-cmp',
@@ -16,9 +17,11 @@ export class SpeakersComponent implements OnInit {
     private filterSpeaker = '';
     private filterPreference: number;
 
-    constructor(private requestService: SpeakerRequestService, private statusSpeaker: SpeakerService) {
+    constructor(private requestService: SpeakerRequestService, private statusSpeaker: SpeakerService,
+                private speakersEvent: EventRequestService) {
         this.deleteSpeaker();
         this.createdOrUpdateSpeaker();
+        this.eventFromSpeakers();
 
     }
     ngOnInit() {
@@ -30,6 +33,26 @@ export class SpeakersComponent implements OnInit {
             if (speakerSlice.status) {
                 this.speakers.splice(speakerSlice.id, 1);
             }
+        });
+    }
+
+    private eventFromSpeakers() {
+        this.statusSpeaker.getSpeakersEvent().subscribe((id: number) => {
+            if (id !== -1) {
+                this.eventsSpeakers(id);
+            }else {
+                this.reloadSpeakers();
+            }
+        });
+    }
+
+    private eventsSpeakers(id: number) {
+        this.speakers = [];
+        this.speakersEvent.getSpeakersFromEvent(id).subscribe((speakersResponse: any) => {
+            speakersResponse.data.forEach(speaker => {
+                this.speakers.push(new Speaker(speaker.idSpeaker, speaker.name, speaker.title, speaker.bio, speaker.imageUrl));
+              }, (error) => {
+              });
         });
     }
 

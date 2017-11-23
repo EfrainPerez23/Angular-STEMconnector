@@ -45,6 +45,15 @@ export class EventRequestService {
         }
   }
 
+  public getSpeakersFromEvent(id: number) {
+    return this.http.get(`http://165.227.179.52:3000/events/${id.toString()}/speakers`)
+    .map( (response: Response) => {
+        return response.json();
+    }).catch( (error: Response) => {
+      return Observable.throw('Something went wrong!');
+    });
+  }
+
     public getEventsFromInitiative(id: number) {
       return this.http.get(`http://165.227.179.52:3000/initiatives/${id.toString()}/events`)
       .map( (response: Response) => {
