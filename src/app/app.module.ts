@@ -31,6 +31,7 @@ import { SpeakerRequestService } from './shared/service/request/speaker-request.
 import { SearchSpeakerComponent } from './speakers/search-speaker/search-speaker.component';
 import { FilterSpeakerPipe } from './speakers/pipe/filter-speaker.pipe';
 import { DeleteModalComponent } from './speakers/speaker/delete-modal/delete-modal.component';
+import { BioModalComponent } from './speakers/speaker/bio-modal/bio-modal.component';
 
 
 
@@ -51,7 +52,8 @@ import { DeleteModalComponent } from './speakers/speaker/delete-modal/delete-mod
     SpeakerComponent,
     SearchSpeakerComponent,
     FilterSpeakerPipe,
-    DeleteModalComponent
+    DeleteModalComponent,
+    BioModalComponent
   ],
   imports: [
     BrowserModule,

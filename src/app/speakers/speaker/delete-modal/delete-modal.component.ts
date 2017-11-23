@@ -54,21 +54,17 @@ export class DeleteModalComponent implements OnInit {
     this.modalDeleteService.open(this.deleteSpeakerModal).result.then((deleteSpeaker: boolean) => {
       if (deleteSpeaker) {
         this.deleteSpeaker();
-        console.log(1);
-
         this.statusDeleted.getStatusDeleted().emit({
           id: this.speakerToDeleteIndex,
           status: deleteSpeaker
         });
       }else {
-        console.log(2);
         this.statusDeleted.getStatusDeleted().emit({
           id: this.speakerToDeleteIndex,
           status: deleteSpeaker
         });
       }
     }, (error) => {
-      console.log(3);
       this.statusDeleted.getStatusDeleted().emit({
         id: this.speakerToDeleteIndex,
         status: false

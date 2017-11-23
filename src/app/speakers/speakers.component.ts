@@ -18,9 +18,7 @@ export class SpeakersComponent implements OnInit {
 
     constructor(private requestService: SpeakerRequestService, private statusSpeaker: SpeakerService) {
         this.statusSpeaker.getStatusDeleted().subscribe((speakerSlice: {id: number, status: boolean} ) => {
-            console.log(4);
             if (speakerSlice.status) {
-                console.log(5);
                 this.speakers.splice(speakerSlice.id, 1)
             }
         });
