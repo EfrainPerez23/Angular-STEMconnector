@@ -9,7 +9,7 @@ export class SpeakerRequestService {
 
   constructor(private http: Http) { }
 
-  public createSpeaker (newSpeaker: {name: string, description: string, imageUrl: string}) {
+  public createSpeaker (newSpeaker: {name: string, title: string, description: string, imageUrl: string}) {
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(`http://165.227.179.52:3000/speakers`, newSpeaker, {headers: headers})
     .map((response: Response) => {

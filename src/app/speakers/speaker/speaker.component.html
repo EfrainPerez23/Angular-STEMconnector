@@ -20,7 +20,7 @@
                     <button class="btn btn-sm btn-default btn-icon" style="margin-bottom: 10px;" (click)="bioSpeaker.bioModalSpeaker()"><i class="fa fa-address-card-o"></i></button>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-sm btn-primary btn-icon" style="margin-bottom: 10px;"><i class="fa fa-pencil-square-o"></i></button>
+                    <button class="btn btn-sm btn-primary btn-icon" style="margin-bottom: 10px;" (click)="addUpdateSpeaker.updateModalSpeaker()"><i class="fa fa-pencil-square-o"></i></button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-sm btn-danger btn-icon" style="margin-bottom: 10px;" (click)="deleteSpeaker.deleteModalSpeaker()"><i class="fa fa-trash-o" ></i></button>
@@ -32,3 +32,4 @@
 
 <app-delete-modal #deleteSpeaker [idSpeaker]="getSpeaker().getIdSpeaker()" [indexSpeaker]="getIndex()"></app-delete-modal>
 <app-bio-modal #bioSpeaker [bio]="getSpeaker().getBio()"></app-bio-modal>
+<app-update-add-model #addUpdateSpeaker [idSpeaker]="getSpeaker().getIdSpeaker()"></app-update-add-model>

@@ -32,6 +32,7 @@ import { SearchSpeakerComponent } from './speakers/search-speaker/search-speaker
 import { FilterSpeakerPipe } from './speakers/pipe/filter-speaker.pipe';
 import { DeleteModalComponent } from './speakers/speaker/delete-modal/delete-modal.component';
 import { BioModalComponent } from './speakers/speaker/bio-modal/bio-modal.component';
+import {UpdateAddModelComponent} from './speakers/speaker/update-add-model/update-add-model.component';
 
 
 
@@ -53,7 +54,8 @@ import { BioModalComponent } from './speakers/speaker/bio-modal/bio-modal.compon
     SearchSpeakerComponent,
     FilterSpeakerPipe,
     DeleteModalComponent,
-    BioModalComponent
+    BioModalComponent,
+    UpdateAddModelComponent
   ],
   imports: [
     BrowserModule,

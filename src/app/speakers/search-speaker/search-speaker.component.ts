@@ -1,8 +1,8 @@
+import { SpeakerService } from '../service/speaker.service';
 import {
   Component,
   OnInit,
   Output,
-  OnChanges,
   EventEmitter,
   SimpleChanges
 } from '@angular/core';
@@ -13,7 +13,7 @@ import {
   templateUrl: './search-speaker.component.html',
   styleUrls: ['./search-speaker.component.css']
 })
-export class SearchSpeakerComponent implements OnInit, OnChanges {
+export class SearchSpeakerComponent implements OnInit {
 
   private searchSpeaker = '';
   private outputSpeaker = new EventEmitter<string>();
@@ -21,17 +21,9 @@ export class SearchSpeakerComponent implements OnInit, OnChanges {
   private filterPreference = 0;
   private preference: string[] = ['Name', 'Title', 'Bio'];
 
-  constructor() { }
+  constructor(private statusCreated: SpeakerService) { }
 
   ngOnInit() {
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-  }
-
-  public bb(event) {
-    console.log(event);
   }
 
   public valueChange() {

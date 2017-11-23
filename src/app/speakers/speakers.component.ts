@@ -17,14 +17,29 @@ export class SpeakersComponent implements OnInit {
     private filterPreference: number;
 
     constructor(private requestService: SpeakerRequestService, private statusSpeaker: SpeakerService) {
-        this.statusSpeaker.getStatusDeleted().subscribe((speakerSlice: {id: number, status: boolean} ) => {
-            if (speakerSlice.status) {
-                this.speakers.splice(speakerSlice.id, 1)
-            }
-        });
+        this.deleteSpeaker();
+        this.createdOrUpdateSpeaker();
+
     }
     ngOnInit() {
         this.reloadSpeakers();
+    }
+
+    private deleteSpeaker() {
+        this.statusSpeaker.getStatusDeleted().subscribe((speakerSlice: {id: number, status: boolean} ) => {
+            if (speakerSlice.status) {
+                this.speakers.splice(speakerSlice.id, 1);
+            }
+        });
+    }
+
+
+    private createdOrUpdateSpeaker() {
+        this.statusSpeaker.getStatusCreatedOrUpdated().subscribe((addUpdate: boolean) => {
+            if (addUpdate) {
+                this.reloadSpeakers();
+            }
+        });
     }
 
 

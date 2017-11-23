@@ -12,7 +12,7 @@ export class BioModalComponent implements OnInit {
   private bioSpeaker = '';
   private bioModal: ElementRef;
 
-  constructor(private modalBioService: NgbModal, private notifications: UtilService) { }
+  constructor(private modalBioService: NgbModal) { }
 
   ngOnInit() {
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Speaker } from '../model/speaker.model';
+import { SpeakerService } from '../service/speaker.service';
 
 @Component({
   selector: 'app-speaker',
@@ -9,7 +10,10 @@ import { Speaker } from '../model/speaker.model';
 export class SpeakerComponent implements OnInit {
   private speaker: Speaker;
   private index: number;
-  constructor() { }
+  private idSpeaker: number;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

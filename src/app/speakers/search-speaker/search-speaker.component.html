@@ -23,10 +23,11 @@
     <hr>
     <div class="row">
         <div class="col-md-5">
-            <a style="cursor: pointer;" class="btn btn-primary btn-success">
+            <a style="cursor: pointer;" class="btn btn-primary btn-success" (click)="addModal.updateModalSpeaker()">
                 <span class="glyphicon glyphicon-plus"></span> Add Speaker
             </a>
         </div>
     </div>
 </div>
 <hr>
+<app-update-add-model #addModal [idSpeaker]="-1"></app-update-add-model>

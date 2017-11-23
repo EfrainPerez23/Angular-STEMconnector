@@ -29,7 +29,6 @@ export class FilterSpeakerPipe implements PipeTransform {
         break;
       default:
         for (const speaker of speakers) {
-          console.log(speaker.getName());
           if (speaker.getBio().toLowerCase().includes(filterString.toLowerCase())) {
             speakersFiltered.push(speaker);
           }
