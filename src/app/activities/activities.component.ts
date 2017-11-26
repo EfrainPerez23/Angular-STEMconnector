@@ -9,7 +9,7 @@ import { ActivityService } from './service/activity.service';
 })
 export class ActivitiesComponent implements OnInit {
 
-  constructor(private activityService: ActivityService) {
+  constructor() {
   }
 
   ngOnInit() {
