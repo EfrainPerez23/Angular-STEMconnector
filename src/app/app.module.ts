@@ -33,6 +33,9 @@ import { FilterSpeakerPipe } from './speakers/pipe/filter-speaker.pipe';
 import { DeleteModalComponent } from './speakers/speaker/delete-modal/delete-modal.component';
 import { BioModalComponent } from './speakers/speaker/bio-modal/bio-modal.component';
 import {UpdateAddModelComponent} from './speakers/speaker/update-add-model/update-add-model.component';
+import { ActivitiesComponent } from './activities/activities.component';
+import { SearchActivityComponent } from './activities/search-activity/search-activity.component';
+import { ActivityComponent } from './activities/activity/activity.component';
 
 
 
@@ -55,7 +58,10 @@ import {UpdateAddModelComponent} from './speakers/speaker/update-add-model/updat
     FilterSpeakerPipe,
     DeleteModalComponent,
     BioModalComponent,
-    UpdateAddModelComponent
+    UpdateAddModelComponent,
+    ActivitiesComponent,
+    SearchActivityComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,

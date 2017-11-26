@@ -13,7 +13,7 @@ export const ROUTES: RouteInfo[] = [
     { path: 'initiatives', title: 'Initiatives',  icon: 'ti-panel', class: '' },
     { path: 'events', title: 'Events',  icon: 'ti-view-list-alt', class: '' },
     { path: 'speakers', title: 'Speakers',  icon: 'ti-user', class: '' },
-    { path: 'typography', title: 'Typography',  icon: 'ti-text', class: '' },
+    { path: 'activities', title: 'Activities',  icon: 'ti-harddrives', class: '' },
     { path: 'icons', title: 'Icons',  icon: 'ti-pencil-alt2', class: '' },
     { path: 'maps', title: 'Maps',  icon: 'ti-map', class: '' },
     { path: 'notifications', title: 'Notifications',  icon: 'ti-bell', class: '' }

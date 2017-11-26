@@ -52,7 +52,6 @@ export class SearchSpeakerComponent implements OnInit {
 
   public getShowNameEvent(): string {
     return this.showNameEvent;
-
   }
 
   public chooseEvent(eventSelected: EventModel) {

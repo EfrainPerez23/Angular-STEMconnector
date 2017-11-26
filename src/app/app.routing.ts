@@ -8,6 +8,7 @@ import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
+import { ActivitiesComponent } from './activities/activities.component';
 
 export const AppRoutes: Routes = [
     {
@@ -24,12 +25,12 @@ export const AppRoutes: Routes = [
         component: SpeakersComponent
     },
     {
-        path: 'events',
-        component: EventComponent
+        path: 'activities',
+        component: ActivitiesComponent
     },
     {
-        path: 'typography',
-        component: TypographyComponent
+        path: 'events',
+        component: EventComponent
     },
     {
         path: 'icons',
