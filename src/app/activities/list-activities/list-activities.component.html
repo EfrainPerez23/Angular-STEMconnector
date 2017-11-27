@@ -21,19 +21,19 @@
                                     <td>{{row.getStartTime() | dateFormat }}</td>
                                     <td>{{row.getEndTime() | dateFormat }}</td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="description.descriptionModalActivity(row);">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-newspaper-o" aria-hidden="true"></i></strong></span>
                                         </a>
                                     </td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="setActivitySelected(row, 1)">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-pencil-square-o" aria-hidden="true"></i></strong></span>
                                         </a>
                                     </td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text" (click)="setActivitySelected(row, 2)">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-trash-o" aria-hidden="true"></i></strong></span>
                                         </a>
@@ -48,3 +48,5 @@
         </div>
     </div>
 </div>
+
+<app-activity-description #description></app-activity-description>

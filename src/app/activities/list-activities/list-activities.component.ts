@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from '../model/activity';
 import { ActivityRequestService } from '../../shared/service/request/activity-request.service';
+import { ActivityService } from '../service/activity.service';
 
 @Component({
   selector: 'app-list-activities',
@@ -11,11 +12,10 @@ export class ListActivitiesComponent implements OnInit {
   private headerRow: string[] = ['Name', 'Start Time', 'End Time', 'Description'];
   public rows: Activity[];
 
-  constructor(private activityRequestService: ActivityRequestService) { }
+  constructor(private activityRequestService: ActivityRequestService, private activityService: ActivityService) { }
 
   ngOnInit() {
     this.reloadActivityRows();
-    console.log(this.rows);
   }
 
   public getHeaderRow(): string[] {
@@ -29,6 +29,10 @@ export class ListActivitiesComponent implements OnInit {
   private reloadActivityRows() {
     this.rows = [];
     this.getActivityFromRequest();
+  }
+
+  public setActivitySelected (activitySelected: Activity, action: number) {
+    this.activityService.getActivitySelected().emit({activity: activitySelected, action: action});
   }
 
   private getActivityFromRequest() {

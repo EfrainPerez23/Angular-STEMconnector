@@ -35,9 +35,9 @@ import { BioModalComponent } from './speakers/speaker/bio-modal/bio-modal.compon
 import {UpdateAddModelComponent} from './speakers/speaker/update-add-model/update-add-model.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { SearchActivityComponent } from './activities/search-activity/search-activity.component';
-import { ActivityComponent } from './activities/list-activities/activity/activity.component';
 import { ListActivitiesComponent } from './activities/list-activities/list-activities.component';
 import { ActivityRequestService } from './shared/service/request/activity-request.service';
+import { ActivityDescriptionComponent } from './activities/list-activities/activity-description/activity-description.component';
 
 
 
@@ -63,8 +63,8 @@ import { ActivityRequestService } from './shared/service/request/activity-reques
     UpdateAddModelComponent,
     ActivitiesComponent,
     SearchActivityComponent,
-    ActivityComponent,
-    ListActivitiesComponent
+    ListActivitiesComponent,
+    ActivityDescriptionComponent,
   ],
   imports: [
     BrowserModule,
