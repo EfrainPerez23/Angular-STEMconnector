@@ -18,4 +18,13 @@ export class ActivityRequestService {
     });
   }
 
+  public deleteActivity(id: number) {
+    console.log(id);
+    return this.http.delete(`http://165.227.179.52:3000/activity/${id.toString()}`).map((response: Response) => {
+      return response.json();
+    }).catch( (error: Response) => {
+      return Observable.throw('Something went wrong!');
+    });
+  }
+
 }

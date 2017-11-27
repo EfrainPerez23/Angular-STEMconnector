@@ -38,6 +38,7 @@ import { SearchActivityComponent } from './activities/search-activity/search-act
 import { ListActivitiesComponent } from './activities/list-activities/list-activities.component';
 import { ActivityRequestService } from './shared/service/request/activity-request.service';
 import { ActivityDescriptionComponent } from './activities/list-activities/activity-description/activity-description.component';
+import { ActivityDeleteComponent } from './activities/list-activities/activity-delete/activity-delete.component';
 
 
 
@@ -65,6 +66,7 @@ import { ActivityDescriptionComponent } from './activities/list-activities/activ
     SearchActivityComponent,
     ListActivitiesComponent,
     ActivityDescriptionComponent,
+    ActivityDeleteComponent,
   ],
   imports: [
     BrowserModule,

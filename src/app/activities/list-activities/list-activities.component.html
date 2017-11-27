@@ -33,7 +33,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text" (click)="setActivitySelected(row, 2)">
+                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text" (click)="delete.deleteModalActivity(row, i)">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-trash-o" aria-hidden="true"></i></strong></span>
                                         </a>
@@ -50,3 +50,4 @@
 </div>
 
 <app-activity-description #description></app-activity-description>
+<app-activity-delete #delete></app-activity-delete>
