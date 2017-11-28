@@ -33,6 +33,17 @@ export class ActivityRequestService {
     .map((response: Response) => {
       return response.json();
     });
-}
+  }
+
+  public updateSpeaker(id: number,
+                activityToUpdate: {Event_idEvent: number, startTime: string, endTime: string, name: string, description: string}) {
+    if (id >= 0 ) {
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.put(`http://165.227.179.52:3000/activity/${id.toString()}`, activityToUpdate, {headers: headers})
+        .map((response: Response) => {
+          return response.json();
+        });
+    }
+  }
 
 }

@@ -41,7 +41,7 @@ public updateSpeaker(id: number, speakerToUpdate: {name: string, title: string, 
         .map((response: Response) => {
           return response.json();
         });
-}
-}
+    }
+  }
 
 }

@@ -12,8 +12,9 @@ export class ListActivitiesComponent implements OnInit {
   private headerRow: string[] = ['Name', 'Start Time', 'End Time', 'Description'];
   public rows: Activity[];
 
-  constructor(private activityRequestService: ActivityRequestService, private activityService: ActivityService) { 
+  constructor(private activityRequestService: ActivityRequestService, private activityService: ActivityService) {
     this.deleteActivity();
+    this.addNewActivity();
   }
 
   ngOnInit() {
@@ -24,6 +25,14 @@ export class ListActivitiesComponent implements OnInit {
   private deleteActivity() {
     this.activityService.getActivityDeletedIndex().subscribe((index: number) => {
       this.rows.splice(index, 1);
+    });
+  }
+
+  private addNewActivity() {
+    this.activityService.getActivityReload().subscribe((reload: boolean) => {
+      if (reload) {
+        this.reloadActivityRows();
+      }
     });
   }
 

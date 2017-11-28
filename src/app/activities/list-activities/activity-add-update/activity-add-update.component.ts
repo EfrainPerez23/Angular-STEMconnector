@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { EventModel } from 'app/event/model/event.model';
 import { EventRequestService } from '../../../shared/service/request/event-request.service';
 import { ActivityRequestService } from '../../../shared/service/request/activity-request.service';
+import { ActivityService } from '../../service/activity.service';
 
 @Component({
   selector: 'app-activity-add-update',
@@ -19,8 +20,8 @@ export class ActivityAddUpdateComponent implements OnInit {
   private form: NgForm;
   private events: EventModel[] = [];
 
-  constructor(private modalAddUpdateService: NgbModal,  private util: UtilService, private eventService: EventRequestService,
-              private activityService: ActivityRequestService) { }
+  constructor(private modalAddUpdateService: NgbModal,  private util: UtilService, private eventRequestService: EventRequestService,
+              private activityRequestService: ActivityRequestService, private activityService: ActivityService) { }
 
   ngOnInit() {
     this.getEventsFromRequest();
@@ -49,7 +50,7 @@ export class ActivityAddUpdateComponent implements OnInit {
       });
   }
   private getEventsFromRequest() {
-    this.eventService.getEvents().subscribe((eventsResponse: any) => {
+    this.eventRequestService.getEvents().subscribe((eventsResponse: any) => {
       if (eventsResponse.status) {
         eventsResponse.data.forEach(event => {
           this.events.push(new EventModel(event.idEvent, event.status, event.name, event.description, event.startDate,
@@ -77,17 +78,26 @@ export class ActivityAddUpdateComponent implements OnInit {
   }
 
   private updateActivity(speakerData) {
-    console.log('Updating');
-    console.log(speakerData);
+    this.activityRequestService.updateSpeaker(this.id, speakerData).subscribe((activityResponse: any) => {
+      this.reloadActivityRows(activityResponse, 'You Updated an Activity!');
+    });
   }
 
+
   private addActivity(speakerData) {
-    this.activityService.createActivity(speakerData).subscribe((activityResponse: any) => {
-      if (activityResponse.status) {
-        console.log('Created');
-      }
+    this.activityRequestService.createActivity(speakerData).subscribe((activityResponse: any) => {
+      this.reloadActivityRows(activityResponse, 'You Created a new Activity!');
     });
 
+  }
+
+  private reloadActivityRows(activityResponse, messageSuccess: string) {
+    if (activityResponse.status) {
+      this.activityService.getActivityReload().emit(true);
+      this.util.showNotification('success', messageSuccess, 'Success!', 'ti-face-smile');
+    }else {
+      this.util.showNotification('danger', activityResponse.message, 'Error!', 'ti-face-sad');
+    }
   }
 
 }
