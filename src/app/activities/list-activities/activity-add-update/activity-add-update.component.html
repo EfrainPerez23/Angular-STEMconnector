@@ -1,4 +1,4 @@
-<ng-template #modal let-c="close" let-d="dismiss">
+<ng-template #addUpdateActivity let-c="close" let-d="dismiss">
     <div class="modal-header" style="top: 200px;">
         <div class="row">
             <div class="col-md-6">
@@ -30,29 +30,29 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !title.valid && title.touched}">
-                                    <label>Title</label>
-                                    <input value="hola" type="text" id="title" class="form-control border-input" ngModel name="title" required #title="ngModel" placeholder="Title...">
-                                    <span class="help-block" *ngIf="!title.valid && title.touched">Insert Title</span>
+                                <div class="form-group" [ngClass]="{'has-error': !startTime.valid && startTime.touched}">
+                                    <label>Start Time</label>
+                                    <input value="" type="datetime-local" id="startTime" class="form-control border-input" ngModel name="startTime" required #startTime="ngModel" placeholder="MM/DD/YYYY">
+                                    <span class="help-block" *ngIf="!startTime.valid && startTime.touched">Insert Start Time</span>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !imageUrl.valid && imageUrl.touched}">
-                                    <label>Image URL</label>
-                                    <input type="text" id="imageUrl" class="crossSearch form-control border-input" ngModel name="imageUrl" placeholder="Name..." required #imageUrl="ngModel">
-                                    <span class="help-block" *ngIf="!imageUrl.valid && imageUrl.touched">Insert Url</span>
+                                <div class="form-group" [ngClass]="{'has-error': !endTime.valid && endTime.touched}">
+                                    <label>End Time</label>
+                                    <input value="" type="datetime-local" id="endTime" class="form-control border-input" ngModel name="endTime" required #endTime="ngModel" placeholder="MM/DD/YYYY">
+                                    <span class="help-block" *ngIf="!endTime.valid && endTime.touched">Insert End Time</span>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group" [ngClass]="{'has-error': !bio.valid && bio.touched}">
-                                    <label>Bio</label>
-                                    <textarea rows="4" id="bio" class="form-control border-input" ngModel name="bio" required #bio="ngModel" placeholder="Bio...">
+                                <div class="form-group" [ngClass]="{'has-error': !description.valid && description.touched}">
+                                    <label>Description</label>
+                                    <textarea rows="4" id="description" class="form-control border-input" ngModel name="description" required #description="ngModel" placeholder="Bio...">
                                     </textarea>
-                                    <span class="help-block" *ngIf="!bio.valid && bio.touched">Insert Bio</span>
+                                    <span class="help-block" *ngIf="!description.valid && description.touched">Insert Bio</span>
                                 </div>
                             </div>
                         </div>

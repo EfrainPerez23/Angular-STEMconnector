@@ -23,18 +23,21 @@ export class ActivityAddUpdateComponent implements OnInit {
   public onSubmit(form: NgForm) {
     this.form = form;
     if (this.id === -1) {
-      this.titleModal = 'Creating';
-      this.messageModal = 'Create Activity'
       this.addActivity(this.form.value);
     }else {
-      this.titleModal = 'Updating';
-      this.messageModal = 'Update Activity'
       this.updateActivity(this.form.value);
     }
   }
 
   public addUpdateActivity(id: number) {
       this.id = id;
+      if (this.id === -1) {
+        this.titleModal = 'Creating';
+        this.messageModal = 'Create Activity'
+      }else {
+        this.titleModal = 'Updating';
+        this.messageModal = 'Update Activity'
+      }
       this.modalAddUpdateService.open(this.addUpdateModalActivity).result.then((result: boolean) => {
       }, (reason) => {
       });

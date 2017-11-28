@@ -27,7 +27,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="setActivitySelected(row, 1)">
+                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="update.addUpdateActivity(row.getIdActivity())">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-pencil-square-o" aria-hidden="true"></i></strong></span>
                                         </a>
@@ -51,3 +51,4 @@
 
 <app-activity-description #description></app-activity-description>
 <app-activity-delete #delete></app-activity-delete>
+<app-activity-add-update #update></app-activity-add-update>
