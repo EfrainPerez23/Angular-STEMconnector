@@ -39,6 +39,7 @@ import { ListActivitiesComponent } from './activities/list-activities/list-activ
 import { ActivityRequestService } from './shared/service/request/activity-request.service';
 import { ActivityDescriptionComponent } from './activities/list-activities/activity-description/activity-description.component';
 import { ActivityDeleteComponent } from './activities/list-activities/activity-delete/activity-delete.component';
+import { ActivityAddUpdateComponent } from './activities/list-activities/activity-add-update/activity-add-update.component';
 
 
 
@@ -67,6 +68,7 @@ import { ActivityDeleteComponent } from './activities/list-activities/activity-d
     ListActivitiesComponent,
     ActivityDescriptionComponent,
     ActivityDeleteComponent,
+    ActivityAddUpdateComponent,
   ],
   imports: [
     BrowserModule,

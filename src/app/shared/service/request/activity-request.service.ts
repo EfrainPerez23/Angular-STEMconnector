@@ -27,4 +27,12 @@ export class ActivityRequestService {
     });
   }
 
+  public createActivity (newActivity: {Event_idEvent: number, startTime: string, endTime: string, name: string, description: string}) {
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.post(`http://165.227.179.52:3000/activity`, newActivity, {headers: headers})
+    .map((response: Response) => {
+      return response.json();
+    });
+}
+
 }

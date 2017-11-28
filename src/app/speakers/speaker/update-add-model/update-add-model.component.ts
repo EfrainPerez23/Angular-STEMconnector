@@ -26,8 +26,8 @@ export class UpdateAddModelComponent implements OnInit {
       this.titleModal = 'Create';
       this.messageModal = 'Creating Speaker';
     }else {
-      this.titleModal = 'Add';
-      this.messageModal = 'Adding Speaker';
+      this.titleModal = 'Update';
+      this.messageModal = 'Updating Speaker';
     }
   }
 
@@ -64,7 +64,7 @@ export class UpdateAddModelComponent implements OnInit {
     return this.messageModal;
   }
 
-  private addSpeaker(speakerData: {name: string, title: string, description: string, imageUrl: string}) {
+  private addSpeaker(speakerData: {name: string, title: string, bio: string, imageUrl: string}) {
     this.addOrUpdateService.createSpeaker(speakerData).subscribe((speakerCreated: any) => {
       if (speakerCreated.status) {
         this.notifications.showNotification('success', 'You add a new Speaker!', 'Success!', 'ti-pencil-alt');
@@ -75,7 +75,8 @@ export class UpdateAddModelComponent implements OnInit {
     });
   }
 
-  private updateSpeaker(speakerData: {name: string, title: string, description: string, imageUrl: string}) {
+  private updateSpeaker(speakerData: {name: string, title: string, bio: string, imageUrl: string}) {
+    console.log(speakerData);
     this.addOrUpdateService.updateSpeaker(this.id, speakerData).subscribe((speakerCreated: any) => {
       if (speakerCreated.status) {
         this.notifications.showNotification('success', 'You Update an Speaker!', 'Success!', 'ti-pencil-alt');

@@ -33,7 +33,7 @@ export class ActivityDeleteComponent implements OnInit {
   private deleteActivity(activity: Activity, activityIndex: number) {
     this.activityRequestService.deleteActivity(activity.getIdActivity()).subscribe((deleteResponse: any) => {
       if (deleteResponse.success) {
-        this.util.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
+        this.util.showNotification('warning', 'You just deleted an Activity', 'Success!', 'ti-eraser');
         this.activityService.getActivityDeletedIndex().emit(activityIndex);
       }else {
         this.util.showNotification('danger', deleteResponse.message, 'Error!', 'ti-face-sad');

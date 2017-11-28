@@ -18,7 +18,7 @@
             </div>
             <div class="content">
                 <form (ngSubmit)="onSubmit(f, d(false))" #f="ngForm">
-                    <div id="activityData" ngModelGroup="speakerData" #activityData="ngModelGroup">
+                    <div id="speakerData" ngModelGroup="speakerData" #speakerData="ngModelGroup">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group" class="form-group" [ngClass]="{'has-error': !name.valid && name.touched}">
@@ -32,7 +32,7 @@
                             <div class="col-md-12">
                                 <div class="form-group" class="form-group" [ngClass]="{'has-error': !title.valid && title.touched}">
                                     <label>Title</label>
-                                    <input type="text" id="title" class="crossSearch form-control border-input" ngModel name="title" placeholder="Title..." required #title="ngModel">
+                                    <input value="hola" type="text" id="title" class="form-control border-input" ngModel name="title" required #title="ngModel" placeholder="Title...">
                                     <span class="help-block" *ngIf="!title.valid && title.touched">Insert Title</span>
                                 </div>
                             </div>
@@ -40,9 +40,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group" class="form-group" [ngClass]="{'has-error': !imageUrl.valid && imageUrl.touched}">
-                                    <label>Url</label>
-                                    <input type="text" id="imageUrl" class="crossSearch form-control border-input" ngModel name="imageUrl" placeholder="Image Url..." required #imageUrl="ngModel">
-                                    <span class="help-block" *ngIf="!imageUrl.valid && imageUrl.touched">Insert Image Url</span>
+                                    <label>Image URL</label>
+                                    <input type="text" id="imageUrl" class="crossSearch form-control border-input" ngModel name="imageUrl" placeholder="Name..." required #imageUrl="ngModel">
+                                    <span class="help-block" *ngIf="!imageUrl.valid && imageUrl.touched">Insert Url</span>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                     <label>Bio</label>
                                     <textarea rows="4" id="bio" class="form-control border-input" ngModel name="bio" required #bio="ngModel" placeholder="Bio...">
                                     </textarea>
-                                    <span class="help-block" *ngIf="!bio.valid && bio.touched">Insert Description</span>
+                                    <span class="help-block" *ngIf="!bio.valid && bio.touched">Insert Bio</span>
                                 </div>
                             </div>
                         </div>

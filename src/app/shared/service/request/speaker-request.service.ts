@@ -9,7 +9,7 @@ export class SpeakerRequestService {
 
   constructor(private http: Http) { }
 
-  public createSpeaker (newSpeaker: {name: string, title: string, description: string, imageUrl: string}) {
+  public createSpeaker (newSpeaker: {name: string, title: string, bio: string, imageUrl: string}) {
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(`http://165.227.179.52:3000/speakers`, newSpeaker, {headers: headers})
     .map((response: Response) => {
@@ -34,7 +34,7 @@ public getSpeakers() {
     });
 }
 
-public updateSpeaker(id: number, speakerToUpdate: {name: string, description: string, imageUrl: string}) {
+public updateSpeaker(id: number, speakerToUpdate: {name: string, title: string, bio: string, imageUrl: string}) {
     if (id >= 0 ) {
         const headers = new Headers({'Content-Type': 'application/json'});
         return this.http.put(`http://165.227.179.52:3000/speakers/${id.toString()}`, speakerToUpdate, {headers: headers})
