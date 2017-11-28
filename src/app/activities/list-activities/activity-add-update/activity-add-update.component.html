@@ -18,7 +18,7 @@
             </div>
             <div class="content">
                 <form (ngSubmit)="onSubmit(f, d(false))" #f="ngForm">
-                    <div id="speakerData" ngModelGroup="speakerData" #speakerData="ngModelGroup">
+                    <div id="activityData" ngModelGroup="activityData" #activityData="ngModelGroup">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group" class="form-group" [ngClass]="{'has-error': !name.valid && name.touched}">
@@ -48,11 +48,22 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !Event_idEvent.valid && Event_idEvent.touched}">
+                                    <label>Active</label>
+                                    <select class="form-control" ngModel name="Event_idEvent" #Event_idEvent="ngModel" placeholder="Event..." required>
+                                        <option *ngFor="let event of getEvents()"  [value]="event.getIdEvent()">{{event.getName()}}</option>
+                                    </select>
+                                    <span class="help-block" *ngIf="!Event_idEvent.valid && Event_idEvent.touched">Insert Active...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
                                 <div class="form-group" [ngClass]="{'has-error': !description.valid && description.touched}">
                                     <label>Description</label>
-                                    <textarea rows="4" id="description" class="form-control border-input" ngModel name="description" required #description="ngModel" placeholder="Bio...">
+                                    <textarea rows="4" id="description" class="form-control border-input" ngModel name="description" required #description="ngModel" placeholder="Description...">
                                     </textarea>
-                                    <span class="help-block" *ngIf="!description.valid && description.touched">Insert Bio</span>
+                                    <span class="help-block" *ngIf="!description.valid && description.touched">Insert Description ...</span>
                                 </div>
                             </div>
                         </div>
