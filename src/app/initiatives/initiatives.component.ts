@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { EventModel } from 'app/event/model/event.model';
+import { EventModel } from 'app/events/model/event.model';
 import { element } from 'protractor';
 import { InitiativeModel } from '../shared/model/initiative.model';
 import {
@@ -13,9 +13,9 @@ import { UtilService } from '../shared/service/util.service';
 
 
 @Component({
-    selector: 'dashboard-cmp',
+    selector: 'app-initiatives',
     moduleId: module.id,
-    templateUrl: 'initiative.component.html'
+    templateUrl: 'initiatives.component.html'
 })
 
 // Efrain Perez

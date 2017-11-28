@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { InitiativeComponent } from './initiative/initiative.component';
+import { InitiativeComponent } from './initiatives/initiatives.component';
 import { SpeakersComponent } from './speakers/speakers.component';
-import { EventComponent } from './event/event.component';
+import { EventComponent } from './events/event.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
