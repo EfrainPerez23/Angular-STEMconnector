@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Activity } from '../model/activity';
 import { ActivityRequestService } from '../../shared/service/request/activity-request.service';
 import { ActivityService } from '../service/activity.service';
+import { EventRequestService } from '../../shared/service/request/event-request.service';
 
 @Component({
   selector: 'app-list-activities',
@@ -12,9 +13,11 @@ export class ListActivitiesComponent implements OnInit {
   private headerRow: string[] = ['Name', 'Start Time', 'End Time', 'Description'];
   public rows: Activity[];
 
-  constructor(private activityRequestService: ActivityRequestService, private activityService: ActivityService) {
+  constructor(private activityRequestService: ActivityRequestService, private activityService: ActivityService,
+              private eventRequestService: EventRequestService) {
     this.deleteActivity();
     this.addNewActivity();
+    this.activitiesFromEvent();
   }
 
   ngOnInit() {
@@ -27,6 +30,31 @@ export class ListActivitiesComponent implements OnInit {
       this.rows.splice(index, 1);
     });
   }
+
+  private activitiesFromEvent() {
+    this.activityService.getActivitiesFromEvent().subscribe((idEvent: number) => {
+        if (idEvent !== -1) {
+          this.getActivitiesFromEvent(idEvent);
+        }else {
+          this.reloadActivityRows();
+        }
+    });
+  }
+
+
+private getActivitiesFromEvent(id: number) {
+    this.rows = [];
+    this.eventRequestService.getActivitiesFromEvent(id).subscribe((activitiesResponse: any) => {
+      if (activitiesResponse.status) {
+        activitiesResponse.data.forEach(activity => {
+          this.rows.push(new Activity(activity.idActivity, activity.Event_idEvent,
+            activity.startTime, activity.endTime,
+            activity.name, activity.description));
+        });
+      }
+    });
+}
+
 
   private addNewActivity() {
     this.activityService.getActivityReload().subscribe((reload: boolean) => {

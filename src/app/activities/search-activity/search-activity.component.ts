@@ -48,6 +48,7 @@ export class SearchActivityComponent implements OnInit {
   public chooseEvent(eventSelected: EventModel) {
     this.eventSelected = eventSelected;
     this.showNameEvent = this.eventSelected.getName();
+    this.activityService.getActivitiesFromEvent().emit(eventSelected.getIdEvent());
   }
 
   public getShowNameEvent(): string {

@@ -62,4 +62,13 @@ export class EventRequestService {
         return Observable.throw('Something went wrong!');
       });
     }
+
+    public getActivitiesFromEvent(id: number) {
+      return this.http.get(`http://165.227.179.52:3000/events/${id.toString()}/activities`)
+      .map( (response: Response) => {
+          return response.json();
+      }).catch( (error: Response) => {
+        return Observable.throw('Something went wrong!');
+      });
+    }
 }

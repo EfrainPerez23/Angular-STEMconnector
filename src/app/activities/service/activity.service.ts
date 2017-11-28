@@ -6,6 +6,7 @@ export class ActivityService {
   private activitySelected = new EventEmitter<{activity: Activity, action: number}>();
   private activityDeletedIndex = new EventEmitter<number>();
   private activityReload = new EventEmitter<boolean>();
+  private activitiesFromEvent = new EventEmitter<number>();
 
   constructor() { }
 
@@ -22,6 +23,10 @@ export class ActivityService {
   }
   public getActivityReload(): EventEmitter<boolean> {
     return this.activityReload;
+  }
+
+  public getActivitiesFromEvent(): EventEmitter<number> {
+    return this.activitiesFromEvent;
   }
 
 }
