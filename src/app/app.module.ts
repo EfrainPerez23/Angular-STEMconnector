@@ -40,6 +40,7 @@ import { ActivityRequestService } from './shared/service/request/activity-reques
 import { ActivityDescriptionComponent } from './activities/list-activities/activity-description/activity-description.component';
 import { ActivityDeleteComponent } from './activities/list-activities/activity-delete/activity-delete.component';
 import { ActivityAddUpdateComponent } from './activities/list-activities/activity-add-update/activity-add-update.component';
+import { ActivityFilterPipe } from './activities/pipe/activity-filter.pipe';
 
 
 
@@ -69,6 +70,7 @@ import { ActivityAddUpdateComponent } from './activities/list-activities/activit
     ActivityDescriptionComponent,
     ActivityDeleteComponent,
     ActivityAddUpdateComponent,
+    ActivityFilterPipe,
   ],
   imports: [
     BrowserModule,

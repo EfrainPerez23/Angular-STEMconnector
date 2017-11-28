@@ -12,16 +12,28 @@ import { EventRequestService } from '../../shared/service/request/event-request.
 export class ListActivitiesComponent implements OnInit {
   private headerRow: string[] = ['Name', 'Start Time', 'End Time', 'Description'];
   public rows: Activity[];
+  public activityName = '';
+  public preference = 0;
 
   constructor(private activityRequestService: ActivityRequestService, private activityService: ActivityService,
               private eventRequestService: EventRequestService) {
     this.deleteActivity();
     this.addNewActivity();
     this.activitiesFromEvent();
+    this.setFilterElements();
+
   }
 
   ngOnInit() {
     this.reloadActivityRows();
+  }
+
+  private setFilterElements() {
+    this.activityService.getSearchActivityPreference()
+      .subscribe((filterElements: {activityName: string, preference: number}) => {
+        this.activityName = filterElements.activityName;
+        this.preference = filterElements.preference;
+      });
   }
 
 
@@ -76,6 +88,7 @@ private getActivitiesFromEvent(id: number) {
     this.rows = [];
     this.getActivityFromRequest();
   }
+
 
   public setActivitySelected (activitySelected: Activity, action: number) {
     this.activityService.getActivitySelected().emit({activity: activitySelected, action: action});
