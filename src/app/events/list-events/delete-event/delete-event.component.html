@@ -1,0 +1,21 @@
+<ng-template #deleteEvent let-c="close" let-d="dismiss">
+    <div class="modal-header" style="top: 200px;">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title">Delete</h4>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to delete it?&hellip;</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="c(true)">Accept</button>
+        <button type="button" class="btn btn-primary" (click)="c(false)">Close</button>
+    </div>
+</ng-template>

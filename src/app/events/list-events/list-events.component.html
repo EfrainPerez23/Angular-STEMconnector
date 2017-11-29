@@ -35,7 +35,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text" (click)="delete.deleteModalEvent(row, i)">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-trash-o" aria-hidden="true"></i></strong></span>
                                         </a>
@@ -52,3 +52,5 @@
     </div>
 </div>
 <app-description-event #description></app-description-event>
+
+<app-delete-event #delete></app-delete-event>

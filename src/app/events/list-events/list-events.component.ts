@@ -16,6 +16,7 @@ export class ListEventsComponent implements OnInit {
 
   constructor(private eventService: EventService, private eventRequestService: EventRequestService) {
     this.getSearchPreference();
+    this.deleteEventService();
   }
 
   ngOnInit() {
@@ -54,6 +55,12 @@ export class ListEventsComponent implements OnInit {
             event.endDate, event.location, event.email, event.Initiative_idInitiative));
          });
       }
+    });
+  }
+
+  private deleteEventService() {
+    this.eventService.getDeleteEvent().subscribe((index: number) => {
+      this.rows.splice(index, 1);
     });
   }
 
