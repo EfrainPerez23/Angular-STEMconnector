@@ -51,6 +51,7 @@ import { ListEventsComponent } from './events/list-events/list-events.component'
 import { SearchEventComponent } from './events/search-event/search-event.component';
 import { DescriptionEventComponent } from './events/list-events/description-event/description-event.component';
 import { DeleteEventComponent } from './events/list-events/delete-event/delete-event.component';
+import { AddUpdateEventComponent } from './events/list-events/add-update-event/add-update-event.component';
 
 
 
@@ -90,7 +91,8 @@ import { DeleteEventComponent } from './events/list-events/delete-event/delete-e
     ListEventsComponent,
     SearchEventComponent,
     DescriptionEventComponent,
-    DeleteEventComponent
+    DeleteEventComponent,
+    AddUpdateEventComponent
   ],
   imports: [
     BrowserModule,

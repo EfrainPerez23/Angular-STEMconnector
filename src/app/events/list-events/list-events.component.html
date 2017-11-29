@@ -29,7 +29,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="update.addUpdateEvent(row.getIdEvent())">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-pencil-square-o" aria-hidden="true"></i></strong></span>
                                         </a>
@@ -52,5 +52,5 @@
     </div>
 </div>
 <app-description-event #description></app-description-event>
-
+<app-add-update-event #update></app-add-update-event>
 <app-delete-event #delete></app-delete-event>

@@ -17,6 +17,7 @@ export class ListEventsComponent implements OnInit {
   constructor(private eventService: EventService, private eventRequestService: EventRequestService) {
     this.getSearchPreference();
     this.deleteEventService();
+    this.getAddUpdateEvent();
   }
 
   ngOnInit() {
@@ -29,6 +30,14 @@ export class ListEventsComponent implements OnInit {
       this.eventName = search.eventName,
       this.preference = search.preference
     });
+  }
+
+  private getAddUpdateEvent() {
+    this.eventService.getAddUpdateEvent().subscribe((event: boolean) => {
+      if (event) {
+        this.reloadEventRows();
+      }
+    })
   }
 
   private reloadEventRows() {

@@ -27,7 +27,6 @@ export class EventRequestService {
   }
 
     public deleteEvent(id: number) {
-      console.log(id);
       return this.http.delete(`http://165.227.179.52:3000/events/${id.toString()}`).map((response: Response) => {
         return response.json();
       }).catch( (error: Response) => {

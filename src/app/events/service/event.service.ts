@@ -4,6 +4,7 @@ export class EventService {
   private searchEventPreference = new EventEmitter<{eventName: string, preference: number}>();
   private searchByInitiative = new EventEmitter<number>();
   private deleteEvent = new EventEmitter<number>();
+  private addUpdateEvent = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -18,4 +19,10 @@ export class EventService {
   public getDeleteEvent(): EventEmitter<number> {
     return this.deleteEvent;
   }
+
+  public getAddUpdateEvent(): EventEmitter<boolean> {
+    return this.addUpdateEvent;
+  }
+
+
 }
