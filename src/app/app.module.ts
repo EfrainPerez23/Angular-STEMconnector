@@ -49,6 +49,7 @@ import { InitiativeDeleteComponent } from './initiatives/list-initiatives/initia
 import { InitiativeAddUpdateComponent } from './initiatives/list-initiatives/initiative-add-update/initiative-add-update.component';
 import { ListEventsComponent } from './events/list-events/list-events.component';
 import { SearchEventComponent } from './events/search-event/search-event.component';
+import { DescriptionEventComponent } from './events/list-events/description-event/description-event.component';
 
 
 
@@ -86,7 +87,8 @@ import { SearchEventComponent } from './events/search-event/search-event.compone
     InitiativeDeleteComponent,
     InitiativeAddUpdateComponent,
     ListEventsComponent,
-    SearchEventComponent
+    SearchEventComponent,
+    DescriptionEventComponent
   ],
   imports: [
     BrowserModule,
