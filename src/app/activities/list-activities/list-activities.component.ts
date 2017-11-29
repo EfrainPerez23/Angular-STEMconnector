@@ -10,9 +10,9 @@ import { EventRequestService } from '../../shared/service/request/event-request.
   styleUrls: ['./list-activities.component.css']
 })
 export class ListActivitiesComponent implements OnInit {
-  private headerRow: string[] = ['Name', 'Start Time', 'End Time', 'Description'];
+  private headerRow: string[] = ['Name', 'Start Time', 'End Time', 'Location', 'Description'];
   public rows: Activity[];
-  public activityName = '';
+  private activityName = '';
   public preference = 0;
 
   constructor(private activityRequestService: ActivityRequestService, private activityService: ActivityService,
@@ -61,7 +61,7 @@ private getActivitiesFromEvent(id: number) {
         activitiesResponse.data.forEach(activity => {
           this.rows.push(new Activity(activity.idActivity, activity.Event_idEvent,
             activity.startTime, activity.endTime,
-            activity.name, activity.description));
+            activity.name, activity.description, activity.location));
         });
       }
     });
@@ -89,6 +89,14 @@ private getActivitiesFromEvent(id: number) {
     this.getActivityFromRequest();
   }
 
+  public getActivityName(): string {
+    return this.activityName;
+  }
+
+  public getPreference(): number {
+    return this.preference;
+  }
+
 
   public setActivitySelected (activitySelected: Activity, action: number) {
     this.activityService.getActivitySelected().emit({activity: activitySelected, action: action});
@@ -101,7 +109,7 @@ private getActivitiesFromEvent(id: number) {
           activitiesResponse.data.forEach(activity => {
             this.rows.push(new Activity(activity.idActivity, activity.Event_idEvent,
                           activity.startTime, activity.endTime,
-                          activity.name, activity.description));
+                          activity.name, activity.description, activity.location));
           });
         }
     });

@@ -14,12 +14,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let row of (getRows() | activityFilter:activityName:preference); let i=index">
+                            <tr *ngFor="let row of (getRows() | activityFilter:getActivityName():getPreference()); let i=index">
                                 <div *ngIf="!row; else emptyEvents"></div>
                                 <ng-template #emptyEvents>
                                     <td>{{row.getName()}}</td>
                                     <td>{{row.getStartTime() | dateFormat }}</td>
                                     <td>{{row.getEndTime() | dateFormat }}</td>
+                                    <td>{{row.getLocation()}}</td>
                                     <td>
                                         <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="description.descriptionModalActivity(row);">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>

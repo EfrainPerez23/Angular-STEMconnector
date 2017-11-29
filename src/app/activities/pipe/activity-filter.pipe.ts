@@ -35,6 +35,13 @@ export class ActivityFilterPipe implements PipeTransform {
           }
         }
         break;
+      case 3:
+        for (const activity of activities) {
+          if (activity.getLocation().toLowerCase().includes(filterString.toLowerCase())) {
+            activitiesFiltered.push(activity);
+          }
+        }
+        break;
       default :
       for (const activity of activities) {
         if (activity.getDescription().toString().toLowerCase().includes(filterString.toLowerCase())) {

@@ -5,15 +5,17 @@ export class Activity {
     private endTime: Date;
     private name: string;
     private description: string;
+    private location: string;
 
     constructor(idActivity: number, Event_idEvent: number, startTime: Date, endTime: Date,
-                name: string, description: string ) {
+                name: string, description: string, location: string ) {
         this.idActivity = idActivity;
         this.Event_idEvent = Event_idEvent;
         this.startTime = startTime;
         this.endTime = endTime;
         this.name = name;
         this.description = description;
+        this.location = location;
     }
 
     public getIdActivity(): number {
@@ -62,5 +64,14 @@ export class Activity {
 
     public setDescription(description: string) {
         this.description = description;
+    }
+
+
+    public getLocation(): string {
+        return this.location;
+    }
+
+    public setLocation(location: string) {
+        this.location = location;
     }
 }

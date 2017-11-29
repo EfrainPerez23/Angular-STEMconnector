@@ -49,7 +49,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group" class="form-group" [ngClass]="{'has-error': !Event_idEvent.valid && Event_idEvent.touched}">
-                                    <label>Active</label>
+                                    <label>Event</label>
                                     <select class="form-control" ngModel name="Event_idEvent" #Event_idEvent="ngModel" placeholder="Event..." required>
                                         <option *ngFor="let event of getEvents()"  [value]="event.getIdEvent()">{{event.getName()}}</option>
                                     </select>

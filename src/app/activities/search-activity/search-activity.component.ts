@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventModel } from 'app/event/model/event.model';
+import { EventModel } from 'app/events/model/event.model';
 import { EventRequestService } from '../../shared/service/request/event-request.service';
 import { ActivityService } from '../service/activity.service';
 
@@ -10,7 +10,7 @@ import { ActivityService } from '../service/activity.service';
 })
 export class SearchActivityComponent implements OnInit {
 
-  private preference: string[] = ['Name', 'Start Time', 'End Time', 'Description'];
+  private preference: string[] = ['Name', 'Start Time', 'End Time', 'Location', 'Description'];
   private filterPreference = 0;
   private events: EventModel[];
   private eventSelected: EventModel;

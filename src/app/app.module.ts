@@ -41,6 +41,8 @@ import { ActivityDescriptionComponent } from './activities/list-activities/activ
 import { ActivityDeleteComponent } from './activities/list-activities/activity-delete/activity-delete.component';
 import { ActivityAddUpdateComponent } from './activities/list-activities/activity-add-update/activity-add-update.component';
 import { ActivityFilterPipe } from './activities/pipe/activity-filter.pipe';
+import { ListInitiativesComponent } from './initiatives/list-initiatives/list-initiatives.component';
+import { SearchInitiativeComponent } from './initiatives/search-initiative/search-initiative.component';
 
 
 
@@ -71,6 +73,8 @@ import { ActivityFilterPipe } from './activities/pipe/activity-filter.pipe';
     ActivityDeleteComponent,
     ActivityAddUpdateComponent,
     ActivityFilterPipe,
+    ListInitiativesComponent,
+    SearchInitiativeComponent,
   ],
   imports: [
     BrowserModule,
