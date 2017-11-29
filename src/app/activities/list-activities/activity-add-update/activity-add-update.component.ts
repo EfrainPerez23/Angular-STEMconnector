@@ -2,10 +2,10 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UtilService } from '../../../shared/service/util.service';
 import { NgForm } from '@angular/forms';
-import { EventModel } from 'app/event/model/event.model';
 import { EventRequestService } from '../../../shared/service/request/event-request.service';
 import { ActivityRequestService } from '../../../shared/service/request/activity-request.service';
 import { ActivityService } from '../../service/activity.service';
+import { EventModel } from 'app/events/model/event.model';
 
 @Component({
   selector: 'app-activity-add-update',

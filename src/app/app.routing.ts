@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { InitiativeComponent } from './initiatives/initiatives.component';
+import { InitiativesComponent } from './initiatives/initiatives.component';
 import { SpeakersComponent } from './speakers/speakers.component';
 import { EventComponent } from './events/event.component';
 import { TypographyComponent } from './typography/typography.component';
@@ -18,7 +18,7 @@ export const AppRoutes: Routes = [
     },
     {
         path: 'initiatives',
-        component: InitiativeComponent
+        component: InitiativesComponent
     },
     {
         path: 'speakers',

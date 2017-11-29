@@ -1,3 +1,55 @@
-<p>
-  list-initiatives works!
-</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Initiatives</h4>
+                    <p class="category">List of Initiatives</p>
+                </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th *ngFor="let cell of getHeaderRow() ">{{ cell }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of
+                                    (getRows() | initiativesFilter:getInitiativeName():getPreference());let i=index">
+                                <div *ngIf="!row; else emptyInitiatives">
+                                </div>
+                                <ng-template #emptyInitiatives>
+                                    <td style="text-align: justify;">{{row.getName()}}</td>
+                                    <td>
+                                        <img [src]="row.getImageUrl()" width="300" height="200" (error)="row.setImageUrl('../../../assets/img/STEMconnector/STEMconnectorCompanyLogo.png')">
+                                    </td>
+                                    <td>
+                                        <a style="cursor: pointer;" class="btn btn-success a-btn-slide-text" (click)="description.descriptionModalActivity(row)">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                            <span><strong><i class="fa fa-address-card-o" aria-hidden="true"></i></strong></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="update.addUpdateInitiative(row.getIdInitiative())">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                            <span><strong><i class="fa fa-pencil-square-o" aria-hidden="true"></i></strong></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text" (click)="delete.deleteModalInitiative(row, i)">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                            <span><strong><i class="fa fa-trash-o" aria-hidden="true"></i></strong></span>
+                                        </a>
+                                    </td>
+                                </ng-template>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-initiative-description #description></app-initiative-description>
+<app-initiative-add-update #update></app-initiative-add-update>
+<app-initiative-delete #delete></app-initiative-delete>

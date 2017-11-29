@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 import { EventModel } from 'app/events/model/event.model';
 import { element } from 'protractor';
-import { InitiativeModel } from '../shared/model/initiative.model';
 import { EventRequestService } from '../shared/service/request/event-request.service';
 import { InitiativeRequestService } from '../shared/service/request/initiative-request.service';
 import { NgForm } from '@angular/forms';
 import { UtilService } from '../shared/service/util.service';
+import { InitiativeModel } from '../initiatives/model/initiative.model';
 import {
   NgbModal,
   ModalDismissReasons,

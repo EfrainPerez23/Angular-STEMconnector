@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { EventModel } from 'app/event/model/event.model';
+import { EventModel } from 'app/events/model/event.model';
+
 
 @Pipe({
   name: 'filter',
@@ -7,7 +8,7 @@ import { EventModel } from 'app/event/model/event.model';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: EventModel[], filterString: string, filterPreference: number): any {
+  transform(value: EventModel[], filterString: string, filterPreference: number): EventModel[] {
     if (value.length === 0 || filterString === '') {
       return value;
     }

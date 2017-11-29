@@ -10,7 +10,7 @@ import { NavbarModule} from './shared/navbar/navbar.module';
 import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import { NguiMapModule} from '@ngui/map';
 import { FormsModule } from '@angular/forms';
-import { InitiativeComponent } from './initiatives/initiatives.component';
+import { InitiativesComponent } from './initiatives/initiatives.component';
 import { SpeakersComponent } from './speakers/speakers.component';
 import { EventComponent } from './events/event.component';
 import { TypographyComponent } from './typography/typography.component';
@@ -20,7 +20,6 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { HttpModule } from '@angular/http';
 import { DateFormatPipe } from './events/pipe/date-format.pipe';
-import { FilterPipe } from './shared/pipe/filter.pipe';
 import { NgbModal, NgbModule, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
 import { InitiativeRequestService } from './shared/service/request/initiative-request.service';
@@ -43,6 +42,11 @@ import { ActivityAddUpdateComponent } from './activities/list-activities/activit
 import { ActivityFilterPipe } from './activities/pipe/activity-filter.pipe';
 import { ListInitiativesComponent } from './initiatives/list-initiatives/list-initiatives.component';
 import { SearchInitiativeComponent } from './initiatives/search-initiative/search-initiative.component';
+import { InitiativesFilterPipe } from './initiatives/pipe/initiatives-filter.pipe';
+import { FilterPipe } from './events/pipe/filter.pipe';
+import { InitiativeDescriptionComponent } from './initiatives/list-initiatives/initiative-description/initiative-description.component';
+import { InitiativeDeleteComponent } from './initiatives/list-initiatives/initiative-delete/initiative-delete.component';
+import { InitiativeAddUpdateComponent } from './initiatives/list-initiatives/initiative-add-update/initiative-add-update.component';
 
 
 
@@ -50,7 +54,7 @@ import { SearchInitiativeComponent } from './initiatives/search-initiative/searc
 @NgModule({
   declarations: [
     AppComponent,
-    InitiativeComponent,
+    InitiativesComponent,
     SpeakersComponent,
     EventComponent,
     TypographyComponent,
@@ -75,6 +79,10 @@ import { SearchInitiativeComponent } from './initiatives/search-initiative/searc
     ActivityFilterPipe,
     ListInitiativesComponent,
     SearchInitiativeComponent,
+    InitiativesFilterPipe,
+    InitiativeDescriptionComponent,
+    InitiativeDeleteComponent,
+    InitiativeAddUpdateComponent,
   ],
   imports: [
     BrowserModule,

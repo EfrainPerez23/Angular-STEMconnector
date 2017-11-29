@@ -1,6 +1,6 @@
 import { SpeakerService } from '../service/speaker.service';
-import { EventModel } from 'app/event/model/event.model';
 import { EventRequestService } from '../../shared/service/request/event-request.service';
+import { EventModel } from 'app/events/model/event.model';
 import {
   Component,
   OnInit,

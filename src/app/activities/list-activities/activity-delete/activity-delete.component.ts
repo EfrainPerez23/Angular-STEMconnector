@@ -26,7 +26,6 @@ export class ActivityDeleteComponent implements OnInit {
         this.deleteActivity(deleteActivity, activityIndex);
       }
     }, (error) => {
-      console.log('error');
     });
   }
 

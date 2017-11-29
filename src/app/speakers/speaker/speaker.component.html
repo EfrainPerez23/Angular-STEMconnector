@@ -1,11 +1,11 @@
 <div class="col-lg-3 col-md-5 animated fadelnLeft">
     <div class="card card-user">
         <div class="image">
-            <img src="assets/img/background.jpg" alt="..." />
+            <img [src]="'../../../assets/img/STEMconnector/cardImage.jpg'" alt="..." />
         </div>
         <div class="content">
             <div class="author">
-                <img class="avatar border-white" [src]="getSpeaker().getImageUrl()" alt="..." (error)="getSpeaker().setImageUrl('https://media.glassdoor.com/sqll/980953/stemconnector-squarelogo-1508535790698.png')" />
+                <img class="avatar border-white" [src]="getSpeaker().getImageUrl()" alt="..." (error)="getSpeaker().setImageUrl('../../../assets/img/STEMconnector/STEMconnectorLogo.png')" />
                 <h4 class="title">{{getSpeaker().getName()}}<br/>
                 </h4>
             </div>
