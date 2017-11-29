@@ -46,6 +46,7 @@ export class SearchEventComponent implements OnInit {
 
   public chooseInitiative(initiativeSelected: InitiativeModel) {
     this.initiativeSelected = initiativeSelected;
+    this.eventService.getSearchByInitiative().emit(this.initiativeSelected.getIdInitiative());
   }
 
   public getInitiativeSelected(): InitiativeModel {

@@ -20,6 +20,7 @@ export class ListEventsComponent implements OnInit {
 
   ngOnInit() {
     this.reloadEventRows();
+    this.getEventsByInitiative();
   }
 
   private getSearchPreference() {
@@ -32,6 +33,28 @@ export class ListEventsComponent implements OnInit {
   private reloadEventRows() {
     this.rows = [];
     this.getEventsFromRequest()
+  }
+
+  private getEventsByInitiative() {
+    this.eventService.getSearchByInitiative().subscribe((id: number) => {
+      if (id !== -1) {
+        this.rows = [];
+        this.eventRequestInitiative(id);
+      }else {
+        this.reloadEventRows();
+      }
+    });
+  }
+
+  private eventRequestInitiative(id: number) {
+    this.eventRequestService.getEventsFromInitiative(id).subscribe((events: any) => {
+      if (events.success) {
+        events.data.forEach(event => {
+          this.rows.push(new EventModel(event.idEvent, event.status, event.name, event.description, event.startDate,
+            event.endDate, event.location, event.email, event.Initiative_idInitiative));
+         });
+      }
+    });
   }
 
   public setActiveRowColor(event: EventModel): string {
