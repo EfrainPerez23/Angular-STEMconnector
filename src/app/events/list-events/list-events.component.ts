@@ -99,4 +99,12 @@ export class ListEventsComponent implements OnInit {
     return this.headerRow;
   }
 
+  public getEventName(): string {
+    return this.eventName;
+  }
+
+  public getPreference(): number {
+    return this.preference;
+  }
+
 }

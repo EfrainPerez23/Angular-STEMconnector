@@ -23,21 +23,14 @@ export class FilterPipe implements PipeTransform {
         }
           break;
       case 1:
-        for (const event of value) {
-          if (event.getDescription().toLowerCase().includes(filterString.toLowerCase())) {
-            resultArray.push(event);
-          }
+      for (const event of value) {
+        const stringDate = this.dateFormat(event.getStartDate().toString());
+        if (stringDate.toLowerCase().includes(filterString.toLowerCase())) {
+          resultArray.push(event);
         }
+      }
         break;
       case 2:
-        for (const event of value) {
-          const stringDate = this.dateFormat(event.getStartDate().toString());
-          if (stringDate.toLowerCase().includes(filterString.toLowerCase())) {
-            resultArray.push(event);
-          }
-        }
-        break;
-      case 3:
         for (const event of value) {
           const stringDate = this.dateFormat(event.getEndDate().toString());
           if (stringDate.toLowerCase().includes(filterString.toLowerCase())) {
@@ -45,18 +38,31 @@ export class FilterPipe implements PipeTransform {
           }
         }
         break;
-      case 4:
+      case 3:
         for (const event of value) {
           if (event.getLocation().toLowerCase().includes(filterString.toLowerCase())) {
             resultArray.push(event);
           }
         }
         break;
+      case 4:
+        for (const event of value) {
+          const status = event.getStatus()  ? 'yes' : 'no';
+          if (status.toLowerCase().includes(filterString.toLowerCase())) {
+            resultArray.push(event);
+          }
+        }
+        break;
+      case 5:
+        for (const event of value) {
+          if (event.getEmail().toLowerCase().includes(filterString.toLowerCase())) {
+            resultArray.push(event);
+          }
+        }
+        break;
       default:
       for (const event of value) {
-        const status = event.getStatus()  ? 'yes' : 'no';
-        console.log(status);
-        if (status.toLowerCase().includes(filterString.toLowerCase())) {
+        if (event.getDescription().toLowerCase().includes(filterString.toLowerCase())) {
           resultArray.push(event);
         }
       }

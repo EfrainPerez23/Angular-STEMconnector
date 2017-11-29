@@ -14,7 +14,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let row of (getRows());let i=index" [ngStyle]="{'background-color': setActiveRowColor(row)}">
+                            <tr *ngFor="let row of (getRows() | filter:getEventName():getPreference());let i=index" [ngStyle]="{'background-color': setActiveRowColor(row)}">
                                 <div *ngIf="!row; else emptyEvents"></div>
                                 <ng-template #emptyEvents>
                                     <td>{{row.getName()}}</td>
