@@ -7,6 +7,7 @@ import { InitiativeRequestService } from '../shared/service/request/initiative-r
 import { NgForm } from '@angular/forms';
 import { UtilService } from '../shared/service/util.service';
 import { InitiativeModel } from '../initiatives/model/initiative.model';
+import { EventService } from './service/event.service';
 import {
   NgbModal,
   ModalDismissReasons,
@@ -15,11 +16,12 @@ import {
 
 @Component({
     // tslint:disable-next-line:component-selector
-    selector: 'table-cmp',
+    selector: 'app-events',
     moduleId: module.id,
-    templateUrl: './event.component.html'
+    templateUrl: './events.component.html',
+    providers: [EventService]
 })
-export class EventComponent implements OnInit {
+export class EventsComponent implements OnInit {
     private headerRow: string[];
     private rows: EventModel[];
     public filteredStatus = '';

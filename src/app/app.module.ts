@@ -12,7 +12,7 @@ import { NguiMapModule} from '@ngui/map';
 import { FormsModule } from '@angular/forms';
 import { InitiativesComponent } from './initiatives/initiatives.component';
 import { SpeakersComponent } from './speakers/speakers.component';
-import { EventComponent } from './events/event.component';
+import { EventsComponent } from './events/events.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
@@ -47,6 +47,8 @@ import { FilterPipe } from './events/pipe/filter.pipe';
 import { InitiativeDescriptionComponent } from './initiatives/list-initiatives/initiative-description/initiative-description.component';
 import { InitiativeDeleteComponent } from './initiatives/list-initiatives/initiative-delete/initiative-delete.component';
 import { InitiativeAddUpdateComponent } from './initiatives/list-initiatives/initiative-add-update/initiative-add-update.component';
+import { ListEventsComponent } from './events/list-events/list-events.component';
+import { SearchEventComponent } from './events/search-event/search-event.component';
 
 
 
@@ -56,7 +58,7 @@ import { InitiativeAddUpdateComponent } from './initiatives/list-initiatives/ini
     AppComponent,
     InitiativesComponent,
     SpeakersComponent,
-    EventComponent,
+    EventsComponent,
     TypographyComponent,
     IconsComponent,
     MapsComponent,
@@ -83,6 +85,8 @@ import { InitiativeAddUpdateComponent } from './initiatives/list-initiatives/ini
     InitiativeDescriptionComponent,
     InitiativeDeleteComponent,
     InitiativeAddUpdateComponent,
+    ListEventsComponent,
+    SearchEventComponent
   ],
   imports: [
     BrowserModule,

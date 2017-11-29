@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 import { InitiativesComponent } from './initiatives/initiatives.component';
 import { SpeakersComponent } from './speakers/speakers.component';
-import { EventComponent } from './events/event.component';
+import { EventsComponent } from './events/events.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
@@ -30,7 +30,7 @@ export const AppRoutes: Routes = [
     },
     {
         path: 'events',
-        component: EventComponent
+        component: EventsComponent
     },
     {
         path: 'icons',
