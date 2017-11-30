@@ -6,9 +6,10 @@ export class Intern {
     private flagImage: string;
     private description: string;
     private rol: string;
+    private linkedIn: string
 
     constructor(idIntern: number, name: string, country: string, photo: string, flagImage: string,
-    description: string, rol: string) {
+    description: string, rol: string, linkedIn: string) {
         this.idIntern = idIntern;
         this.name = name;
         this.country = country;
@@ -16,6 +17,7 @@ export class Intern {
         this.flagImage = flagImage;
         this.description = description;
         this.rol = rol;
+        this.linkedIn = linkedIn;
     }
 
 
@@ -73,6 +75,14 @@ export class Intern {
 
     public setRol(rol: string) {
         this.rol = rol;
+    }
+
+    public getLinkedIn(): string {
+        return this.linkedIn;
+    }
+
+    public setLinkedIn(linkedIn: string) {
+        this.linkedIn = linkedIn;
     }
 
 }

@@ -27,6 +27,10 @@ export class InternComponent implements OnInit {
     this.index = index;
   }
 
+  public redirectTo() {
+    window.location.href = this.intern.getLinkedIn();
+  }
+
   public getIntern(): Intern {
     return this.intern;
   }

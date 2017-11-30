@@ -20,6 +20,7 @@ export class InternsComponent implements OnInit {
 
   ngOnInit() {
     this.reloadInterns();
+    this.getDeleteInternService();
   }
 
   private reloadInterns() {
@@ -28,10 +29,18 @@ export class InternsComponent implements OnInit {
       if (interns.success) {
         interns.data.forEach(intern => {
           this.interns.push(new Intern(intern.idIntern, intern.name, intern.country, intern.photo,
-          intern.flagImage, intern.description, intern.rol));
+          intern.flagImage, intern.description, intern.rol, intern.linkedIn));
         });
       }
     });
+  }
+
+  private getDeleteInternService() {
+    this.internService.getStatusDeleted().subscribe((index: number) => {
+      if (index) {
+        this.interns.splice(index, 1);
+      }
+    })
   }
 
   private getSearchPreferenceService() {

@@ -57,6 +57,8 @@ import { SearchInternComponent } from './interns/search-intern/search-intern.com
 import { InternComponent } from './interns/intern/intern.component';
 import { InternFilterPipe } from './interns/pipe/intern-filter.pipe';
 import { InternRequestService } from './shared/service/request/intern-request.service';
+import { InternDescriptionComponent } from './interns/intern/intern-description/intern-description.component';
+import { InternDeleteComponent } from './interns/intern/intern-delete/intern-delete.component';
 
 
 
@@ -101,7 +103,9 @@ import { InternRequestService } from './shared/service/request/intern-request.se
     InternsComponent,
     SearchInternComponent,
     InternComponent,
-    InternFilterPipe
+    InternFilterPipe,
+    InternDescriptionComponent,
+    InternDeleteComponent
   ],
   imports: [
     BrowserModule,
