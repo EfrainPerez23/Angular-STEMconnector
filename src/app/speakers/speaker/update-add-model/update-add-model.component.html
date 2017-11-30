@@ -48,6 +48,17 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !Event_idEvent.valid && Event_idEvent.touched}">
+                                    <label>Event</label>
+                                    <select class="form-control" ngModel name="Event_idEvent" #Event_idEvent="ngModel" placeholder="Event..." required>
+                                        <option *ngFor="let event of getEvents()"  [value]="event.getIdEvent()">{{event.getName()}}</option>
+                                    </select>
+                                    <span class="help-block" *ngIf="!Event_idEvent.valid && Event_idEvent.touched">Insert Event...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
                                 <div class="form-group" [ngClass]="{'has-error': !bio.valid && bio.touched}">
                                     <label>Bio</label>
                                     <textarea rows="4" id="bio" class="form-control border-input" ngModel name="bio" required #bio="ngModel" placeholder="Bio...">

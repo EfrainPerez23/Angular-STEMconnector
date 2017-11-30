@@ -4,6 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UtilService } from '../../../shared/service/util.service';
 import { SpeakerService } from '../../service/speaker.service';
 import { SpeakerRequestService } from '../../../shared/service/request/speaker-request.service';
+import { EventModel } from 'app/events/model/event.model';
+import { EventRequestService } from '../../../shared/service/request/event-request.service';
 
 @Component({
   selector: 'app-update-add-model',
@@ -16,9 +18,13 @@ export class UpdateAddModelComponent implements OnInit {
   private titleModal: string;
   private messageModal: string;
   private form: NgForm;
+  private events: EventModel[] = [];
+  private lastId: number;
+  private eventId: number;
 
   constructor(private modalAddUpdateService: NgbModal, private notifications: UtilService,
-              private addOrUpdateService: SpeakerRequestService, private addOrUpdate: SpeakerService) {
+              private addOrUpdateService: SpeakerRequestService, private addOrUpdate: SpeakerService,
+              private eventRequestService: EventRequestService) {
    }
 
   ngOnInit() {
@@ -29,11 +35,13 @@ export class UpdateAddModelComponent implements OnInit {
       this.titleModal = 'Update';
       this.messageModal = 'Updating Speaker';
     }
+    this.getEventsFromRequest();
   }
 
   public onSubmit(form: NgForm) {
     this.form = form;
     if (this.id === -1) {
+      this.eventId = this.form.value.speakerData.Event_idEvent;
       this.addSpeaker(this.form.value.speakerData);
     }else {
       this.updateSpeaker(this.form.value.speakerData);
@@ -67,7 +75,7 @@ export class UpdateAddModelComponent implements OnInit {
   private addSpeaker(speakerData: {name: string, title: string, bio: string, imageUrl: string}) {
     this.addOrUpdateService.createSpeaker(speakerData).subscribe((speakerCreated: any) => {
       if (speakerCreated.success) {
-        this.notifications.showNotification('success', 'You add a new Speaker!', 'Success!', 'ti-pencil-alt');
+        this.addEvent_has_Speaker();
         this.addOrUpdate.getStatusCreatedOrUpdated().emit(speakerCreated.success);
       }else {
         this.notifications.showNotification('danger', speakerCreated.message, 'Error!', 'ti-face-sad');
@@ -76,13 +84,56 @@ export class UpdateAddModelComponent implements OnInit {
   }
 
   private updateSpeaker(speakerData: {name: string, title: string, bio: string, imageUrl: string}) {
-    console.log(speakerData);
     this.addOrUpdateService.updateSpeaker(this.id, speakerData).subscribe((speakerCreated: any) => {
       if (speakerCreated.status) {
         this.notifications.showNotification('success', 'You Update an Speaker!', 'Success!', 'ti-pencil-alt');
         this.addOrUpdate.getStatusCreatedOrUpdated().emit(speakerCreated.status);
       }else {
         this.notifications.showNotification('danger', speakerCreated.message, 'Error!', 'ti-face-sad');
+      }
+    });
+  }
+
+  private addEvent_has_Speaker() {
+    this.getLastId();
+    console.log('Last id = ' + this.lastId);
+    this.addOrUpdateService.addEvent_has_Speaker({
+      Event_idEvent: this.eventId,
+      Speaker_idSpeaker: this.lastId
+    }).subscribe((response: any) => {
+      if (response.success) {
+        console.log('Lo metio');
+      }
+    });
+  }
+
+  private getLastId() {
+    this.addOrUpdateService.getLasIdInserted().subscribe(
+      (lastId: {success: number, status: number, message: string, data: {lastId: number}}) => {
+      if (lastId.success) {
+        this.addOrUpdateService.addEvent_has_Speaker({
+          Event_idEvent: this.eventId,
+          Speaker_idSpeaker: lastId.data['lastId']
+        }).subscribe((response: any) => {
+          if (response.success) {
+            this.notifications.showNotification('success', 'You add a new Speaker!', 'Success!', 'ti-pencil-alt');
+          }
+        });
+      }
+    });
+  }
+
+  public getEvents(): EventModel[] {
+    return this.events;
+  }
+
+  private getEventsFromRequest() {
+    this.eventRequestService.getEvents().subscribe((events: any) => {
+      if (events.success) {
+        events.data.forEach(event => {
+          this.events.push(new EventModel(event.idEvent, event.status, event.name, event.description,
+          event.startDate, event.endDate, event.location, event.email, event.Initative_idInitiative));
+        });
       }
     });
   }

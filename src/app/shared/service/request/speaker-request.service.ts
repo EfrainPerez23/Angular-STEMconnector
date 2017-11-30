@@ -44,4 +44,20 @@ public updateSpeaker(id: number, speakerToUpdate: {name: string, title: string, 
     }
   }
 
+  public getLasIdInserted() {
+    return this.http.get(`http://165.227.179.52:3000/speakers/lastId`).map((response: Response) => {
+      return response.json();
+    }).catch( (error: Response) => {
+      return Observable.throw('Something went wrong!');
+    });
+  }
+
+  public addEvent_has_Speaker(eventSpeakerIds: {Event_idEvent: number, Speaker_idSpeaker: number}) {
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.post(`http://165.227.179.52:3000/speakers/eventHasSpeaker`, eventSpeakerIds, {headers: headers})
+    .map((response: Response) => {
+      return response.json();
+    });
+  }
+
 }
