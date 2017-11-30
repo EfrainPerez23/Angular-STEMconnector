@@ -5,7 +5,7 @@ import { SpeakerService } from './service/speaker.service';
 import { EventRequestService } from '../shared/service/request/event-request.service';
 
 @Component({
-    selector: 'user-cmp',
+    selector: 'app-speakers',
     moduleId: module.id,
     templateUrl: 'speakers.component.html',
     styleUrls: [],

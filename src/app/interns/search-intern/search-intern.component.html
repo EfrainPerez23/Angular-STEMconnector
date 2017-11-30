@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="form-group">
+                <input type="text" value="" placeholder="Search" class="form-control" [(ngModel)]="setSearchIntern" (input)="valueChange()" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dropdown">
+                <a style="cursor: pointer;" class="btn dropdown-toggle" data-toggle="dropdown">
+                  {{getPreference()[getFilterPreference()]}}
+                <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let preference of getPreference(); let i = index">
+                        <a style="cursor: pointer;" (click)="setFilterPreference(i)">{{preference}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-5">
+            <a style="cursor: pointer;" class="btn btn-primary btn-success">
+                <span class="glyphicon glyphicon-plus"></span> Add Intern
+            </a>
+        </div>
+    </div>
+</div>
+<hr>

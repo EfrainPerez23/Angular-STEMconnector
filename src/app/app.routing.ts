@@ -9,6 +9,7 @@ import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { ActivitiesComponent } from './activities/activities.component';
+import { InternsComponent } from './interns/interns.component';
 
 export const AppRoutes: Routes = [
     {
@@ -47,5 +48,9 @@ export const AppRoutes: Routes = [
     {
         path: 'upgrade',
         component: UpgradeComponent
+    },
+    {
+        path: 'interns',
+        component: InternsComponent
     }
 ]

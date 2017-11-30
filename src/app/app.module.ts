@@ -52,6 +52,11 @@ import { SearchEventComponent } from './events/search-event/search-event.compone
 import { DescriptionEventComponent } from './events/list-events/description-event/description-event.component';
 import { DeleteEventComponent } from './events/list-events/delete-event/delete-event.component';
 import { AddUpdateEventComponent } from './events/list-events/add-update-event/add-update-event.component';
+import { InternsComponent } from './interns/interns.component';
+import { SearchInternComponent } from './interns/search-intern/search-intern.component';
+import { InternComponent } from './interns/intern/intern.component';
+import { InternFilterPipe } from './interns/pipe/intern-filter.pipe';
+import { InternRequestService } from './shared/service/request/intern-request.service';
 
 
 
@@ -92,7 +97,11 @@ import { AddUpdateEventComponent } from './events/list-events/add-update-event/a
     SearchEventComponent,
     DescriptionEventComponent,
     DeleteEventComponent,
-    AddUpdateEventComponent
+    AddUpdateEventComponent,
+    InternsComponent,
+    SearchInternComponent,
+    InternComponent,
+    InternFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -113,7 +122,8 @@ import { AddUpdateEventComponent } from './events/list-events/add-update-event/a
     NgbModal, NgbModalStack,
     InitiativeRequestService,
     SpeakerRequestService,
-    ActivityRequestService
+    ActivityRequestService,
+    InternRequestService
   ],
   bootstrap: [AppComponent]
 })

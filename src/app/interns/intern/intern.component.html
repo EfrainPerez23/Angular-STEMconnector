@@ -1,0 +1,30 @@
+<div class="col-lg-3 col-md-5 animated fadelnLeft">
+    <div class="card card-user">
+        <div class="image">
+            <img [src]="getIntern().getFlagImage()" (error)="getIntern().setFlagImage('../../../assets/img/STEMconnector/cardImage.jpg')" alt="..." />
+        </div>
+        <div class="content">
+            <div class="author">
+                <img class="avatar border-white" [src]="getIntern().getPhoto()" alt="..." (error)="getIntern().setPhoto('../../../assets/img/STEMconnector/Interns/EfrainPerez.jpg')" />
+                <h4 class="title">{{getIntern().getName()}}</h4><br/>
+            </div>
+            <p class="description text-center">
+                {{getIntern().getRol()}}
+            </p>
+        </div>
+        <hr>
+        <div class="text-center">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-1">
+                    <button class="btn btn-sm btn-default btn-icon" style="margin-bottom: 10px;"><i class="fa fa-address-card-o"></i></button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-sm btn-primary btn-icon" style="margin-bottom: 10px;"><i class="fa fa-pencil-square-o"></i></button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-sm btn-danger btn-icon" style="margin-bottom: 10px;"><i class="fa fa-trash-o" ></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
