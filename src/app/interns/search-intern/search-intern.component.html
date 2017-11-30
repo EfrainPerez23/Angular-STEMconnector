@@ -22,10 +22,12 @@
     <hr>
     <div class="row">
         <div class="col-md-5">
-            <a style="cursor: pointer;" class="btn btn-primary btn-success">
+            <a style="cursor: pointer;" class="btn btn-primary btn-success" (click)="add.updateModalIntern(null)">
                 <span class="glyphicon glyphicon-plus"></span> Add Intern
             </a>
         </div>
     </div>
 </div>
 <hr>
+
+<app-intern-add-update #add [add]="true"></app-intern-add-update>

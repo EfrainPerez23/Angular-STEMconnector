@@ -10,7 +10,7 @@ export class SearchInternComponent implements OnInit {
 
   private searchIntern = '';
   private filterPreference = 0;
-  private preference: string[] = ['Name', 'Country', 'Description'];
+  private preference: string[] = ['Name', 'Country', 'Description', 'Rol'];
 
   constructor(private internService: InternService) { }
 

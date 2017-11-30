@@ -20,7 +20,7 @@
                     <button class="btn btn-sm btn-default btn-icon" (click)="description.descriptionInternModal(getIntern())" style="margin-bottom: 10px;"><i class="fa fa-address-card-o"></i></button>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-sm btn-primary btn-icon" style="margin-bottom: 10px;"><i class="fa fa-pencil-square-o"></i></button>
+                    <button class="btn btn-sm btn-primary btn-icon" (click)="update.updateModalIntern(getIntern())" style="margin-bottom: 10px;"><i class="fa fa-pencil-square-o"></i></button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-sm btn-danger btn-icon" (click)="delete.deleteModalIntern(getIntern(), getIndex())" style="margin-bottom: 10px;"><i class="fa fa-trash-o" ></i></button>
@@ -30,4 +30,5 @@
     </div>
 </div>
 <app-intern-description #description></app-intern-description>
+<app-intern-add-update #update [add]="false"></app-intern-add-update>
 <app-intern-delete #delete></app-intern-delete>

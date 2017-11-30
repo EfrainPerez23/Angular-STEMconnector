@@ -1,2 +1,3 @@
 <app-search-intern></app-search-intern>
-<app-intern *ngFor="let intern of getInterns();let i = index" [internElement]="intern" [indexIntern]="i"></app-intern>
+<app-intern *ngFor="let intern of (getInterns() | internFilter:getSearchIntern():getFilterPreference());
+let i = index" [internElement]="intern" [indexIntern]="i"></app-intern>

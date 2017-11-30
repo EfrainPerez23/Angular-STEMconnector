@@ -16,16 +16,17 @@ export class InternsComponent implements OnInit {
 
   constructor(private internRequestService: InternRequestService, private internService: InternService) {
     this.getSearchPreferenceService();
+    this.getDeleteInternService();
+    this.getAddOrUpdateService();
   }
 
   ngOnInit() {
     this.reloadInterns();
-    this.getDeleteInternService();
   }
 
   private reloadInterns() {
     this.interns = [];
-    this.internRequestService.getSpeakers().subscribe((interns: any) => {
+    this.internRequestService.getInterns().subscribe((interns: any) => {
       if (interns.success) {
         interns.data.forEach(intern => {
           this.interns.push(new Intern(intern.idIntern, intern.name, intern.country, intern.photo,
@@ -33,6 +34,14 @@ export class InternsComponent implements OnInit {
         });
       }
     });
+  }
+
+  private getAddOrUpdateService() {
+    this.internService.getStatusCreatedOrUpdate().subscribe((intern: boolean) => {
+      if (intern) {
+        this.reloadInterns();
+      }
+    })
   }
 
   private getDeleteInternService() {

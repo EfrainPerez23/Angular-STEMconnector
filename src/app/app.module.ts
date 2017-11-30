@@ -59,6 +59,7 @@ import { InternFilterPipe } from './interns/pipe/intern-filter.pipe';
 import { InternRequestService } from './shared/service/request/intern-request.service';
 import { InternDescriptionComponent } from './interns/intern/intern-description/intern-description.component';
 import { InternDeleteComponent } from './interns/intern/intern-delete/intern-delete.component';
+import { InternAddUpdateComponent } from './interns/intern/intern-add-update/intern-add-update.component';
 
 
 
@@ -105,7 +106,8 @@ import { InternDeleteComponent } from './interns/intern/intern-delete/intern-del
     InternComponent,
     InternFilterPipe,
     InternDescriptionComponent,
-    InternDeleteComponent
+    InternDeleteComponent,
+    InternAddUpdateComponent
   ],
   imports: [
     BrowserModule,
