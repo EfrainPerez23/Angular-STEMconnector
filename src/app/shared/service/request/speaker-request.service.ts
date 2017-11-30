@@ -60,4 +60,12 @@ public updateSpeaker(id: number, speakerToUpdate: {name: string, title: string, 
     });
   }
 
+  public deleteEvent_has_Speaker(id: number) {
+    return this.http.delete(`http://165.227.179.52:3000/speakers/eventHasSpeaker/${id.toString()}`).map((response: Response) => {
+      return response.json();
+    }).catch( (error: Response) => {
+      return Observable.throw('Something went wrong!');
+    });
+}
+
 }

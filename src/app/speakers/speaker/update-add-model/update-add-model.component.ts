@@ -94,27 +94,13 @@ export class UpdateAddModelComponent implements OnInit {
     });
   }
 
-  private addEvent_has_Speaker() {
-    this.getLastId();
-    console.log('Last id = ' + this.lastId);
-    this.addOrUpdateService.addEvent_has_Speaker({
-      Event_idEvent: this.eventId,
-      Speaker_idSpeaker: this.lastId
-    }).subscribe((response: any) => {
-      if (response.success) {
-        console.log('Lo metio');
-      }
-    });
-  }
 
-  private getLastId() {
-    this.addOrUpdateService.getLasIdInserted().subscribe(
-      (lastId: {success: number, status: number, message: string, data: {lastId: number}}) => {
+  private addEvent_has_Speaker() {
+    this.addOrUpdateService.getLasIdInserted()
+    .subscribe((lastId: {success: number, status: number, message: string, data: {lastId: number}}) => {
       if (lastId.success) {
-        this.addOrUpdateService.addEvent_has_Speaker({
-          Event_idEvent: this.eventId,
-          Speaker_idSpeaker: lastId.data['lastId']
-        }).subscribe((response: any) => {
+        this.addOrUpdateService.addEvent_has_Speaker({Event_idEvent: this.eventId, Speaker_idSpeaker: lastId.data['lastId']})
+        .subscribe((response: any) => {
           if (response.success) {
             this.notifications.showNotification('success', 'You add a new Speaker!', 'Success!', 'ti-pencil-alt');
           }

@@ -58,30 +58,41 @@ export class DeleteModalComponent implements OnInit {
           id: this.speakerToDeleteIndex,
           status: deleteSpeaker
         });
-      }else {
-        this.statusDeleted.getStatusDeleted().emit({
-          id: this.speakerToDeleteIndex,
-          status: deleteSpeaker
-        });
       }
     }, (error) => {
-      this.statusDeleted.getStatusDeleted().emit({
-        id: this.speakerToDeleteIndex,
-        status: false
-      });
     });
 
   }
 
   private deleteSpeaker() {
-    this.speakerService.deleteSpeaker(this.speakerToDelete).subscribe((speakerDelete: any) => {
-      if (speakerDelete.success) {
-        this.notifications.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
-      }else {
-          this.notifications.showNotification('danger', speakerDelete.message, 'Error!', 'ti-face-sad');
+    this.speakerService.deleteEvent_has_Speaker(this.speakerToDelete).subscribe((response: any) => {
+      if (response.success) {
+        this.speakerService.deleteSpeaker(this.speakerToDelete).subscribe((speakerDelete: any) => {
+          if (speakerDelete.success) {
+            this.notifications.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
+          }else {
+              this.notifications.showNotification('danger', speakerDelete.message, 'Error!', 'ti-face-sad');
+          }
+        });
       }
     });
   }
+
+  private deleteEvent_has_Speaker() {
+    this.speakerService.deleteEvent_has_Speaker(this.speakerToDelete).subscribe((response: any) => {
+      if (response.success) {
+        this.speakerService.deleteSpeaker(this.speakerToDelete).subscribe((speakerDelete: any) => {
+          if (speakerDelete.success) {
+            this.notifications.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
+          }else {
+              this.notifications.showNotification('danger', speakerDelete.message, 'Error!', 'ti-face-sad');
+          }
+        });
+      }
+    });
+  }
+
+
 
 
 
