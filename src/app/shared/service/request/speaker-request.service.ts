@@ -66,6 +66,15 @@ public updateSpeaker(id: number, speakerToUpdate: {name: string, title: string, 
     }).catch( (error: Response) => {
       return Observable.throw('Something went wrong!');
     });
-}
+  }
+
+  public getEventsSpeaker(id: number) {
+    return this.http.get(`http://165.227.179.52:3000/speakers/eventsSpeaker/${id.toString()}`)
+    .map( (response: Response) => {
+        return response.json();
+    }).catch( (error: Response) => {
+      return Observable.throw(JSON.parse(error['_body']));
+    });
+  }
 
 }

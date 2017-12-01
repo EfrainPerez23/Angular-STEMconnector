@@ -60,6 +60,8 @@ import { InternRequestService } from './shared/service/request/intern-request.se
 import { InternDescriptionComponent } from './interns/intern/intern-description/intern-description.component';
 import { InternDeleteComponent } from './interns/intern/intern-delete/intern-delete.component';
 import { InternAddUpdateComponent } from './interns/intern/intern-add-update/intern-add-update.component';
+import { AddDeleteEventsComponent } from './speakers/speaker/add-delete-events/add-delete-events.component';
+import { EventsFilterPipe } from './speakers/pipe/events-filter.pipe';
 
 
 
@@ -107,7 +109,9 @@ import { InternAddUpdateComponent } from './interns/intern/intern-add-update/int
     InternFilterPipe,
     InternDescriptionComponent,
     InternDeleteComponent,
-    InternAddUpdateComponent
+    InternAddUpdateComponent,
+    AddDeleteEventsComponent,
+    EventsFilterPipe
   ],
   imports: [
     BrowserModule,
