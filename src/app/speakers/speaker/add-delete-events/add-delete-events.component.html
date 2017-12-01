@@ -21,7 +21,7 @@
                                 <label>Event</label>
                                 <select class="form-control" ngModel name="event" #event="ngModel" placeholder="Event..." required>
                                     <option *ngFor="let event of (getEvents() | eventsFilter:getEventsSpeaker()); let i = index" 
-                                    (click)="spliceEvent(i)" [value]="event.getIdEvent()">{{event.getName()}}</option>
+                                    (click)="spliceEvent(i, event)" [value]="event.getIdEvent()">{{event.getName()}}</option>
                                     </select>
                                 <span class="help-block" *ngIf="!event.valid && event.touched">Insert Event...</span>
                             </div>

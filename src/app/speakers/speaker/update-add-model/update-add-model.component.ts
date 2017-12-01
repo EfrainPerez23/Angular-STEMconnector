@@ -118,7 +118,7 @@ export class UpdateAddModelComponent implements OnInit {
       if (events.success) {
         events.data.forEach(event => {
           this.events.push(new EventModel(event.idEvent, event.status, event.name, event.description,
-          event.startDate, event.endDate, event.location, event.email, event.Initative_idInitiative));
+          event.startDate, event.endDate, event.location, event.email, event.Initative_idInitiative, event.imageUrl));
         });
       }
     });

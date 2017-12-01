@@ -63,7 +63,6 @@ export class AddDeleteEventsComponent implements OnInit {
 
   public spliceEvent(index: number) {
     this.index = index;
-    this.form.reset();
   }
 
   public getSpeaker(): Speaker {
@@ -113,7 +112,7 @@ export class AddDeleteEventsComponent implements OnInit {
       if (eventsResponse.success) {
         eventsResponse.data.forEach(event => {
           this.events.push(new EventModel(event.idEvent, event.status, event.name, event.description,
-          event.startDate, event.endDate, event.location, event.email, event.Initiative_idInitiative ));
+          event.startDate, event.endDate, event.location, event.email, event.Initiative_idInitiative, event.imageUrl ));
         });
       }
     });
@@ -128,7 +127,7 @@ export class AddDeleteEventsComponent implements OnInit {
       if (eventsSpeaker.success) {
         eventsSpeaker.data.forEach(event => {
           this.eventsSpeaker.push(new EventModel(event.idEvent, event.status, event.name, event.description,
-          event.startDate, event.endDate, event.location, event.email, event.Initiative_idInitiative ));
+          event.startDate, event.endDate, event.location, event.email, event.Initiative_idInitiative, event.imageUrl  ));
         });
       }
     });

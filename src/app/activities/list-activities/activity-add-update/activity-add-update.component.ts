@@ -54,7 +54,7 @@ export class ActivityAddUpdateComponent implements OnInit {
       if (eventsResponse.status) {
         eventsResponse.data.forEach(event => {
           this.events.push(new EventModel(event.idEvent, event.status, event.name, event.description, event.startDate,
-                          event.endDate, event.location, event.email, event.Initiative_idInitiative));
+                          event.endDate, event.location, event.email, event.Initiative_idInitiative, event.imageUrl));
         });
       }
     });
