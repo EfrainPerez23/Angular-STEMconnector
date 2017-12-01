@@ -7,7 +7,14 @@ import { EventModel } from '../../events/model/event.model';
 export class EventsFilterPipe implements PipeTransform {
 
   transform(events: EventModel[], eventSpeaker: EventModel[]): EventModel[] {
-    console.log(events);
+    if (events.length === 0 ) {
+      return events;
+    }
+
+    if (events.length === eventSpeaker.length) {
+      return [];
+    }
+
     const eventFiltered: EventModel[] = [];
     events.forEach((event: EventModel) => {
       eventSpeaker.forEach((element: EventModel) => {

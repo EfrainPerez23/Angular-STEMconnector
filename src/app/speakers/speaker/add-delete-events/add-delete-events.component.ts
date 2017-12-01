@@ -35,8 +35,7 @@ export class AddDeleteEventsComponent implements OnInit {
 
   public onSubmit(form: NgForm) {
     this.form = form;
-    console.log(this.form.value);
-
+    this.addEvent_has_Speaker(this.form.value.speakerEventData.event);
   }
 
   @ViewChild('addUpdateEventInSpeaker')
@@ -61,8 +60,10 @@ export class AddDeleteEventsComponent implements OnInit {
   }
 
   private addEvent_has_Speaker(idEvent: number) {
+    console.log(idEvent);
     this.addDeleteService.getLasIdInserted()
     .subscribe((lastId: {success: number, status: number, message: string, data: {lastId: number}}) => {
+      console.log(lastId);
       if (lastId.success) {
         this.addDeleteService.addEvent_has_Speaker({
           Event_idEvent: idEvent,
