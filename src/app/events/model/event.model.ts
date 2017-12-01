@@ -8,11 +8,13 @@ export class EventModel {
     private email: string;
     private idEvent: number;
     private Initiative_idInitiative: number;
+    private imageUrl: string;
 
 
 	// tslint:disable-next-line:indent
     constructor(idEvent: number, status: boolean, name: string, description: string,
-         startDate: Date, endDate: Date, location: string, email: string, Initiative_idInitiative: number ) {
+         startDate: Date, endDate: Date, location: string, email: string, Initiative_idInitiative: number,
+        imageUrl: string ) {
             this.idEvent = idEvent;
     		// tslint:disable-next-line:indent
     		this.status = status;
@@ -27,6 +29,7 @@ export class EventModel {
     		// tslint:disable-next-line:indent
             this.email = email;
             this.Initiative_idInitiative = Initiative_idInitiative;
+            this.imageUrl = imageUrl
     }
 
     public getIdEvent(): number {
@@ -90,5 +93,13 @@ export class EventModel {
 
     public getEmail(): string {
         return this.email;
+    }
+
+    public getImageUrl(): string {
+        return this.imageUrl
+    }
+
+    public setImageUrl(imageUrl: string) {
+        this.imageUrl = imageUrl;
     }
 }

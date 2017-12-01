@@ -39,12 +39,12 @@ export class SearchSpeakerComponent implements OnInit {
   }
 
   private loadEvents() {
-    this.events = [new EventModel(-1, null, 'All Events', '', null, null, '', '' , null)];
+    this.events = [new EventModel(-1, null, 'All Events', '', null, null, '', '' , null, '')];
     this.eventService.getEvents().subscribe((eventsResponse: any) => {
       if (eventsResponse.status) {
         eventsResponse.data.forEach(event => {
           this.events.push(new EventModel(event.idEvent, event.status, event.name, event.description, event.startDate,
-                          event.endDate, event.location, event.email, event.Initiative_idInitiative));
+                          event.endDate, event.location, event.email, event.Initiative_idInitiative, event.imageUrl));
         });
       }
     });

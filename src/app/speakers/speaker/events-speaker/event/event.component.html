@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="content">
+        <ul class="list-unstyled team-members">
+            <li>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="avatar">
+                            <img [src]="getEvent().getImageUrl()" class="img-circle img-no-padding img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        {{getEvent().getName()}}
+                        <br/>
+                        <span *ngIf="getEvent().getStatus(); else noActive" class="text-success"><small>Avalaible</small></span>
+                        <ng-template #noActive>
+                            <span class="text-danger"><small>No Avalaible</small></span>
+                        </ng-template>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

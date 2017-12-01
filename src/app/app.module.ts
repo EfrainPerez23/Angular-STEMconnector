@@ -62,6 +62,8 @@ import { InternDeleteComponent } from './interns/intern/intern-delete/intern-del
 import { InternAddUpdateComponent } from './interns/intern/intern-add-update/intern-add-update.component';
 import { AddDeleteEventsComponent } from './speakers/speaker/add-delete-events/add-delete-events.component';
 import { EventsFilterPipe } from './speakers/pipe/events-filter.pipe';
+import { EventsSpeakerComponent } from './speakers/speaker/events-speaker/events-speaker.component';
+import { EventComponent } from './speakers/speaker/events-speaker/event/event.component';
 
 
 
@@ -111,7 +113,9 @@ import { EventsFilterPipe } from './speakers/pipe/events-filter.pipe';
     InternDeleteComponent,
     InternAddUpdateComponent,
     AddDeleteEventsComponent,
-    EventsFilterPipe
+    EventsFilterPipe,
+    EventsSpeakerComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,

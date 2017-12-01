@@ -61,7 +61,7 @@ export class ListEventsComponent implements OnInit {
       if (events.success) {
         events.data.forEach(event => {
           this.rows.push(new EventModel(event.idEvent, event.status, event.name, event.description, event.startDate,
-            event.endDate, event.location, event.email, event.Initiative_idInitiative));
+            event.endDate, event.location, event.email, event.Initiative_idInitiative, event.imageUrl));
          });
       }
     });
@@ -85,7 +85,7 @@ export class ListEventsComponent implements OnInit {
       if (events.success) {
         events.data.forEach(event => {
           this.rows.push(new EventModel(event.idEvent, event.status, event.name, event.description, event.startDate,
-            event.endDate, event.location, event.email, event.Initiative_idInitiative));
+            event.endDate, event.location, event.email, event.Initiative_idInitiative, event.imageUrl));
          });
       }
     });

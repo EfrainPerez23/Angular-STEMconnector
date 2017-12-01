@@ -33,7 +33,7 @@
                     </button>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-sm btn-info btn-icon" style="margin-bottom: 10px;" (click)="addUpdateSpeaker.updateModalSpeaker()">
+                    <button class="btn btn-sm btn-info btn-icon" style="margin-bottom: 10px;" (click)="eventsSpeaker.eventsSpeakerModal()">
                         <i class="fa fa-users"></i>
                     </button>
                 </div>
@@ -52,3 +52,4 @@
 <app-bio-modal #bioSpeaker [bio]="getSpeaker().getBio()"></app-bio-modal>
 <app-update-add-model #addUpdateSpeaker [idSpeaker]="getSpeaker().getIdSpeaker()"></app-update-add-model>
 <app-add-delete-events #addOrDeleteEvents [speakerData]="getSpeaker()"></app-add-delete-events>
+<app-events-speaker #eventsSpeaker [speakerSelected]="getSpeaker()"></app-events-speaker>
