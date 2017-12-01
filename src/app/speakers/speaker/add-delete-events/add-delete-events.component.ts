@@ -8,6 +8,7 @@ import { SpeakerService } from '../../service/speaker.service';
 import { UtilService } from '../../../shared/service/util.service';
 import { element } from 'protractor';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EventsFilterPipe } from '../../pipe/events-filter.pipe';
 
 @Component({
   selector: 'app-add-delete-events',
@@ -22,6 +23,7 @@ export class AddDeleteEventsComponent implements OnInit {
   private speaker: Speaker;
   private form: NgForm;
   private addUpdateEventInSpeaker: ElementRef;
+  private index: number;
 
   constructor(private eventRequestService: EventRequestService,
               private speakerRequestService: SpeakerRequestService, private addDeleteService: SpeakerRequestService,
@@ -59,6 +61,15 @@ export class AddDeleteEventsComponent implements OnInit {
     this.speaker = speaker;
   }
 
+  public spliceEvent(index: number) {
+    this.index = index;
+    this.form.reset();
+  }
+
+  public getSpeaker(): Speaker {
+    return this.speaker;
+  }
+
   private addEvent_has_Speaker(idEvent: number) {
     console.log(idEvent);
     this.addDeleteService.getLasIdInserted()
@@ -72,10 +83,19 @@ export class AddDeleteEventsComponent implements OnInit {
         .subscribe((response: any) => {
           if (response.success) {
             this.util.showNotification('success', `You add a new Event in ${this.speaker.getName()}` , 'Success!', 'ti-pencil-alt');
+            this.events.splice(this.index, 1);
           }
         });
       }
     });
+  }
+
+  public callPipeFilter(): boolean {
+    const event: EventsFilterPipe = new EventsFilterPipe();
+    if (event.transform(this.events, this.eventsSpeaker).length === 0) {
+      return true;
+    }
+    return false
   }
 
   public getEventToSelect(): EventModel[] {

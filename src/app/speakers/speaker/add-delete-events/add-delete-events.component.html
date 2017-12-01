@@ -12,15 +12,16 @@
         </div>
     </div>
     <div class="modal-body">
-        <div class="content">
-            <form (ngSubmit)="onSubmit(f, d(false))" #f="ngForm">
+        <div class="content" *ngIf="!callPipeFilter(); else message">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
                 <div id="speakerEventData" ngModelGroup="speakerEventData" #speakerEventData="ngModelGroup">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group" class="form-group" [ngClass]="{'has-error': !event.valid && event.touched}">
                                 <label>Event</label>
                                 <select class="form-control" ngModel name="event" #event="ngModel" placeholder="Event..." required>
-                                        <option *ngFor="let event of getEvents() | eventsFilter:getEventsSpeaker()"  [value]="event.getIdEvent()">{{event.getName()}}</option>
+                                    <option *ngFor="let event of (getEvents() | eventsFilter:getEventsSpeaker()); let i = index" 
+                                    (click)="spliceEvent(i)" [value]="event.getIdEvent()">{{event.getName()}}</option>
                                     </select>
                                 <span class="help-block" *ngIf="!event.valid && event.touched">Insert Event...</span>
                             </div>
@@ -34,6 +35,13 @@
             </form>
         </div>
     </div>
+    <ng-template #message>
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 style="text-align: center;">The Speaker is participating in all events! <i class="fa fa-hand-peace-o" aria-hidden="true"></i> </h4>
+            </div>
+        </div>
+    </ng-template>
     <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="c(false)">Close</button>
     </div>
