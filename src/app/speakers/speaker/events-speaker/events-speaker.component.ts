@@ -3,6 +3,7 @@ import { Speaker } from '../../model/speaker.model';
 import { EventModel } from '../../../events/model/event.model';
 import { SpeakerRequestService } from '../../../shared/service/request/speaker-request.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SpeakerService } from '../../service/speaker.service';
 
 @Component({
   selector: 'app-events-speaker',
@@ -14,10 +15,12 @@ export class EventsSpeakerComponent implements OnInit {
   private eventsSpeaker: EventModel[] = [];
   private eventsModal: ElementRef;
 
-  constructor(private speakerRequestService: SpeakerRequestService, private modalService: NgbModal) { }
+  constructor(private speakerRequestService: SpeakerRequestService, private modalService: NgbModal,
+  private speakerService: SpeakerService) { }
 
   ngOnInit() {
     this.setEventsSpeaker();
+    this.addEventSelected();
   }
 
   public getEventsSpeaker(): EventModel[] {
@@ -27,6 +30,12 @@ export class EventsSpeakerComponent implements OnInit {
   @ViewChild('eventsSpeakerModal')
   public set setEventsModal(eventsModal: ElementRef) {
     this.eventsModal = eventsModal;
+  }
+
+  private addEventSelected() {
+    this.speakerService.getEventAddedToSpeaker().subscribe((event: EventModel) => {
+      this.eventsSpeaker.push(event);
+    })
   }
 
   @Input('speakerSelected')

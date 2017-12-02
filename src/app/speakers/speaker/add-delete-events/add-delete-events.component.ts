@@ -9,6 +9,7 @@ import { UtilService } from '../../../shared/service/util.service';
 import { element } from 'protractor';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventsFilterPipe } from '../../pipe/events-filter.pipe';
+import { EventService } from '../../../events/service/event.service';
 
 @Component({
   selector: 'app-add-delete-events',
@@ -27,7 +28,7 @@ export class AddDeleteEventsComponent implements OnInit {
 
   constructor(private eventRequestService: EventRequestService,
               private speakerRequestService: SpeakerRequestService, private addDeleteService: SpeakerRequestService,
-              private util: UtilService, private addDeleteEvents: NgbModal) { }
+              private util: UtilService, private addDeleteEvents: NgbModal, private speakerService: SpeakerService) { }
 
   ngOnInit() {
     this.loadEvents();
@@ -37,7 +38,11 @@ export class AddDeleteEventsComponent implements OnInit {
 
   public onSubmit(form: NgForm) {
     this.form = form;
-    this.addEvent_has_Speaker(this.form.value.speakerEventData.event);
+    console.log('cac' + this.form.value.speakerEventData.event);
+    console.log(this.events)
+    console.log(this.eventsSpeaker);
+    this.sendEventAddedToEventsModal(this.form.value.speakerEventData.event);
+    // this.addEvent_has_Speaker(this.form.value.speakerEventData.event.getIdEvent());
   }
 
   @ViewChild('addUpdateEventInSpeaker')
@@ -61,8 +66,8 @@ export class AddDeleteEventsComponent implements OnInit {
     this.speaker = speaker;
   }
 
-  public spliceEvent(index: number) {
-    this.index = index;
+  public spliceEvent(index) {
+    console.log(index);
   }
 
   public getSpeaker(): Speaker {
@@ -85,6 +90,14 @@ export class AddDeleteEventsComponent implements OnInit {
             this.events.splice(this.index, 1);
           }
         });
+      }
+    });
+  }
+
+  private sendEventAddedToEventsModal(idEvent: number) {
+    this.events.forEach((event: EventModel) => {
+      if (event.getIdEvent().toString() === idEvent.toString()) {
+        this.speakerService.getEventAddedToSpeaker().emit(event);
       }
     });
   }
