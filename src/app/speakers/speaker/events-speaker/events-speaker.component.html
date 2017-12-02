@@ -11,9 +11,17 @@
             </div>
         </div>
     </div>
-    <div class="modal-body" style="text-align: justify;">
-        <app-event *ngFor="let event of getEventsSpeaker()" [eventElement]="event"></app-event>
+    <div *ngIf="getEventsSpeaker().length !== 0; else noEvents">
+        <div class="modal-body" style="text-align: justify;">
+            <app-event *ngFor="let event of getEventsSpeaker()" [eventElement]="event"></app-event>
+        </div>
     </div>
+    <ng-template #noEvents>
+        <div class="modal-body noEvents" style="text-align: center;">
+            <h3>Yo have to add events to the speaker <i class="fa fa-thumbs-o-down" aria-hidden="true"></i></h3>
+        </div>
+    </ng-template>
+
     <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="c(false)">Close</button>
     </div>

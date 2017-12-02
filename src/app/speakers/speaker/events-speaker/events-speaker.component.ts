@@ -16,7 +16,7 @@ export class EventsSpeakerComponent implements OnInit {
   private eventsModal: ElementRef;
 
   constructor(private speakerRequestService: SpeakerRequestService, private modalService: NgbModal,
-  private speakerService: SpeakerService) { 
+  private speakerService: SpeakerService) {
     this.deleteEventSpeakerSelected();
   }
 
