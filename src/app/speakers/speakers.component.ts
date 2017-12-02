@@ -27,7 +27,6 @@ export class SpeakersComponent implements OnInit {
     }
     ngOnInit() {
         this.reloadSpeakers();
-        this.createdOrUpdateSpeaker();
     }
 
     private deleteSpeaker() {

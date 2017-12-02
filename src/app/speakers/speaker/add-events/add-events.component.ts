@@ -12,7 +12,7 @@ import { EventsFilterPipe } from '../../pipe/events-filter.pipe';
 import { EventService } from '../../../events/service/event.service';
 
 @Component({
-  selector: 'app-add-delete-events',
+  selector: 'app-add-events',
   templateUrl: './add-events.component.html',
   styleUrls: ['./add-events.component.css']
 })
@@ -28,9 +28,12 @@ export class AddEventsComponent implements OnInit {
 
   constructor(private eventRequestService: EventRequestService,
               private speakerRequestService: SpeakerRequestService, private addDeleteService: SpeakerRequestService,
-              private util: UtilService, private addDeleteEvents: NgbModal, private speakerService: SpeakerService) { }
+              private util: UtilService, private addDeleteEvents: NgbModal, private speakerService: SpeakerService) {
+                console.log(1);
+               }
 
   ngOnInit() {
+    console.log(2);
     this.loadEvents();
     this.setEventsSpeaker();
   }
@@ -59,7 +62,9 @@ export class AddEventsComponent implements OnInit {
 
   @Input('speakerData')
   public set setInputSpeaker(speaker: Speaker) {
+    console.log(3);
     this.speaker = speaker;
+    console.log(this.speaker);
   }
 
   public getSpeaker(): Speaker {
