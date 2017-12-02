@@ -60,10 +60,12 @@ import { InternRequestService } from './shared/service/request/intern-request.se
 import { InternDescriptionComponent } from './interns/intern/intern-description/intern-description.component';
 import { InternDeleteComponent } from './interns/intern/intern-delete/intern-delete.component';
 import { InternAddUpdateComponent } from './interns/intern/intern-add-update/intern-add-update.component';
-import { AddDeleteEventsComponent } from './speakers/speaker/add-delete-events/add-delete-events.component';
+import { AddEventsComponent } from './speakers/speaker/add-events/add-events.component';
 import { EventsFilterPipe } from './speakers/pipe/events-filter.pipe';
 import { EventsSpeakerComponent } from './speakers/speaker/events-speaker/events-speaker.component';
 import { EventComponent } from './speakers/speaker/events-speaker/event/event.component';
+import { DeleteEventsComponent } from './speakers/speaker/delete-events/delete-events.component';
+import { DeleteEventsFilterPipe } from './speakers/pipe/delete-events-filter.pipe';
 
 
 
@@ -112,10 +114,12 @@ import { EventComponent } from './speakers/speaker/events-speaker/event/event.co
     InternDescriptionComponent,
     InternDeleteComponent,
     InternAddUpdateComponent,
-    AddDeleteEventsComponent,
+    AddEventsComponent,
     EventsFilterPipe,
     EventsSpeakerComponent,
-    EventComponent
+    EventComponent,
+    DeleteEventsComponent,
+    DeleteEventsFilterPipe
   ],
   imports: [
     BrowserModule,

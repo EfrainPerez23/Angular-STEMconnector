@@ -38,7 +38,7 @@
                     </button>
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-sm btn-warning btn-icon" style="margin-bottom: 10px;" (click)="addUpdateSpeaker.updateModalSpeaker()">
+                    <button class="btn btn-sm btn-warning btn-icon" style="margin-bottom: 10px;" (click)="deleteEvents.deleteEventsSpeakerModal()">
                         <i class="fa fa-minus"></i>
                     </button>
                 </div>
@@ -53,3 +53,4 @@
 <app-update-add-model #addUpdateSpeaker [idSpeaker]="getSpeaker().getIdSpeaker()"></app-update-add-model>
 <app-add-delete-events #addOrDeleteEvents [speakerData]="getSpeaker()"></app-add-delete-events>
 <app-events-speaker #eventsSpeaker [speakerSelected]="getSpeaker()"></app-events-speaker>
+<app-delete-events #deleteEvents [speakerData]="getSpeaker()"></app-delete-events>

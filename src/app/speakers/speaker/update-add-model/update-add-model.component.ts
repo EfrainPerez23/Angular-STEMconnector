@@ -76,7 +76,6 @@ export class UpdateAddModelComponent implements OnInit {
     this.addOrUpdateService.createSpeaker(speakerData).subscribe((speakerCreated: any) => {
       if (speakerCreated.success) {
         this.addEvent_has_Speaker();
-        this.addOrUpdate.getStatusCreatedOrUpdated().emit(speakerCreated.success);
       }else {
         this.notifications.showNotification('danger', speakerCreated.message, 'Error!', 'ti-face-sad');
       }
@@ -103,6 +102,7 @@ export class UpdateAddModelComponent implements OnInit {
         .subscribe((response: any) => {
           if (response.success) {
             this.notifications.showNotification('success', 'You add a new Speaker!', 'Success!', 'ti-pencil-alt');
+            this.addOrUpdate.getStatusCreatedOrUpdated().emit(true);
           }
         });
       }

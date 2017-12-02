@@ -1,29 +1,26 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
-import { EventRequestService } from '../../../shared/service/request/event-request.service';
+import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { EventModel } from '../../../events/model/event.model';
-import { SpeakerRequestService } from '../../../shared/service/request/speaker-request.service';
 import { Speaker } from '../../model/speaker.model';
 import { NgForm } from '@angular/forms';
+import { EventRequestService } from '../../../shared/service/request/event-request.service';
+import { SpeakerRequestService } from '../../../shared/service/request/speaker-request.service';
 import { SpeakerService } from '../../service/speaker.service';
-import { UtilService } from '../../../shared/service/util.service';
-import { element } from 'protractor';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UtilService } from '../../../shared/service/util.service';
 import { EventsFilterPipe } from '../../pipe/events-filter.pipe';
-import { EventService } from '../../../events/service/event.service';
 
 @Component({
-  selector: 'app-add-delete-events',
-  templateUrl: './add-delete-events.component.html',
-  styleUrls: ['./add-delete-events.component.css']
+  selector: 'app-delete-events',
+  templateUrl: './delete-events.component.html',
+  styleUrls: ['./delete-events.component.css']
 })
-export class AddDeleteEventsComponent implements OnInit {
+export class DeleteEventsComponent implements OnInit {
 
   private events: EventModel[] = [];
   private eventsSpeaker: EventModel[] = [];
-  private eventToSelect: EventModel[] = [];
   private speaker: Speaker;
   private form: NgForm;
-  private addUpdateEventInSpeaker: ElementRef;
+  private deleteEventsSpeaker: ElementRef;
   private index: number;
 
   constructor(private eventRequestService: EventRequestService,
@@ -38,20 +35,16 @@ export class AddDeleteEventsComponent implements OnInit {
 
   public onSubmit(form: NgForm) {
     this.form = form;
-    console.log('cac' + this.form.value.speakerEventData.event);
-    console.log(this.events)
-    console.log(this.eventsSpeaker);
-    this.sendEventAddedToEventsModal(this.form.value.speakerEventData.event);
-    // this.addEvent_has_Speaker(this.form.value.speakerEventData.event.getIdEvent());
+    this.deleteEvent_has_Speaker(this.form.value.speakerEventData.event);
   }
 
-  @ViewChild('addUpdateEventInSpeaker')
-  public set setAddUpdateEventInSpeaker(addUpdateEventInSpeaker: ElementRef) {
-    this.addUpdateEventInSpeaker = addUpdateEventInSpeaker;
+  @ViewChild('deleteEventsSpeaker')
+  public set setAddUpdateEventInSpeaker(deleteEventsSpeaker: ElementRef) {
+    this.deleteEventsSpeaker = deleteEventsSpeaker;
   }
 
-  public addOrDeleteEventsSpeaker() {
-    this.addDeleteEvents.open(this.addUpdateEventInSpeaker).result.then((result: boolean) => {
+  public deleteEventsSpeakerModal() {
+    this.addDeleteEvents.open(this.deleteEventsSpeaker).result.then((result: boolean) => {
     }, (reason) => {
     });
   }
@@ -66,32 +59,28 @@ export class AddDeleteEventsComponent implements OnInit {
     this.speaker = speaker;
   }
 
-  public spliceEvent(index) {
-    console.log(index);
-  }
-
   public getSpeaker(): Speaker {
     return this.speaker;
   }
 
-  private addEvent_has_Speaker(idEvent: number) {
-    console.log(idEvent);
-    this.addDeleteService.getLasIdInserted()
-    .subscribe((lastId: {success: number, status: number, message: string, data: {lastId: number}}) => {
-      console.log(lastId);
-      if (lastId.success) {
-        this.addDeleteService.addEvent_has_Speaker({
-          Event_idEvent: idEvent,
-          Speaker_idSpeaker: this.speaker.getIdSpeaker()
-        })
-        .subscribe((response: any) => {
-          if (response.success) {
-            this.util.showNotification('success', `You add a new Event in ${this.speaker.getName()}` , 'Success!', 'ti-pencil-alt');
-            this.events.splice(this.index, 1);
-          }
-        });
+  private deleteEvent_has_Speaker(idEvent: number) {
+    this.speakerRequestService.deleteEventsSpeaker(idEvent, this.speaker.getIdSpeaker()).subscribe((deleteResponse: any) => {
+      if (deleteResponse.success) {
+        this.getIndexOfEvent(idEvent);
+        this.util.showNotification('success', `You delete an Event in ${this.speaker.getName()}` , 'Success!', 'ti-eraser');
       }
     });
+  }
+
+
+  private getIndexOfEvent(idEvent: number) {
+
+    for (let index = 0; index < this.eventsSpeaker.length; index++) {
+      if (idEvent.toString() === this.eventsSpeaker[index].getIdEvent().toString()) {
+        this.speakerService.getDeleteEventSpeaker().emit(index);
+        this.eventsSpeaker.splice(index, 1);
+      }
+    }
   }
 
   private sendEventAddedToEventsModal(idEvent: number) {
@@ -110,9 +99,6 @@ export class AddDeleteEventsComponent implements OnInit {
     return false
   }
 
-  public getEventToSelect(): EventModel[] {
-    return this.eventToSelect;
-  }
 
   @ViewChild('addUpdateEventInSpeaker')
   public set setSpeaker(speaker: Speaker) {
@@ -145,6 +131,5 @@ export class AddDeleteEventsComponent implements OnInit {
       }
     });
   }
-
 
 }

@@ -19,19 +19,29 @@ export class SpeakersComponent implements OnInit {
 
     constructor(private requestService: SpeakerRequestService, private statusSpeaker: SpeakerService,
                 private speakersEvent: EventRequestService) {
-        this.deleteSpeaker();
         this.createdOrUpdateSpeaker();
+        this.deleteSpeaker();
         this.eventFromSpeakers();
+        this.reloadSpeakersEvents();
 
     }
     ngOnInit() {
         this.reloadSpeakers();
+        this.createdOrUpdateSpeaker();
     }
 
     private deleteSpeaker() {
         this.statusSpeaker.getStatusDeleted().subscribe((speakerSlice: {id: number, status: boolean} ) => {
             if (speakerSlice.status) {
                 this.speakers.splice(speakerSlice.id, 1);
+            }
+        });
+    }
+
+    private reloadSpeakersEvents() {
+        this.statusSpeaker.getReloadSpeakers().subscribe((reload: boolean) => {
+            if (reload) {
+                this.reloadSpeakers();
             }
         });
     }

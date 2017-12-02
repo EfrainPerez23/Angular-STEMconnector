@@ -6,6 +6,8 @@ export class SpeakerService {
   private statusCreatedOrUpdated = new EventEmitter<boolean>();
   private speakersEvent = new EventEmitter<number>();
   private eventAddedToSpeaker = new EventEmitter<EventModel>();
+  private deleteEventSpeaker = new EventEmitter<number>();
+  private reloadSpeakers = new EventEmitter<boolean>();
 
   constructor() {}
 
@@ -23,5 +25,13 @@ export class SpeakerService {
 
   public getEventAddedToSpeaker(): EventEmitter<EventModel> {
     return this.eventAddedToSpeaker;
+  }
+
+  public getDeleteEventSpeaker(): EventEmitter<number> {
+    return this.deleteEventSpeaker;
+  }
+
+  public getReloadSpeakers(): EventEmitter<boolean> {
+    return this.reloadSpeakers;
   }
 }

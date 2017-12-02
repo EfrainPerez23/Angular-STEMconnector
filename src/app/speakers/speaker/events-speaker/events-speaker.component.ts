@@ -16,7 +16,9 @@ export class EventsSpeakerComponent implements OnInit {
   private eventsModal: ElementRef;
 
   constructor(private speakerRequestService: SpeakerRequestService, private modalService: NgbModal,
-  private speakerService: SpeakerService) { }
+  private speakerService: SpeakerService) { 
+    this.deleteEventSpeakerSelected();
+  }
 
   ngOnInit() {
     this.setEventsSpeaker();
@@ -30,6 +32,12 @@ export class EventsSpeakerComponent implements OnInit {
   @ViewChild('eventsSpeakerModal')
   public set setEventsModal(eventsModal: ElementRef) {
     this.eventsModal = eventsModal;
+  }
+
+  private deleteEventSpeakerSelected() {
+    this.speakerService.getDeleteEventSpeaker().subscribe((index: number) => {
+      this.eventsSpeaker.splice(index, 1);
+    })
   }
 
   private addEventSelected() {
