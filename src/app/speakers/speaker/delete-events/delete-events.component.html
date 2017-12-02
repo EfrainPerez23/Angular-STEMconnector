@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="modal-body">
-        <div class="content" *ngIf="getEventsSpeaker(); else message">
+        <div class="content" *ngIf="getEventsSpeaker().length !== 0; else message">
             <form (ngSubmit)="onSubmit(f)" #f="ngForm">
                 <div id="speakerEventData" ngModelGroup="speakerEventData" #speakerEventData="ngModelGroup">
                     <div class="row">
