@@ -82,7 +82,12 @@ import { ActivityPointRequestService } from './shared/service/request/activity-p
 // tslint:disable-next-line:max-line-length
 import { ActivityPointDeleteComponent } from './activities-points/list-activity-point/activity-point-delete/activity-point-delete.component';
 import { ActivityPointDescriptionComponent } from './activities-points/list-activity-point/activity-point-description/activity-point-description.component';
+// tslint:disable-next-line:max-line-length
 import { AddUpdateActivityPointComponent } from './activities-points/list-activity-point/add-update-activity-point/add-update-activity-point.component';
+import { CompaniesComponent } from './companies/companies.component';
+import { SearchCompanyComponent } from './companies/search-company/search-company.component';
+import { CompanyRequestService } from './shared/service/request/company-request.service';
+import { ListCompaniesComponent } from './companies/list-companies/list-companies.component';
 
 
 
@@ -149,7 +154,10 @@ import { AddUpdateActivityPointComponent } from './activities-points/list-activi
     ListActivityPointComponent,
     ActivityPointDeleteComponent,
     ActivityPointDescriptionComponent,
-    AddUpdateActivityPointComponent
+    AddUpdateActivityPointComponent,
+    CompaniesComponent,
+    SearchCompanyComponent,
+    ListCompaniesComponent
   ],
   imports: [
     BrowserModule,
@@ -174,7 +182,8 @@ import { AddUpdateActivityPointComponent } from './activities-points/list-activi
     ActivityRequestService,
     InternRequestService,
     EventPhonesRequestService,
-    ActivityPointRequestService
+    ActivityPointRequestService,
+    CompanyRequestService
   ],
   bootstrap: [AppComponent]
 })
