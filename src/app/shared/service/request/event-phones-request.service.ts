@@ -26,4 +26,22 @@ export class EventPhonesRequestService {
     });
   }
 
+  public createEventPhone (newEventPhone) {
+      const headers = new Headers({'Content-Type': 'application/json'});
+      return this.http.post(`http://165.227.179.52:3000/eventPhones/`, newEventPhone, {headers: headers})
+      .map((response: Response) => {
+      return response.json();
+      });
+    }
+
+    public updateEventPhone(id: number, eventPhoneToUpdate) {
+      if (id >= 0 ) {
+          const headers = new Headers({'Content-Type': 'application/json'});
+          return this.http.put(`http://165.227.179.52:3000/eventPhones/${id.toString()}`, eventPhoneToUpdate, {headers: headers})
+          .map((response: Response) => {
+            return response.json();
+          });
+        }
+    }
+
 }

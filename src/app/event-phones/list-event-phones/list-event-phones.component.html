@@ -19,13 +19,7 @@
                                 <ng-template #emptyPhones>
                                     <td style="text-align: justify;">{{row.getPhone()}}</td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-success a-btn-slide-text">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            <span><strong><i class="fa fa-address-card-o" aria-hidden="true"></i></strong></span>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="updateEventPhone.addUpdateEvenPhoneModal(row.getIdEventPhone())">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-pencil-square-o" aria-hidden="true"></i></strong></span>
                                         </a>
@@ -45,3 +39,4 @@
         </div>
     </div>
 </div>
+<app-add-update-event-phone #updateEventPhone></app-add-update-event-phone>

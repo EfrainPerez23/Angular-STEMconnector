@@ -70,7 +70,8 @@ import { EventPhonesComponent } from './event-phones/event-phones.component';
 import { SearchEventPhoneComponent } from './event-phones/search-event-phone/search-event-phone.component';
 import { ListEventPhonesComponent } from './event-phones/list-event-phones/list-event-phones.component';
 import { EventPhonesRequestService } from './shared/service/request/event-phones-request.service';
-
+import { AddUpdateEventPhoneComponent } from './event-phones/list-event-phones/add-update-event-phone/add-update-event-phone.component';
+import { TextMaskModule } from 'angular2-text-mask';
 
 
 
@@ -126,7 +127,8 @@ import { EventPhonesRequestService } from './shared/service/request/event-phones
     DeleteEventsFilterPipe,
     EventPhonesComponent,
     SearchEventPhoneComponent,
-    ListEventPhonesComponent
+    ListEventPhonesComponent,
+    AddUpdateEventPhoneComponent
   ],
   imports: [
     BrowserModule,
@@ -137,6 +139,7 @@ import { EventPhonesRequestService } from './shared/service/request/event-phones
     HttpModule,
     NgbModule.forRoot(),
     FormsModule,
+    TextMaskModule,
     FixedPluginModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyBr-tgUtpm8cyjYVQDrjs8YpZH7zBNWPuY'})
 

@@ -27,7 +27,6 @@ export class SearchEventPhoneComponent implements OnInit {
   }
 
   public valueChange() {
-    console.log(this.searchEventPhone, this.filterPreference);
     this.eventPhoneService.getSearchEventPhonePreference().emit({
       search: this.searchEventPhone,
       preference: this.filterPreference

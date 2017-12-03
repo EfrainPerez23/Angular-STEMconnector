@@ -42,7 +42,7 @@ export class EventRequestService {
             return response.json();
           });
         }
-  }
+    }
 
   public getSpeakersFromEvent(id: number) {
     return this.http.get(`http://165.227.179.52:3000/events/${id.toString()}/speakers`)

@@ -4,7 +4,8 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class EventPhoneServiceService {
 
   private searchEventPhonePreference = new EventEmitter<{search: string, preference: number}>();
-  private eventPreference = new EventEmitter<number>()
+  private eventPreference = new EventEmitter<number>();
+  private reloadEventPhone = new  EventEmitter<boolean>();
 
   constructor() { }
 
@@ -14,6 +15,10 @@ export class EventPhoneServiceService {
 
   public getEventPreference(): EventEmitter<number> {
     return this.eventPreference;
+  }
+
+  public getReloadEventPhone(): EventEmitter<boolean> {
+    return this.reloadEventPhone;
   }
 
 }

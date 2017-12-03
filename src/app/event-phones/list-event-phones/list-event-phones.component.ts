@@ -14,6 +14,7 @@ export class ListEventPhonesComponent implements OnInit {
 
   constructor(private eventPhonesRequestService: EventPhonesRequestService, private eventPhoneServiceService: EventPhoneServiceService) {
     this.getEventPhoneFromEvent();
+    this.reloadUpdateAdd();
    }
 
   ngOnInit() {
@@ -22,6 +23,14 @@ export class ListEventPhonesComponent implements OnInit {
 
   public getHeaderRow(): string[] {
     return this.headerRow;
+  }
+
+  private reloadUpdateAdd() {
+    this.eventPhoneServiceService.getReloadEventPhone().subscribe((reload: boolean) => {
+      if (reload) {
+        this.loadEventPhones();
+      }
+    })
   }
 
   private getEventPhoneFromEvent() {
