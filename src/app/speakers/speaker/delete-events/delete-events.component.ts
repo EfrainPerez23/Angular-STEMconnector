@@ -67,7 +67,7 @@ export class DeleteEventsComponent implements OnInit {
     this.speakerRequestService.deleteEventsSpeaker(idEvent, this.speaker.getIdSpeaker()).subscribe((deleteResponse: any) => {
       if (deleteResponse.success) {
         this.getIndexOfEvent(idEvent);
-        this.util.showNotification('success', `You delete an Event in ${this.speaker.getName()}` , 'Success!', 'ti-eraser');
+        this.util.showNotification('warning', `You delete an Event in ${this.speaker.getName()}` , 'Success!', 'ti-eraser');
         this.speakerService.getStatusCreatedOrUpdated().emit(true);
       }
     });

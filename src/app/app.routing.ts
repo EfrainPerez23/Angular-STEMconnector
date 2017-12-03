@@ -10,6 +10,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { InternsComponent } from './interns/interns.component';
+import { EventPhonesComponent } from './event-phones/event-phones.component';
 
 export const AppRoutes: Routes = [
     {
@@ -52,5 +53,9 @@ export const AppRoutes: Routes = [
     {
         path: 'interns',
         component: InternsComponent
+    },
+    {
+        path: 'eventPhones',
+        component: EventPhonesComponent
     }
 ]

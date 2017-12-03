@@ -66,6 +66,10 @@ import { EventsSpeakerComponent } from './speakers/speaker/events-speaker/events
 import { EventComponent } from './speakers/speaker/events-speaker/event/event.component';
 import { DeleteEventsComponent } from './speakers/speaker/delete-events/delete-events.component';
 import { DeleteEventsFilterPipe } from './speakers/pipe/delete-events-filter.pipe';
+import { EventPhonesComponent } from './event-phones/event-phones.component';
+import { SearchEventPhoneComponent } from './event-phones/search-event-phone/search-event-phone.component';
+import { ListEventPhonesComponent } from './event-phones/list-event-phones/list-event-phones.component';
+import { EventPhonesRequestService } from './shared/service/request/event-phones-request.service';
 
 
 
@@ -119,7 +123,10 @@ import { DeleteEventsFilterPipe } from './speakers/pipe/delete-events-filter.pip
     EventsSpeakerComponent,
     EventComponent,
     DeleteEventsComponent,
-    DeleteEventsFilterPipe
+    DeleteEventsFilterPipe,
+    EventPhonesComponent,
+    SearchEventPhoneComponent,
+    ListEventPhonesComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +148,8 @@ import { DeleteEventsFilterPipe } from './speakers/pipe/delete-events-filter.pip
     InitiativeRequestService,
     SpeakerRequestService,
     ActivityRequestService,
-    InternRequestService
+    InternRequestService,
+    EventPhonesRequestService
   ],
   bootstrap: [AppComponent]
 })

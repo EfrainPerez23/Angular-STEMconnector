@@ -54,10 +54,6 @@ export class DeleteModalComponent implements OnInit {
     this.modalDeleteService.open(this.deleteSpeakerModal).result.then((deleteSpeaker: boolean) => {
       if (deleteSpeaker) {
         this.deleteSpeaker();
-        this.statusDeleted.getStatusDeleted().emit({
-          id: this.speakerToDeleteIndex,
-          status: deleteSpeaker
-        });
       }
     }, (error) => {
     });
@@ -70,6 +66,10 @@ export class DeleteModalComponent implements OnInit {
         this.speakerService.deleteSpeaker(this.speakerToDelete).subscribe((speakerDelete: any) => {
           if (speakerDelete.success) {
             this.notifications.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
+            this.statusDeleted.getStatusDeleted().emit({
+              id: this.speakerToDeleteIndex,
+              status: true
+            });
           }else {
               this.notifications.showNotification('danger', speakerDelete.message, 'Error!', 'ti-face-sad');
           }
@@ -77,23 +77,5 @@ export class DeleteModalComponent implements OnInit {
       }
     });
   }
-
-  private deleteEvent_has_Speaker() {
-    this.speakerService.deleteEvent_has_Speaker(this.speakerToDelete).subscribe((response: any) => {
-      if (response.success) {
-        this.speakerService.deleteSpeaker(this.speakerToDelete).subscribe((speakerDelete: any) => {
-          if (speakerDelete.success) {
-            this.notifications.showNotification('warning', 'You just deleted an Initiative', 'Success!', 'ti-eraser');
-          }else {
-              this.notifications.showNotification('danger', speakerDelete.message, 'Error!', 'ti-face-sad');
-          }
-        });
-      }
-    });
-  }
-
-
-
-
 
 }
