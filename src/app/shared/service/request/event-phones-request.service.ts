@@ -44,4 +44,12 @@ export class EventPhonesRequestService {
         }
     }
 
+    public deleteEventPhone(idEventPhone: number) {
+      return this.http.delete(`http://165.227.179.52:3000/eventPhones/${idEventPhone.toString()}`).map((response: Response) => {
+        return response.json();
+      }).catch( (error: Response) => {
+        return Observable.throw('Something went wrong!');
+      });
+}
+
 }
