@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Activity Points</h4>
+                    <p class="category">List of Activity Points</p>
+                </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th *ngFor="let cell of getHeaderRow() ">{{ cell }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of getRows() ;let i=index">
+                                <div *ngIf="!row; else emptyPoints"></div>
+                                <ng-template #emptyPoints>
+                                    <td>
+                                        <p *ngIf="row.getDescription().length > 100; else withoutPoint">{{row.getDescription().substring(0,100)}}...</p>
+                                        <ng-template #withoutPoint>
+                                            <p>{{row.getDescription().substring(0,100)}}</p>
+                                        </ng-template>
+                                    </td>
+                                    <td>
+                                        <a style=" cursor: pointer; " class="btn btn-success a-btn-slide-text" (click)="activityPointDescription.activityPointModal(row)">
+                                            <span class="glyphicon glyphicon-edit " aria-hidden="true "></span>
+                                            <span><strong><i class="fa fa-id-card-o" aria-hidden="true "></i></strong></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a style=" cursor: pointer; " class="btn btn-primary a-btn-slide-text" (click)="updateActivityPoint.addUpdateEvenPhoneModal(row.getId())">
+                                            <span class="glyphicon glyphicon-edit " aria-hidden="true "></span>
+                                            <span><strong><i class="fa fa-pencil-square-o " aria-hidden="true "></i></strong></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a style="cursor: pointer; " class="btn btn-danger a-btn-slide-text " (click)="activityPointDelete.deleteEventPhoneModal(row.getId()) ">
+                                            <span class="glyphicon glyphicon-remove " aria-hidden="true "></span>
+                                            <span><strong><i class="fa fa-trash-o " aria-hidden="true "></i></strong></span>
+                                        </a>
+                                    </td>
+                                </ng-template>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-activity-point-delete #activityPointDelete></app-activity-point-delete>
+<app-activity-point-description #activityPointDescription></app-activity-point-description>
+<app-add-update-activity-point #updateActivityPoint></app-add-update-activity-point>

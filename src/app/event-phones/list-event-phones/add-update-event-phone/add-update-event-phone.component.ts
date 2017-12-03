@@ -35,7 +35,6 @@ export class AddUpdateEventPhoneComponent implements OnInit {
     }else {
       this.updateEventPhone(this.form.value.eventPhoneData);
     }
-    console.log(this.form.value.eventPhoneData);
   }
 
   private updateEventPhone(eventPhoneData) {

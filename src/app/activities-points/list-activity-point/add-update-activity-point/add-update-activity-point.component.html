@@ -1,0 +1,55 @@
+<ng-template #addUpdateActivityPoint let-c="close" let-d="dismiss">
+    <div class="modal-header" style="top: 200px;">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title">{{getTitleModal()}}</h4>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">{{getMessageModal()}}</h4>
+            </div>
+            <div class="content">
+                <form (ngSubmit)="onSubmit(f, d(false))" #f="ngForm">
+                    <div id="activityPointData" ngModelGroup="activityPointData" #activityPointData="ngModelGroup">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !Activity_idActivity.valid && Activity_idActivity.touched}">
+                                    <label>Activity</label>
+                                    <select class="form-control" ngModel name="Activity_idActivity" #Activity_idActivity="ngModel" placeholder="Activity..." required>
+                                      <option *ngFor="let activity of getActivities()"  [value]="activity.getIdActivity()" >{{activity.getName()}}</option>
+                                  </select>
+                                    <span class="help-block" *ngIf="!Activity_idActivity.valid && Activity_idActivity.touched">Insert Activity...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" [ngClass]="{'has-error': !description.valid && description.touched}">
+                                    <label>Description</label>
+                                    <textarea rows="4" id="description" class="form-control border-input" ngModel name="description" required #description="ngModel" placeholder="Description...">
+                                    </textarea>
+                                    <span class="help-block" *ngIf="!description.valid && description.touched">Insert Description ...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!f.valid">Done!</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="c(false)">Close</button>
+    </div>
+</ng-template>

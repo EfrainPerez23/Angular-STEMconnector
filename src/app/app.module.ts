@@ -31,7 +31,7 @@ import { SearchSpeakerComponent } from './speakers/search-speaker/search-speaker
 import { FilterSpeakerPipe } from './speakers/pipe/filter-speaker.pipe';
 import { DeleteModalComponent } from './speakers/speaker/delete-modal/delete-modal.component';
 import { BioModalComponent } from './speakers/speaker/bio-modal/bio-modal.component';
-import {UpdateAddModelComponent} from './speakers/speaker/update-add-model/update-add-model.component';
+import { UpdateAddModelComponent } from './speakers/speaker/update-add-model/update-add-model.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { SearchActivityComponent } from './activities/search-activity/search-activity.component';
 import { ListActivitiesComponent } from './activities/list-activities/list-activities.component';
@@ -75,6 +75,14 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { DeleteEventPhoneComponent } from './event-phones/list-event-phones/delete-event-phone/delete-event-phone.component';
 import { ActivitiesPointsComponent } from './activities-points/activities-points.component';
 import { EventPhoneFilterPipe } from './event-phones/pipe/event-phone-filter.pipe';
+import { SearchActivityPointComponent } from './activities-points/search-activity-point/search-activity-point.component';
+import { ActivityPointFilterPipe } from './activities-points/pipe/activity-point-filter.pipe';
+import { ListActivityPointComponent } from './activities-points/list-activity-point/list-activity-point.component';
+import { ActivityPointRequestService } from './shared/service/request/activity-point-request.service';
+// tslint:disable-next-line:max-line-length
+import { ActivityPointDeleteComponent } from './activities-points/list-activity-point/activity-point-delete/activity-point-delete.component';
+import { ActivityPointDescriptionComponent } from './activities-points/list-activity-point/activity-point-description/activity-point-description.component';
+import { AddUpdateActivityPointComponent } from './activities-points/list-activity-point/add-update-activity-point/add-update-activity-point.component';
 
 
 
@@ -135,7 +143,13 @@ import { EventPhoneFilterPipe } from './event-phones/pipe/event-phone-filter.pip
     AddUpdateEventPhoneComponent,
     DeleteEventPhoneComponent,
     ActivitiesPointsComponent,
-    EventPhoneFilterPipe
+    EventPhoneFilterPipe,
+    SearchActivityPointComponent,
+    ActivityPointFilterPipe,
+    ListActivityPointComponent,
+    ActivityPointDeleteComponent,
+    ActivityPointDescriptionComponent,
+    AddUpdateActivityPointComponent
   ],
   imports: [
     BrowserModule,
@@ -159,7 +173,8 @@ import { EventPhoneFilterPipe } from './event-phones/pipe/event-phone-filter.pip
     SpeakerRequestService,
     ActivityRequestService,
     InternRequestService,
-    EventPhonesRequestService
+    EventPhonesRequestService,
+    ActivityPointRequestService
   ],
   bootstrap: [AppComponent]
 })

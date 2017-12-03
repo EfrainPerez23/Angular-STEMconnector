@@ -15,6 +15,7 @@ export const ROUTES: RouteInfo[] = [
     { path: 'eventPhones', title: 'Event Phones',  icon: 'ti-agenda', class: '' },
     { path: 'speakers', title: 'Speakers',  icon: 'ti-user', class: '' },
     { path: 'activities', title: 'Activities',  icon: 'ti-harddrives', class: '' },
+    { path: 'activityPoints', title: 'Activity Points',  icon: 'ti-menu-alt', class: '' },
     { path: 'interns', title: 'Interns',  icon: 'ti-headphone-alt', class: '' },
     { path: 'icons', title: 'Icons',  icon: 'ti-pencil-alt2', class: '' },
     { path: 'maps', title: 'Maps',  icon: 'ti-map', class: '' },

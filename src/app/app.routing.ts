@@ -11,6 +11,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { InternsComponent } from './interns/interns.component';
 import { EventPhonesComponent } from './event-phones/event-phones.component';
+import { ActivitiesPointsComponent } from './activities-points/activities-points.component';
 
 export const AppRoutes: Routes = [
     {
@@ -57,5 +58,9 @@ export const AppRoutes: Routes = [
     {
         path: 'eventPhones',
         component: EventPhonesComponent
+    },
+    {
+        path: 'activityPoints',
+        component: ActivitiesPointsComponent
     }
 ]
