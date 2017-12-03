@@ -73,6 +73,9 @@ import { EventPhonesRequestService } from './shared/service/request/event-phones
 import { AddUpdateEventPhoneComponent } from './event-phones/list-event-phones/add-update-event-phone/add-update-event-phone.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { DeleteEventPhoneComponent } from './event-phones/list-event-phones/delete-event-phone/delete-event-phone.component';
+import { ActivitiesPointsComponent } from './activities-points/activities-points.component';
+import { EventPhoneFilterPipe } from './event-phones/pipe/event-phone-filter.pipe';
+
 
 
 
@@ -130,7 +133,9 @@ import { DeleteEventPhoneComponent } from './event-phones/list-event-phones/dele
     SearchEventPhoneComponent,
     ListEventPhonesComponent,
     AddUpdateEventPhoneComponent,
-    DeleteEventPhoneComponent
+    DeleteEventPhoneComponent,
+    ActivitiesPointsComponent,
+    EventPhoneFilterPipe
   ],
   imports: [
     BrowserModule,

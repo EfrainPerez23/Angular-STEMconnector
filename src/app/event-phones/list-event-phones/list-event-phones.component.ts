@@ -11,10 +11,14 @@ import { EventPhoneServiceService } from '../service/event-phone-service.service
 export class ListEventPhonesComponent implements OnInit {
   private headerRow: string[] = ['Number' ];
   private rows: EventPhone[] = [];
+  private phoneSearched = '';
+  private preference = 0;
+
 
   constructor(private eventPhonesRequestService: EventPhonesRequestService, private eventPhoneServiceService: EventPhoneServiceService) {
     this.getEventPhoneFromEvent();
     this.reloadUpdateAdd();
+    this.searchPreference();
    }
 
   ngOnInit() {
@@ -31,6 +35,21 @@ export class ListEventPhonesComponent implements OnInit {
         this.loadEventPhones();
       }
     })
+  }
+
+  private searchPreference() {
+    this.eventPhoneServiceService.getSearchEventPhonePreference().subscribe((result: {search: string, preference: number}) => {
+      this.phoneSearched = result.search,
+      this.preference = result.preference
+    });
+  }
+
+  public getPhoneSearched(): string {
+    return this.phoneSearched;
+  }
+
+  public getPreference(): number {
+    return this.preference;
   }
 
   private getEventPhoneFromEvent() {
