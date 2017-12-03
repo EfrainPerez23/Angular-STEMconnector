@@ -11,21 +11,30 @@ import { CompanyRequestService } from '../../shared/service/request/company-requ
 export class ListCompaniesComponent implements OnInit {
   private headerRow: string[] = ['Name', 'Phone', 'Email' ];
   private rows: Company[] = [];
-  private phoneSearched = '';
+  private companySearched = '';
   private preference = 0;
 
-  constructor(private companyRequestService: CompanyRequestService) { }
+  constructor(private companyRequestService: CompanyRequestService, private companyService: CompanyService) {
+    this.getSearchPreference();
+  }
 
   ngOnInit() {
     this.loadCompanies();
+  }
+
+  private getSearchPreference() {
+    this.companyService.getSearchCompanyPreference().subscribe((searchPreference: {search: string, preference: number}) => {
+      this.companySearched = searchPreference.search,
+      this.preference = searchPreference.preference
+    });
   }
 
   public getRows(): Company[] {
     return this.rows;
   }
 
-  public getPhoneSearched(): string {
-    return this.phoneSearched;
+  public getCompanySearched(): string {
+    return this.companySearched;
   }
 
   public getPreference(): number {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from '../model/company';
+import { CompanyService } from '../service/company.service';
 
 @Component({
   selector: 'app-search-company',
@@ -11,13 +12,16 @@ export class SearchCompanyComponent implements OnInit {
   private filterPreference = 0;
   private searchCompany = '';
 
-  constructor() { }
+  constructor(private companyService: CompanyService) { }
 
   ngOnInit() {
   }
 
   public valueChange() {
-    console.log(this.searchCompany, this.filterPreference);
+    this.companyService.getSearchCompanyPreference().emit({
+      search: this.searchCompany,
+      preference: this.filterPreference
+    });
   }
 
   public set setSearchCompany(searchCompany: string) {

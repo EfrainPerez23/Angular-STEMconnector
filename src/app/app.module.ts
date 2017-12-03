@@ -88,6 +88,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { SearchCompanyComponent } from './companies/search-company/search-company.component';
 import { CompanyRequestService } from './shared/service/request/company-request.service';
 import { ListCompaniesComponent } from './companies/list-companies/list-companies.component';
+import { CompanyFilterPipe } from './companies/pipe/company-filter.pipe';
 
 
 
@@ -157,7 +158,8 @@ import { ListCompaniesComponent } from './companies/list-companies/list-companie
     AddUpdateActivityPointComponent,
     CompaniesComponent,
     SearchCompanyComponent,
-    ListCompaniesComponent
+    ListCompaniesComponent,
+    CompanyFilterPipe
   ],
   imports: [
     BrowserModule,
