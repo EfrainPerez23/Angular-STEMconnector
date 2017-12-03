@@ -17,10 +17,19 @@ export class ListActivityPointComponent implements OnInit {
   constructor(private activityPointRequestService: ActivityPointRequestService, private activityPointService: ActivityPointService) { 
     this.reloadActivityPoints();
     this.activitySelected();
+    this.searchPreference();
   }
 
   ngOnInit() {
     this.loadActivityPoints();
+  }
+
+
+  private searchPreference() {
+    this.activityPointService.getSearchPreference().subscribe((searchPreference: {search: string, preference: number}) => {
+      this.phoneSearched = searchPreference.search,
+      this.preference = searchPreference.preference
+    });
   }
 
   private loadActivityPoints() {
