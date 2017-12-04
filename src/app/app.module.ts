@@ -91,6 +91,10 @@ import { ListCompaniesComponent } from './companies/list-companies/list-companie
 import { CompanyFilterPipe } from './companies/pipe/company-filter.pipe';
 import { DeleteCompanyComponent } from './companies/list-companies/delete-company/delete-company.component';
 import { AddUpdateCompanyComponent } from './companies/list-companies/add-update-company/add-update-company.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { ContactFilterPipe } from './contacts/pipe/contact-filter.pipe';
+import { SearchContactComponent } from './contacts/search-contact/search-contact.component';
+import { ListContactsComponent } from './contacts/list-contacts/list-contacts.component';
 
 
 
@@ -163,7 +167,11 @@ import { AddUpdateCompanyComponent } from './companies/list-companies/add-update
     ListCompaniesComponent,
     CompanyFilterPipe,
     DeleteCompanyComponent,
-    AddUpdateCompanyComponent
+    AddUpdateCompanyComponent,
+    ContactsComponent,
+    ContactFilterPipe,
+    SearchContactComponent,
+    ListContactsComponent
   ],
   imports: [
     BrowserModule,
