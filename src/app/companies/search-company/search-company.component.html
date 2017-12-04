@@ -20,10 +20,11 @@
     <hr>
     <div class="row">
         <div class="col-md-5">
-            <a style="cursor: pointer;" class="btn btn-primary btn-success">
+            <a style="cursor: pointer;" class="btn btn-primary btn-success" (click)="addCompany.addUpdateCompanyModal(-1)">
                 <span class="glyphicon glyphicon-plus"></span> Add Company
             </a>
         </div>
     </div>
 </div>
 <hr>
+<app-add-update-company #addCompany></app-add-update-company>

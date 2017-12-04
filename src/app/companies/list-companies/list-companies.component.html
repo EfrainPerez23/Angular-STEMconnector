@@ -22,13 +22,13 @@
                                     <td style="text-align: justify;">{{row.getPhone()}}</td>
                                     <td style="text-align: justify;">{{row.getEmail()}}</td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="updateCompany.addUpdateCompanyModal(row.getIdCompany())">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-pencil-square-o" aria-hidden="true"></i></strong></span>
                                         </a>
                                     </td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text" (click)="deleteCompany.deleteCompanyModal(row.getIdCompany())">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-trash-o" aria-hidden="true"></i></strong></span>
                                         </a>
@@ -42,3 +42,5 @@
         </div>
     </div>
 </div>
+<app-add-update-company #updateCompany></app-add-update-company>
+<app-delete-company #deleteCompany></app-delete-company>

@@ -1,0 +1,62 @@
+<ng-template #addUpdateCompany let-c="close" let-d="dismiss">
+    <div class="modal-header" style="top: 200px;">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title">{{getTitleModal()}}</h4>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">{{getMessageModal()}}</h4>
+            </div>
+            <div class="content">
+                <form (ngSubmit)="onSubmit(f, d(false))" #f="ngForm">
+                    <div id="companyData" ngModelGroup="companyData" #companyData="ngModelGroup">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !name.valid && name.touched}">
+                                    <label>Name</label>
+                                    <input type="text" id="name" class="crossSearch form-control border-input" ngModel name="name" placeholder="Name..." required #name="ngModel">
+                                    <span class="help-block" *ngIf="!name.valid && name.touched">Insert Name</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !phone.valid && phone.touched}">
+                                    <label>Phone: Format: x-(xxx)-xxx-xxxx</label>
+                                    <small>Example: 1-(222)-222-2222</small>
+                                    <input type="tel" [textMask]="{mask: mask}" id="phone" class="crossSearch form-control border-input" ngModel name="phone" placeholder="Phone..." required #phone="ngModel">
+                                    <span class="help-block" *ngIf="!phone.valid && phone.touched">Insert Phone</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !email.valid && email.touched}">
+                                    <label>Email</label>
+                                    <input type="email" id="email" [email]="true" class="crossSearch form-control border-input" ngModel name="email" placeholder="Email..." required #email="ngModel">
+                                    <span class="help-block" *ngIf="!email.valid && email.touched">Insert Email</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!f.valid">Done!</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="c(false)">Close</button>
+    </div>
+</ng-template>

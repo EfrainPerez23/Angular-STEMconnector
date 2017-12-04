@@ -89,6 +89,8 @@ import { SearchCompanyComponent } from './companies/search-company/search-compan
 import { CompanyRequestService } from './shared/service/request/company-request.service';
 import { ListCompaniesComponent } from './companies/list-companies/list-companies.component';
 import { CompanyFilterPipe } from './companies/pipe/company-filter.pipe';
+import { DeleteCompanyComponent } from './companies/list-companies/delete-company/delete-company.component';
+import { AddUpdateCompanyComponent } from './companies/list-companies/add-update-company/add-update-company.component';
 
 
 
@@ -159,7 +161,9 @@ import { CompanyFilterPipe } from './companies/pipe/company-filter.pipe';
     CompaniesComponent,
     SearchCompanyComponent,
     ListCompaniesComponent,
-    CompanyFilterPipe
+    CompanyFilterPipe,
+    DeleteCompanyComponent,
+    AddUpdateCompanyComponent
   ],
   imports: [
     BrowserModule,

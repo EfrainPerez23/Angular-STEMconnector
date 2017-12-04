@@ -16,10 +16,19 @@ export class ListCompaniesComponent implements OnInit {
 
   constructor(private companyRequestService: CompanyRequestService, private companyService: CompanyService) {
     this.getSearchPreference();
+    this.reloadCompanies();
   }
 
   ngOnInit() {
     this.loadCompanies();
+  }
+
+  private reloadCompanies() {
+    this.companyService.getReloadCompanies().subscribe((reload: boolean) => {
+      if (reload) {
+        this.loadCompanies();
+      }
+    });
   }
 
   private getSearchPreference() {
