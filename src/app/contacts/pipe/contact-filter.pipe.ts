@@ -16,7 +16,7 @@ export class ContactFilterPipe implements PipeTransform {
     switch (filterPreference) {
       case 0:
         for (const contact of contacts) {
-          if (contact.getLinkedIn().toLowerCase().includes(filterString.toLowerCase())) {
+          if (contact.getWebsite().toLowerCase().includes(filterString.toLowerCase())) {
             contactFiltered.push(contact);
           }
         }
@@ -36,11 +36,11 @@ export class ContactFilterPipe implements PipeTransform {
           }
           break;
         case 3:
-          for (const contact of contacts) {
-            if (contact.getWebsite().toLowerCase().includes(filterString.toLowerCase())) {
-              contactFiltered.push(contact);
-            }
+        for (const contact of contacts) {
+          if (contact.getLinkedIn().toLowerCase().includes(filterString.toLowerCase())) {
+            contactFiltered.push(contact);
           }
+        }
           break;
       default:
         for (const contact of contacts) {

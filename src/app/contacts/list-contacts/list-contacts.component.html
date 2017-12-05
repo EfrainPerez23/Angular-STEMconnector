@@ -17,11 +17,10 @@
                             <tr *ngFor="let row of (getRows() | contactFilter:getContactSearched():getPreference());let i=index">
                                 <div *ngIf="!row; else emptyEvents"></div>
                                 <ng-template #emptyEvents>
-
+                                    <td *ngIf="row.getWebsite(); else no" (click)="redirectTo(row.getWebsite())">Website<i class="fa fa-desktop" aria-hidden="true"></i></td>
                                     <td class="" *ngIf="row.getLinkedIn(); else no" (click)="redirectTo(row.getLinkedIn())">LinkedIn<i class="fa fa-linkedin-square" style="color: #0084bf;" aria-hidden="true"></i></td>
                                     <td *ngIf="row.getFacebook(); else no" (click)="redirectTo(row.getFacebook())">Facebook<i class="fa fa-facebook-square" style="color: #29487d;" aria-hidden="true"></i></td>
                                     <td *ngIf="row.getGoogleP(); else no" (click)="redirectTo(row.getGoogleP())">GoogleP<i class="fa fa-google-plus-square" style="color: #db4437;" aria-hidden="true"></i></td>
-                                    <td *ngIf="row.getWebsite(); else no" (click)="redirectTo(row.getWebsite())">Website<i class="fa fa-desktop" aria-hidden="true"></i></td>
                                     <td *ngIf="row.getTwitter(); else no" (click)="redirectTo(row.getTwitter())">Twitter<i class="fa fa-twitter-square" style="color: #329CC3;" aria-hidden="true"></i></td>
                                     <ng-template #no>
                                         <td class="no">No<i class="fa fa-times" aria-hidden="true" style="color: #db4437"></i></td>

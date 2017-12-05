@@ -11,7 +11,7 @@ import { ContactService } from '../service/contact.service';
   styleUrls: ['./search-contact.component.css']
 })
 export class SearchContactComponent implements OnInit {
-  private preference: string[] = ['LinkedIn', 'Facebook', 'GoogleP', 'Location', 'Website', 'Twitter' ];
+  private preference: string[] = ['Website', 'Facebook', 'GoogleP', 'Location', 'LinkedIn', 'Twitter' ];
   private searchContact = '';
   private filterPreference = 0;
   private companies: Company[];
