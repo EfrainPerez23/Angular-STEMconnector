@@ -8,10 +8,13 @@
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "postinstall": "ng build --aot --target=production"
     },
     "private": true,
     "dependencies": {
+        "@angular/cli": "^1.5.2",
+        "@angular/compiler-cli": "^4.0.0",
         "@angular/animations": "^4.0.0",
         "@angular/common": "^4.0.0",
         "@angular/compiler": "^4.0.0",
@@ -31,16 +34,16 @@
         "bootstrap-notify": "^3.1.3",
         "chartist": "^0.9.4",
         "core-js": "^2.4.1",
+        "express": "^4.16.2",
         "font-awesome": "^4.7.0",
         "jquery": "^1.12.4",
         "moment": "^2.18.1",
         "ngx-date-picker": "0.0.24",
         "rxjs": "^5.1.0",
-        "zone.js": "^0.8.4"
+        "zone.js": "^0.8.4",
+        "typescript": "~2.3.3"
     },
     "devDependencies": {
-        "@angular/cli": "^1.5.2",
-        "@angular/compiler-cli": "^4.0.0",
         "@angular/language-service": "^4.0.0",
         "@types/jasmine": "2.5.45",
         "@types/node": "~6.0.60",
@@ -55,7 +58,10 @@
         "karma-jasmine-html-reporter": "^0.2.2",
         "protractor": "~5.1.2",
         "ts-node": "~3.0.4",
-        "tslint": "~5.3.2",
-        "typescript": "~2.3.3"
+        "tslint": "~5.3.2"
+    },
+    "engines": {
+        "node": "8.4.0",
+        "npm": "5.5.1"
     }
 }

@@ -28,7 +28,7 @@ export class InternComponent implements OnInit {
   }
 
   public redirectTo() {
-    window.location.href = this.intern.getLinkedIn();
+    window.open(this.intern.getLinkedIn(), '_blank');
   }
 
   public getIntern(): Intern {

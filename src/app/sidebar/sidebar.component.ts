@@ -18,10 +18,7 @@ export const ROUTES: RouteInfo[] = [
     { path: 'activityPoints', title: 'Activity Points',  icon: 'ti-menu-alt', class: '' },
     { path: 'interns', title: 'Interns',  icon: 'ti-headphone-alt', class: '' },
     { path: 'companies', title: 'Companies',  icon: 'ti-bag', class: '' },
-    { path: 'contacts', title: 'Contacts',  icon: 'ti-archive', class: '' },
-    { path: 'icons', title: 'Icons',  icon: 'ti-pencil-alt2', class: '' },
-    { path: 'maps', title: 'Maps',  icon: 'ti-map', class: '' },
-    { path: 'notifications', title: 'Notifications',  icon: 'ti-bell', class: '' }
+    { path: 'contacts', title: 'Contacts',  icon: 'ti-archive', class: '' }
 ];
 
 @Component({
