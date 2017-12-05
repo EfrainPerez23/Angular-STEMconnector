@@ -1,0 +1,16 @@
+td {
+    max-width: 100px;
+    overflow: scroll;
+    text-overflow: clip;
+    white-space: normal;
+    cursor: pointer;
+}
+
+td:hover {
+    text-decoration: underline;
+}
+
+td.no {
+    text-decoration: unset;
+    cursor: default;
+}

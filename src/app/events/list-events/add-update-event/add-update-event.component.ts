@@ -41,10 +41,10 @@ export class AddUpdateEventComponent implements OnInit {
       this.id = id;
       if (this.id === -1) {
         this.titleModal = 'Creating';
-        this.messageModal = 'Create Activity'
+        this.messageModal = 'Create Event'
       }else {
         this.titleModal = 'Updating';
-        this.messageModal = 'Update Activity'
+        this.messageModal = 'Update Event'
       }
       this.modalAddUpdateService.open(this.addUpdateModalEvent).result.then((result: boolean) => {
       }, (reason) => {

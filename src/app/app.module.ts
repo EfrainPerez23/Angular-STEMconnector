@@ -95,6 +95,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { ContactFilterPipe } from './contacts/pipe/contact-filter.pipe';
 import { SearchContactComponent } from './contacts/search-contact/search-contact.component';
 import { ListContactsComponent } from './contacts/list-contacts/list-contacts.component';
+import { ContactRequestService } from './shared/service/request/contact-request.service';
 
 
 
@@ -197,7 +198,8 @@ import { ListContactsComponent } from './contacts/list-contacts/list-contacts.co
     InternRequestService,
     EventPhonesRequestService,
     ActivityPointRequestService,
-    CompanyRequestService
+    CompanyRequestService,
+    ContactRequestService
   ],
   bootstrap: [AppComponent]
 })

@@ -9,7 +9,7 @@ export class ContactRequestService {
 
   constructor(private http: Http) { }
   public getContacts() {
-    return this.http.get('http://165.227.179.52:3000/idContact')
+    return this.http.get('http://165.227.179.52:3000/contact')
     .map( (response: Response) => {
         return response.json();
     }).catch( (error: Response) => {

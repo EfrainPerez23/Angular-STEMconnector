@@ -1,3 +1,50 @@
-<p>
-  list-contacts works!
-</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Events</h4>
+                    <p class="category">List of Events</p>
+                </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th *ngFor="let cell of getHeaderRow() ">{{ cell }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of getRows();let i=index">
+                                <div *ngIf="!row; else emptyEvents"></div>
+                                <ng-template #emptyEvents>
+
+                                    <td class="" *ngIf="row.getLinkedIn(); else no" (click)="redirectTo(row.getLinkedIn())">LinkedIn<i class="fa fa-linkedin-square" style="color: #0084bf;" aria-hidden="true"></i></td>
+                                    <td *ngIf="row.getFacebook(); else no" (click)="redirectTo(row.getFacebook())">Facebook<i class="fa fa-facebook-square" style="color: #29487d;" aria-hidden="true"></i></td>
+                                    <td *ngIf="row.getGoogleP(); else no" (click)="redirectTo(row.getGoogleP())">GoogleP<i class="fa fa-google-plus-square" style="color: #db4437;" aria-hidden="true"></i></td>
+                                    <td *ngIf="row.getWebsite(); else no" (click)="redirectTo(row.getWebsite())">Website<i class="fa fa-desktop" aria-hidden="true"></i></td>
+                                    <td *ngIf="row.getTwitter(); else no" (click)="redirectTo(row.getTwitter())">Twitter<i class="fa fa-twitter-square" style="color: #329CC3;" aria-hidden="true"></i></td>
+                                    <ng-template #no>
+                                        <td class="no">No<i class="fa fa-times" aria-hidden="true" style="color: #db4437"></i></td>
+                                    </ng-template>
+                                    <td>
+                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                            <span><strong><i class="fa fa-pencil-square-o" aria-hidden="true"></i></strong></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                            <span><strong><i class="fa fa-trash-o" aria-hidden="true"></i></strong></span>
+                                        </a>
+                                    </td>
+                                </ng-template>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

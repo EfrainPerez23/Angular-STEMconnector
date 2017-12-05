@@ -59,10 +59,10 @@ export class InitiativeAddUpdateComponent implements OnInit {
     this.id = id;
     if (this.id === -1) {
       this.titleModal = 'Creating';
-      this.messageModal = 'Create Activity'
+      this.messageModal = 'Create Initiative'
     }else {
       this.titleModal = 'Updating';
-      this.messageModal = 'Update Activity'
+      this.messageModal = 'Update Initiative'
     }
     this.modalAddUpdateService.open(this.addUpdateModalInitiative).result.then((result: boolean) => {
     }, (reason) => {
