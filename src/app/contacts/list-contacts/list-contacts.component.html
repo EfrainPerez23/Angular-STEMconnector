@@ -14,7 +14,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let row of getRows();let i=index">
+                            <tr *ngFor="let row of (getRows() | contactFilter:getContactSearched():getPreference());let i=index">
                                 <div *ngIf="!row; else emptyEvents"></div>
                                 <ng-template #emptyEvents>
 
@@ -27,13 +27,13 @@
                                         <td class="no">No<i class="fa fa-times" aria-hidden="true" style="color: #db4437"></i></td>
                                     </ng-template>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-primary a-btn-slide-text" (click)="updateContact.addUpdateContactModal(row.getIdContact())">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-pencil-square-o" aria-hidden="true"></i></strong></span>
                                         </a>
                                     </td>
                                     <td>
-                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text">
+                                        <a style="cursor: pointer;" class="btn btn-danger a-btn-slide-text" (click)="deleteContact.deleteContactModal(row.getIdContact())">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                             <span><strong><i class="fa fa-trash-o" aria-hidden="true"></i></strong></span>
                                         </a>
@@ -48,3 +48,5 @@
         </div>
     </div>
 </div>
+<app-contact-delete #deleteContact></app-contact-delete>
+<app-add-update-contact #updateContact></app-add-update-contact>

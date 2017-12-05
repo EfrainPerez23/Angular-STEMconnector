@@ -48,6 +48,7 @@ export class SearchContactComponent implements OnInit {
 
   public chooseCompany(companySelected: Company) {
     this.companySelected = companySelected;
+    this.contactService.getCompanyPreferences().emit(companySelected.getIdCompany());
   }
 
   public getCompanySelected(): Company {

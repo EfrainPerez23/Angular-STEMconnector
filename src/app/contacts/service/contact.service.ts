@@ -5,6 +5,7 @@ export class ContactService {
   private searchContactPreference = new EventEmitter<{search: string, preference: number}>();
   private companyPreference = new EventEmitter<number>();
   private reloadContacts = new  EventEmitter<boolean>();
+  private indexContactDeleted = new EventEmitter<number>();
 
   constructor() { }
 
@@ -18,6 +19,10 @@ export class ContactService {
 
   public getReloadContacts(): EventEmitter<boolean> {
     return this.reloadContacts;
+  }
+
+  public getIndexContactDeleted(): EventEmitter<number> {
+    return this.indexContactDeleted;
   }
 
 }

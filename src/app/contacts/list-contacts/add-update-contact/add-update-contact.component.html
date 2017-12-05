@@ -1,0 +1,86 @@
+<ng-template #addUpdateContact let-c="close" let-d="dismiss">
+    <div class="modal-header" style="top: 200px;">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title">{{getTitleModal()}}</h4>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">{{getMessageModal()}}</h4>
+            </div>
+            <div class="content">
+                <form (ngSubmit)="onSubmit(f, d(false))" #f="ngForm">
+                    <div id="contactData" ngModelGroup="contactData" #contactData="ngModelGroup">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !website.valid && website.touched}">
+                                    <label>Website</label>
+                                    <input type="url" id="website" url class="crossSearch form-control border-input" ngModel name="website" placeholder="Website..." required #website="ngModel">
+                                    <span class="help-block" *ngIf="!website.valid && website.touched">Insert Website</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" class="form-group">
+                                    <label>LinkedIn</label>
+                                    <input type="url" id="linkedIn" url class="crossSearch form-control border-input" ngModel name="linkedIn" placeholder="LinkedIn..." #linkedIn="ngModel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !facebook.valid && facebook.touched}">
+                                    <label>Facebook</label>
+                                    <input type="url" id="facebook" url class="crossSearch form-control border-input" ngModel name="facebook" placeholder="Facebook..." #facebook="ngModel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" class="form-group">
+                                    <label>Google Plus</label>
+                                    <input type="url" id="googleP" url class="crossSearch form-control border-input" ngModel name="googleP" placeholder="Google Plus..." #googleP="ngModel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" class="form-group">
+                                    <label>Twitter</label>
+                                    <input type="url" id="twitter" url class="crossSearch form-control border-input" ngModel name="twitter" placeholder="Twitter..." #twitter="ngModel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" class="form-group" [ngClass]="{'has-error': !Company_idCompany.valid && Company_idCompany.touched}">
+                                    <label>Active</label>
+                                    <select class="form-control" ngModel name="Company_idCompany" #Company_idCompany="ngModel" placeholder="Company..." required>
+                                      <option *ngFor="let company of getCompanies()"  [value]="company.getIdCompany()" >{{company.getName()}}</option>
+                                  </select>
+                                    <span class="help-block" *ngIf="!Company_idCompany.valid && Company_idCompany.touched">Insert Company...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!f.valid">Done!</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="c(false)">Close</button>
+    </div>
+</ng-template>

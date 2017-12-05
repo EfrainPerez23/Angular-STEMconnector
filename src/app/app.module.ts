@@ -96,6 +96,8 @@ import { ContactFilterPipe } from './contacts/pipe/contact-filter.pipe';
 import { SearchContactComponent } from './contacts/search-contact/search-contact.component';
 import { ListContactsComponent } from './contacts/list-contacts/list-contacts.component';
 import { ContactRequestService } from './shared/service/request/contact-request.service';
+import { ContactDeleteComponent } from './contacts/list-contacts/contact-delete/contact-delete.component';
+import { AddUpdateContactComponent } from './contacts/list-contacts/add-update-contact/add-update-contact.component';
 
 
 
@@ -172,7 +174,9 @@ import { ContactRequestService } from './shared/service/request/contact-request.
     ContactsComponent,
     ContactFilterPipe,
     SearchContactComponent,
-    ListContactsComponent
+    ListContactsComponent,
+    ContactDeleteComponent,
+    AddUpdateContactComponent
   ],
   imports: [
     BrowserModule,

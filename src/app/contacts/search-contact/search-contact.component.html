@@ -36,10 +36,12 @@
     <hr>
     <div class="row">
         <div class="col-md-5">
-            <a style="cursor: pointer;" class="btn btn-primary btn-success">
+            <a style="cursor: pointer;" class="btn btn-primary btn-success" (click)="addContact.addUpdateContactModal(-1)">
                 <span class="glyphicon glyphicon-plus"></span> Add Contact
             </a>
         </div>
     </div>
 </div>
 <hr>
+
+<app-add-update-contact #addContact></app-add-update-contact>
