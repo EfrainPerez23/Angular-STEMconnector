@@ -20,8 +20,6 @@ export class AppComponent {
       if (loggedIn) {
         this.router.navigate(['/initiatives']);
         this.util.showNotification('success', 'You have Logged In Correct', 'Success!', 'ti-check-box');
-      }else {
-        this.util.showNotification('danger', 'Enter a correct email and password', 'Warning!', 'ti-alert');
       }
     });
   }
