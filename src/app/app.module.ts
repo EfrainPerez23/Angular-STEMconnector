@@ -98,6 +98,10 @@ import { ListContactsComponent } from './contacts/list-contacts/list-contacts.co
 import { ContactRequestService } from './shared/service/request/contact-request.service';
 import { ContactDeleteComponent } from './contacts/list-contacts/contact-delete/contact-delete.component';
 import { AddUpdateContactComponent } from './contacts/list-contacts/add-update-contact/add-update-contact.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
+import { AdminsComponent } from './admins/admins.component';
 
 
 
@@ -176,7 +180,9 @@ import { AddUpdateContactComponent } from './contacts/list-contacts/add-update-c
     SearchContactComponent,
     ListContactsComponent,
     ContactDeleteComponent,
-    AddUpdateContactComponent
+    AddUpdateContactComponent,
+    LoginComponent,
+    AdminsComponent
   ],
   imports: [
     BrowserModule,
@@ -203,7 +209,9 @@ import { AddUpdateContactComponent } from './contacts/list-contacts/add-update-c
     EventPhonesRequestService,
     ActivityPointRequestService,
     CompanyRequestService,
-    ContactRequestService
+    ContactRequestService,
+    AuthGuardService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

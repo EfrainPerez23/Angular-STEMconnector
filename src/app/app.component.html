@@ -1,4 +1,8 @@
-<div class="wrapper">
+<div *ngIf="!getLoggedIn()">
+    <app-login></app-login>
+</div>
+
+<div class="wrapper" *ngIf="getLoggedIn()">
     <div class="sidebar" data-background-color="black" data-active-color="active">
         <sidebar-cmp></sidebar-cmp>
     </div>
